@@ -22,7 +22,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       apiKey: env.AUTH_RESEND_KEY,
       from: env.EMAIL_FROM,
       sendVerificationRequest: async ({ identifier, url, provider }) => {
-        const t = await getTranslations("email.verify");
+        const t = await getTranslations("email");
         const element = await VerifyEmail({ url });
 
         const response = await fetch("https://api.resend.com/emails", {

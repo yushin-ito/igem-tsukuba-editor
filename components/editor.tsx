@@ -20,7 +20,6 @@ import { Post } from "@prisma/client";
 import { toast } from "sonner";
 import { CharacterCount } from "@tiptap/extension-character-count";
 import { useRouter } from "next/navigation";
-import { PutBlobResult } from "@vercel/blob";
 
 import Icons from "@/components/icons";
 import { cn } from "@/lib/utils";
@@ -76,7 +75,7 @@ const Editor = ({ post }: EditorProps) => {
         return "";
       }
 
-      const blob = (await response.json()) as PutBlobResult;
+      const blob = await response.json();
 
       return blob.url;
     },

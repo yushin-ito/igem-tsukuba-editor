@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { put } from "@vercel/blob";
 import { unauthorized } from "next/navigation";
 
 import { auth } from "@/auth";
@@ -25,11 +24,9 @@ export const POST = async (req: NextRequest) => {
       return NextResponse.json({ error: "Bad Request" }, { status: 400 });
     }
 
-    const blob = await put(`${bucket}/${file.name}`, file, {
-      access: "public",
-    });
+    // todo: upload to cloudflare storage
 
-    return NextResponse.json(blob);
+    return NextResponse.json({});
   } catch {
     return NextResponse.json(
       { error: "Internal Server Error" },
