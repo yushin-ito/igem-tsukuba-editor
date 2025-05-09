@@ -52,7 +52,7 @@ const PostsPage = async () => {
   });
 
   return (
-    <section className="container max-w-6xl space-y-12 py-4 md:py-6 lg:py-8">
+    <section className="container max-w-6xl space-y-10 py-4 md:py-6">
       <div className="flex items-center justify-between">
         <div className="space-y-1">
           <h1 className="text-lg font-bold md:text-xl">

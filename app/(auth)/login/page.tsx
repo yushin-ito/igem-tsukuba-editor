@@ -24,8 +24,8 @@ const LoginPage = async () => {
         href="/"
         className="absolute left-5 top-5 hidden items-center space-x-2 md:flex"
       >
-        <Image src="/images/logo.png" alt="Logo" width={32} height={32} />
-        <span className="hidden font-bold md:block">{siteConfig.name}</span>
+        <Image src="/images/logo.png" alt="Logo" width={28} height={28} />
+        <span className="font-bold">{siteConfig.name}</span>
       </Link>
       <div className="space-y-6 sm:w-[320px]">
         <div className="space-y-2 text-center">

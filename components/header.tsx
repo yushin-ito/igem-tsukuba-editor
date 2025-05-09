@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import { useCallback } from "react";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
@@ -27,6 +28,13 @@ const Header = () => {
 
   return (
     <div className="flex h-12 items-center justify-between px-4 md:h-16 md:px-10">
+      <Link
+        href="/"
+        className="flex items-center space-x-2"
+      >
+        <Image src="/images/logo.png" alt="Logo" width={28} height={28} />
+        <span className="hidden font-bold md:block">{siteConfig.name}</span>
+      </Link>
       <div className="flex space-x-2">
         <Link
           href={siteConfig.links.github}
