@@ -7,6 +7,7 @@ import { z } from "zod";
 import { useTransition } from "react";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
+import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -102,7 +103,13 @@ const SignupForm = () => {
           <Icons.spinner className="size-4 animate-spin" />
         ) : (
           <>
-            <Icons.google className="mr-0.5 size-4" />
+            <Image
+              src="/images/google.png"
+              alt="Google"
+              width={16}
+              height={16}
+              className="mr-0.5"
+            />
             {t.rich("signup.signup_with_provider", {
               provider: "Google",
             })}
