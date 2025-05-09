@@ -3,8 +3,6 @@ import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
 import LoginForm from "@/components/login-form";
 import { siteConfig } from "@/config/site";
 
@@ -24,10 +22,7 @@ const LoginPage = async () => {
     <div className="container flex h-screen flex-col items-center justify-center">
       <Link
         href="/"
-        className={cn(
-          buttonVariants({ variant: "ghost" }),
-          "hidden absolute left-2 top-2 md:left-3 md:top-5 items-center md:flex"
-        )}
+        className="absolute left-5 top-5 hidden items-center space-x-2 md:flex"
       >
         <Image src="/images/logo.png" alt="Logo" width={32} height={32} />
         <span className="hidden font-bold md:block">{siteConfig.name}</span>
