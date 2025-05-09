@@ -26,11 +26,11 @@ const LoginPage = async () => {
         href="/"
         className={cn(
           buttonVariants({ variant: "ghost" }),
-          "absolute left-4 top-4 md:left-8 md:top-8 pl-2 flex items-center"
+          "hidden absolute left-2 top-2 md:left-3 md:top-5 md:flex items-center"
         )}
       >
         <Image src="/images/logo.png" alt="Logo" width={32} height={32} />
-        <span className="font-bold">{siteConfig.name}</span>
+        <span className="hidden font-bold md:block">{siteConfig.name}</span>
       </Link>
       <div className="space-y-6 sm:w-[320px]">
         <div className="space-y-2 text-center">

@@ -26,7 +26,7 @@ const SignupPage = async () => {
         href="/"
         className={cn(
           buttonVariants({ variant: "ghost" }),
-          "absolute left-4 top-4 md:left-8 md:top-8 pl-2 flex items-center"
+          "hidden absolute left-2 top-2 md:left-3 md:top-5 items-center md:flex"
         )}
       >
         <Image src="/images/logo.png" alt="Logo" width={32} height={32} />
