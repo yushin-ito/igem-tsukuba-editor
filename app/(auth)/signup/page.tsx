@@ -1,10 +1,8 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
-import Image from "next/image";
 
 import SignupForm from "@/components/signup-form";
-import { siteConfig } from "@/config/site";
 
 export const generateMetadata = async () => {
   const t = await getTranslations("auth.signup.metadata");
@@ -19,14 +17,7 @@ const SignupPage = async () => {
   const t = await getTranslations("auth");
 
   return (
-    <div className="container flex h-screen flex-col items-center justify-center">
-      <Link
-        href="/"
-        className="absolute left-5 top-5 hidden items-center space-x-2 md:flex"
-      >
-        <Image src="/images/logo.png" alt="Logo" width={28} height={28} />
-        <span className="font-bold">{siteConfig.name}</span>
-      </Link>
+    <div className="container flex h-full flex-col items-center justify-center">
       <div className="space-y-6 sm:w-[320px]">
         <div className="space-y-2 text-center">
           <h1 className="text-2xl font-bold">{t("signup.metadata.title")}</h1>

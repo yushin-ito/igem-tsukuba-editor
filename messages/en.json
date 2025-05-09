@@ -1,5 +1,11 @@
 {
   "root": {
+    "metadata": {
+      "title": "Home",
+      "description": "iGEM TSUKUBA Editor is an editor created by iGEM TSUKUBA, a general student organization at the University of Tsukuba. It is used as an editor to compile materials for participating in iGEM. It is not available for use by anyone other than members."
+    },
+    "about_us": "About Us",
+    "get_started": "Get Started",
     "error": {
       "metadata": {
         "title": "Something went wrong!",

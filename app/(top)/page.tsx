@@ -1,0 +1,83 @@
+import Image from "next/image";
+import { getTranslations } from "next-intl/server";
+import Link from "next/link";
+
+import { siteConfig } from "@/config/site";
+import { buttonVariants } from "@/components/ui/button";
+import Icons from "@/components/icons";
+import { cn } from "@/lib/utils";
+
+export const generateMetadata = async () => {
+  const t = await getTranslations("root");
+
+  return {
+    title: t("metadata.title"),
+    description: t("metadata.description"),
+  };
+};
+
+const RootPage = async () => {
+  const t = await getTranslations("root");
+
+  return (
+    <section className="container max-w-7xl py-8 md:py-16">
+      <div className="grid w-full items-center gap-10 text-center md:grid-cols-[1fr_840px] md:text-left">
+        <div className="min-w-[380px] space-y-10">
+          <div className="space-y-2 md:space-y-4">
+            <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
+              {siteConfig.name}
+            </h1>
+            <p className="text-base text-muted-foreground">
+              {t("metadata.description")}
+            </p>
+          </div>
+          <div className="hidden w-full items-center justify-end space-x-2 px-4 md:flex">
+            <Link href="/" className={buttonVariants({ variant: "outline" })}>
+              {t("about_us")}
+            </Link>
+            <Link
+              href="/login"
+              className={buttonVariants({ variant: "default" })}
+            >
+              {t("get_started")}
+              <Icons.arrowRight />
+            </Link>
+          </div>
+        </div>
+        <div className="relative aspect-video overflow-hidden rounded-xl border shadow">
+          <Image
+            src="/images/main-visual-light.png"
+            alt="Main Visual"
+            fill
+            priority
+            sizes="(min-width: 640px) 640px, 100vw"
+            className="transition-colors dark:hidden"
+          />
+          <Image
+            src="/images/main-visual-dark.png"
+            alt="Main Visual"
+            fill
+            sizes="(min-width: 640px) 640px, 100vw"
+            className="hidden transition-colors dark:block"
+          />
+        </div>
+        <div className="flex flex-col items-center space-y-4 md:hidden">
+          <Link
+            href="/login"
+            className={cn(buttonVariants({ variant: "default" }), "w-64")}
+          >
+            {t("get_started")}
+          </Link>
+          <Link
+            href="/"
+            className={cn(buttonVariants({ variant: "ghost" }), "w-64")}
+          >
+            {t("about_us")}
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default RootPage;

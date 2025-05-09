@@ -2,8 +2,8 @@ import { ReactNode } from "react";
 import { forbidden, unauthorized } from "next/navigation";
 
 import { auth } from "@/auth";
-import Header from "@/components/header";
 import Footer from "@/components/footer";
+import Header from "@/components/header";
 
 interface DashboardLayoutProps {
   children: ReactNode;

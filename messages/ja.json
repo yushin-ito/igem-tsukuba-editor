@@ -1,5 +1,11 @@
 {
   "root": {
+    "metadata": {
+      "title": "ホーム",
+      "description": "iGEM TSUKUBA Editorは、筑波大学の一般学生団体であるiGEM TSUKUBAが作成したエディタです。iGEMに出場する資料をまとめるためのエディタとして使用しています。メンバー以外の方は、ご利用いただけません。"
+    },
+    "about_us": "私たちについて",
+    "get_started": "はじめる",
     "error": {
       "metadata": {
         "title": "予期せぬエラーが発生しました。",
