@@ -51,7 +51,7 @@ const VerifyEmail = async ({ url }: VerifyEmailProps) => {
               </Text>
               <Button
                 href={url}
-                className="mb-4 mt-8 w-4/5 rounded-md bg-zinc-900 py-3 text-sm font-medium text-zinc-50 shadow"
+                className="mb-4 mt-8 w-4/5 rounded-md bg-[#691C70] py-3 text-sm font-medium text-zinc-50 shadow"
               >
                 {t("verify")}
               </Button>
@@ -86,7 +86,7 @@ const VerifyEmail = async ({ url }: VerifyEmailProps) => {
                       {chunks}
                     </Link>
                   ),
-                  name: siteConfig.name,
+                  name: siteConfig.organization,
                 })}
               </Text>
             </Section>
