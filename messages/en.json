@@ -1,0 +1,199 @@
+{
+  "root": {
+    "error": {
+      "metadata": {
+        "title": "Something went wrong!",
+        "description": "Please try again or access the page after some time."
+      },
+      "reload": "Reload"
+    },
+    "forbidden": {
+      "metadata": {
+        "title": "403 Forbidden",
+        "description": "You are not authorized to access this page."
+      },
+      "back_to_top": "Back to Top"
+    },
+    "unauthorized": {
+      "metadata": {
+        "title": "401 Unauthorized",
+        "description": "You are not logged in  to access this page."
+      },
+      "back_to_login": "Back to Login"
+    },
+    "not_found": {
+      "metadata": {
+        "title": "404 Not Found",
+        "description": "The URL may have been changed or the page may have been deleted."
+      },
+      "back_to_top": "Back to Top"
+    }
+  },
+  "auth": {
+    "email": "Email",
+    "invalid_email": "Invalid email address.",
+    "or": "or",
+    "back": "Back",
+    "login": {
+      "metadata": {
+        "title": "Log In",
+        "description": "Log in to your account"
+      },
+      "submit": "Log in",
+      "login_with_provider": "Log in with {provider}",
+      "do_not_have_an_account": "Don't have an account?",
+      "success": {
+        "title": "Verify your email.",
+        "description": "We sent you a login link. Be sure to check your spam too."
+      },
+      "error": {
+        "title": "Something went wrong.",
+        "description": "Your sign in request failed. Please try again."
+      }
+    },
+    "signup": {
+      "metadata": {
+        "title": "Sign Up",
+        "description": "Create a new account"
+      },
+      "submit": "Sign up",
+      "signup_with_provider": "Sign up with {provider}",
+      "already_have_an_account": "Already have an account?",
+      "success": {
+        "title": "Verify your email.",
+        "description": "We sent you a sign up link. Be sure to check your spam too."
+      },
+      "error": {
+        "title": "Something went wrong.",
+        "description": "Your sign up request failed. Please try again."
+      }
+    }
+  },
+  "dashboard": {
+    "navigation": "Navigation",
+    "untitled": "Untitled",
+    "signout": "Sign Out",
+    "error": {
+      "title": "Something went wrong.",
+      "description": "Your post was not created. Please try again."
+    },
+    "posts": {
+      "metadata": {
+        "title": "Post",
+        "description": "Manage your articles. You can edit or delete your posts."
+      },
+      "new_post": "New Post",
+      "status": "Status",
+      "published": "Published",
+      "draft": "Draft",
+      "title": "title",
+      "content": "Content",
+      "updated_at": "Update",
+      "view": "View",
+      "like": "Like",
+      "select_all": "Select all",
+      "select_row": "Select row",
+      "asc": "Asc",
+      "desc": "Desc",
+      "hide": "Hide",
+      "field": "Field",
+      "search": "Search",
+      "open_menu": "Open menu",
+      "edit": "Edit",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "duplicate": "Duplicate",
+      "error": {
+        "title": "Something went wrong.",
+        "description": "Your post was not updated. Please try again."
+      },
+      "delete": "Delete",
+      "cancel": "Cancel",
+      "continue": "Continue",
+      "dialog": {
+        "title": "Are you sure you want to delete this post?",
+        "description": "This action cannot be undone."
+      },
+      "selected": "{count} rows selected.",
+      "page": "Page {index}",
+      "go_to_prev_page": "Go to previous page",
+      "go_to_next_page": "Go to next page",
+      "no_post_found": "No post found.",
+      "empty_placeholder": {
+        "title": "No posts created.",
+        "description": "Create a new post from the bottom button."
+      }
+    },
+    "analytics": {
+      "metadata": {
+        "title": "Analytics",
+        "description": "Analyze your articles. You can check views, likes, and more."
+      },
+      "select_post": "Select post",
+      "search_post": "Search post",
+      "ctr": "CTR",
+      "from_last_week": "{value} from last week",
+      "since_last_week": "{value} since last week",
+      "impression": "Impression",
+      "view": "View",
+      "like": "Like",
+      "new_post": "New Post",
+      "no_post_found": "No post found.",
+      "empty_placeholder": {
+        "title": "No post selected.",
+        "description": "Select a post from the top right button."
+      },
+      "pick_a_date": "Pick a date"
+    },
+    "settings": {
+      "metadata": {
+        "title": "Settings",
+        "description": ""
+      }
+    }
+  },
+  "editor": {
+    "metadata": {
+      "title": "Editor",
+      "description": "Create a new post."
+    },
+    "title_placeholder": "Untitled",
+    "content_placeholder": "Type here to write your post...",
+    "draft": "Draft",
+    "publish": "Publish",
+    "char": "{count} characters",
+    "save": "Save",
+    "back": "Back",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "dialog": {
+      "title": "Unsaved changes",
+      "description": "You have unsaved changes. If you leave this page, your changes may be lost."
+    },
+    "success": {
+      "title": "Your post has been saved.",
+      "description": "Your post has been created successfully."
+    },
+    "error": {
+      "upload": {
+        "title": "Something went wrong.",
+        "description": "Your file upload failed. Please try again."
+      },
+      "save": {
+        "title": "Something went wrong.",
+        "description": "Your post was not saved. Please try again."
+      }
+    }
+  },
+  "email": {
+    "subject": "Email Verification",
+    "preview": "Please complete your email verification",
+    "title": "Email Verification",
+    "description": "Your email verification has been received. 🎉\nThank you for using our service.\nTo access our services, you need to verify your email address.",
+    "instruction": "Click the button below to complete your email verification.\nPlease make sure to verify within <strong>24 hours</strong>.",
+    "verify": "Verify",
+    "warning": "If you did not request this email, it may have been sent by mistake. Please ignore and delete this email.\n\nThe verification link is valid for 24 hours. If it expires, please request verification again.",
+    "support": "For support, please contact us at <link>support@{domain}</link>.",
+    "footer": "© {year} <link>{name}</link>"
+  }
+}

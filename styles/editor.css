@@ -1,0 +1,81 @@
+.bn-container {
+  --bn-colors-editor-text: hsl(var(--foreground));
+  --bn-colors-editor-background: hsl(var(--background));
+  --bn-colors-menu-text: hsl(var(--foreground));
+  --bn-colors-menu-background: hsl(var(--background));
+  --bn-colors-tooltip-text: hsl(var(--foreground));
+  --bn-colors-tooltip-background: hsl(var(--muted));
+  --bn-colors-hovered-text: hsl(var(--foreground));
+  --bn-colors-hovered-background: hsl(var(--muted));
+  --bn-colors-selected-text: hsl(var(--primary-foreground));
+  --bn-colors-selected-background: hsl(var(--primary));
+  --bn-colors-disabled-text: hsl(var(--muted-foreground));
+  --bn-colors-disabled-background: hsl(var(--muted));
+  --bn-colors-side-menu: hsl(var(--muted-foreground));
+  --bn-colors-border: hsl(var(--border));
+}
+
+.bn-mantine {
+  --stack-gap: 2rem;
+}
+
+.bn-editor * {
+  font-family: "Inter", "Noto Sans JP", sans-serif;
+}
+
+.bn-mantine * {
+  font-family: "Inter", "Noto Sans JP", sans-serif;
+}
+.bn-editor {
+  background-color: transparent !important;
+  padding-inline: 0 !important;
+}
+
+.bn-inline-content:has(> .ProseMirror-trailingBreak):before {
+  font-style: normal !important;
+}
+
+.bn-suggestion-menu {
+  padding: 0 4px !important;
+}
+
+.bn-suggestion-menu-item {
+  margin: 2px 0;
+}
+.bn-mt-suggestion-menu-item-title {
+  font-weight: 500;
+}
+
+.mantine-Menu-itemLabel {
+  font-weight: 500;
+}
+
+.bn-block-content[data-content-type="heading"] h1 {
+  font-size: 1.625rem;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.bn-block-content[data-content-type="heading"] h2 {
+  font-size: 1.375rem;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.bn-block-content[data-content-type="heading"] h3 {
+  font-size: 1.125rem;
+  line-height: 1.45;
+  font-weight: 700;
+}
+
+.bn-block-content[data-content-type="heading"] h4 {
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+.bn-block-content[data-content-type="heading"] h5 {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-weight: 700;
+}

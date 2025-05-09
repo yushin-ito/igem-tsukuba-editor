@@ -1,0 +1,199 @@
+{
+  "root": {
+    "error": {
+      "metadata": {
+        "title": "予期せぬエラーが発生しました。",
+        "description": "もう一度お試しいただくか、時間をおいてアクセスしてください。"
+      },
+      "reload": "再読み込みする"
+    },
+    "forbidden": {
+      "metadata": {
+        "title": "管理者権限がありません。",
+        "description": "このページにアクセスするには、管理者権限が必要です。"
+      },
+      "back_to_top": "トップページに戻る"
+    },
+    "unauthorized": {
+      "metadata": {
+        "title": "ログインしていません。",
+        "description": "このページにアクセスするには、ログインする必要があります。"
+      },
+      "back_to_login": "ログインページに戻る"
+    },
+    "not_found": {
+      "metadata": {
+        "title": "ご指定のページが見つかりません。",
+        "description": "URLが変更されたか、削除された可能性があります。"
+      },
+      "back_to_top": "トップページに戻る"
+    }
+  },
+  "auth": {
+    "email": "メールアドレス",
+    "invalid_email": "無効なメールアドレスです。",
+    "or": "または",
+    "back": "戻る",
+    "login": {
+      "metadata": {
+        "title": "ログイン",
+        "description": "アカウントにログインしてください"
+      },
+      "submit": "ログイン",
+      "login_with_provider": "{provider}でログイン",
+      "do_not_have_an_account": "アカウントをお持ちでないですか？",
+      "success": {
+        "title": "メールアドレスの確認が必要です。",
+        "description": "確認メールを送信しました。メールに記載されたリンクをクリックしてください。"
+      },
+      "error": {
+        "title": "エラーが発生しました。",
+        "description": "サインインに失敗しました。もう一度お試しください。"
+      }
+    },
+    "signup": {
+      "metadata": {
+        "title": "新規登録",
+        "description": "新しいアカウントを作成してください"
+      },
+      "submit": "新規登録",
+      "signup_with_provider": "{provider}で新規登録",
+      "already_have_an_account": "すでにアカウントをお持ちですか？",
+      "success": {
+        "title": "メールアドレスの確認が必要です。",
+        "description": "確認メールを送信しました。メールに記載されたリンクをクリックしてください。"
+      },
+      "error": {
+        "title": "エラーが発生しました。",
+        "description": "サインアップに失敗しました。もう一度お試しください。"
+      }
+    }
+  },
+  "dashboard": {
+    "navigation": "ナビゲーション",
+    "untitled": "無題の記事",
+    "signout": "サインアウト",
+    "error": {
+      "title": "エラーが発生しました。",
+      "description": "記事の作成に失敗しました。もう一度お試しください。"
+    },
+    "posts": {
+      "metadata": {
+        "title": "記事",
+        "description": "自分の記事を管理しましょう。記事の編集・削除などができます。"
+      },
+      "new_post": "投稿する",
+      "status": "状態",
+      "published": "公開中",
+      "draft": "下書き",
+      "title": "タイトル",
+      "content": "内容",
+      "updated_at": "更新日",
+      "view": "閲覧数",
+      "like": "いいね数",
+      "select_all": "すべて選択",
+      "select_row": "行を選択",
+      "asc": "昇順",
+      "desc": "降順",
+      "hide": "非表示",
+      "field": "項目",
+      "search": "検索する",
+      "open_menu": "メニューを開く",
+      "edit": "編集",
+      "publish": "公開",
+      "unpublish": "非公開",
+      "error": {
+        "title": "エラーが発生しました。",
+        "description": "記事の更新に失敗しました。もう一度お試しください。"
+      },
+      "duplicate": "複製",
+      "delete": "削除",
+      "cancel": "キャンセル",
+      "continue": "続ける",
+      "dialog": {
+        "title": "削除してよろしいですか？",
+        "description": "この操作は元に戻せません。"
+      },
+      "selected": "{count}個を選択中",
+      "page": "{index}ページ目",
+      "go_to_prev_page": "前のページに戻る",
+      "go_to_next_page": "次のページに進む",
+      "no_post_found": "記事が見つかりません。",
+      "empty_placeholder": {
+        "title": "記事が作成されていません",
+        "description": "下のボタンから新しい記事を作成しましょう。"
+      }
+    },
+    "analytics": {
+      "metadata": {
+        "title": "分析",
+        "description": "自分の記事を分析しましょう。閲覧数やいいね数などが確認できます。"
+      },
+      "select_post": "記事を選択する",
+      "search_post": "記事を検索する",
+      "ctr": "クリック率",
+      "from_last_week": "{value}％（先週）",
+      "since_last_week": "{value}（先週比）",
+      "impression": "表示回数",
+      "view": "閲覧数",
+      "like": "いいね数",
+      "new_post": "投稿する",
+      "no_post_found": "記事が見つかりません。",
+      "empty_placeholder": {
+        "title": "記事が選択されていません",
+        "description": "右上のボタンから記事を選択してください。"
+      },
+      "pick_a_date": "範囲を選択してください"
+    },
+    "settings": {
+      "metadata": {
+        "title": "設定",
+        "description": ""
+      }
+    }
+  },
+  "editor": {
+    "metadata": {
+      "title": "エディター",
+      "description": "新しい記事を作成してください"
+    },
+    "title_placeholder": "無題の記事",
+    "content_placeholder": "ここに入力してください...",
+    "draft": "下書き",
+    "publish": "公開する",
+    "char": "{count}文字",
+    "save": "保存する",
+    "back": "戻る",
+    "cancel": "キャンセル",
+    "continue": "続ける",
+    "dialog": {
+      "title": "内容が保存されていません",
+      "description": "保存されていない変更が失われる可能性があります。"
+    },
+    "success": {
+      "title": "記事を保存しました。",
+      "description": "変更した内容が正常に保存されました。"
+    },
+    "error": {
+      "upload": {
+        "title": "エラーが発生しました。",
+        "description": "画像のアップロードに失敗しました。もう一度お試しください。"
+      },
+      "save": {
+        "title": "エラーが発生しました。",
+        "description": "記事の保存に失敗しました。もう一度お試しください。"
+      }
+    }
+  },
+  "email": {
+    "subject": "メールアドレスの認証",
+    "preview": "メールアドレスの認証を完了してください",
+    "title": "メールアドレスの認証",
+    "description": "メールアドレスの認証を受け付けました。🎉\nこの度はご利用いただき、ありがとうございます。\n本サービスをご利用いただくためには、メールアドレスの認証が必要になります。",
+    "instruction": "以下のボタンをクリックすると、メールアドレスの認証が完了します。\n必ず <strong>24時間以内</strong> に認証を完了してください。",
+    "verify": "認証する",
+    "warning": "このメールに心当たりがない場合は、誤って送信された可能性があります。何も操作せずにこのメールを削除してください。\n\n認証リンクの有効期限は24時間です。期限切れの場合は、再度認証リクエストを送信してください。",
+    "support": "お問い合わせは <link>support@{domain}</link> までご連絡ください。",
+    "footer": "© {year} <link>{name}</link>"
+  }
+}
