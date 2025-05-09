@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
-  keywords: ["yushin.dev"],
+  keywords: [],
   authors: [
     {
       name: "Yushin Ito",

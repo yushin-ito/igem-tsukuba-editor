@@ -32,5 +32,7 @@ export default auth((req) => {
 });
 
 export const config = {
-  matcher: ["/:path*", "/editor/:path*", "/login", "/signup"],
+  matcher: [
+    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
+  ],
 };
