@@ -35,16 +35,19 @@ const PostsPage = async () => {
   }
 
   const posts = await db.post.findMany({
-    where: {
-      authorId: session.user.id,
-    },
     select: {
       id: true,
       title: true,
       published: true,
-      authorId: true,
       createdAt: true,
       updatedAt: true,
+      authors: {
+        select: {
+          id: true,
+          name: true,
+          image: true,
+        },
+      },
     },
     orderBy: {
       updatedAt: "desc",

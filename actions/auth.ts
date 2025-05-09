@@ -7,6 +7,9 @@ export const signInWithEmail = async (email: string, callbackUrl: string) => {
     email: email.toLowerCase(),
     redirect: false,
     callbackUrl,
+    options: {
+
+    }
   });
 };
 

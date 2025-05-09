@@ -9,6 +9,7 @@ import DataTableColumnHeader from "@/components/data-table-column-header";
 import { Checkbox } from "@/components/ui/checkbox";
 import { tableSchema } from "@/schemas/post";
 import { Badge } from "@/components/ui/badge";
+import AvatarGroup from "@/components/avatar-group";
 
 export const columns: ColumnDef<z.infer<typeof tableSchema>>[] = [
   {
@@ -90,6 +91,24 @@ export const columns: ColumnDef<z.infer<typeof tableSchema>>[] = [
     enableSorting: false,
   },
   {
+    accessorKey: "createdAt",
+    meta: { label: "created_at" },
+    header: function Header({ column }) {
+      const t = useTranslations("dashboard");
+
+      return <DataTableColumnHeader column={column} title={t("created_at")} />;
+    },
+    cell: function Cell({ row }) {
+      const format = useFormatter();
+
+      return (
+        <div className="w-24 text-center">
+          {format.relativeTime(new Date(row.getValue("createdAt")), new Date())}
+        </div>
+      );
+    },
+  },
+  {
     accessorKey: "updatedAt",
     meta: { label: "updated_at" },
     header: function Header({ column }) {
@@ -105,6 +124,18 @@ export const columns: ColumnDef<z.infer<typeof tableSchema>>[] = [
           {format.relativeTime(new Date(row.getValue("updatedAt")), new Date())}
         </div>
       );
+    },
+  },
+  {
+    accessorKey: "authors",
+    meta: { label: "editor" },
+    header: function Header({ column }) {
+      const t = useTranslations("dashboard");
+
+      return <DataTableColumnHeader column={column} title={t("editor")} />;
+    },
+    cell: function Cell({ row }) {
+      return <AvatarGroup users={row.getValue("authors")} />;
     },
   },
   {

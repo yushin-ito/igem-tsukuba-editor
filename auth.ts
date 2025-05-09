@@ -45,4 +45,17 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       },
     }),
   ],
+  events: {
+    async createUser({ user }) {
+      if (!user.name && user.email)
+        await db.user.update({
+          where: {
+            id: user.id,
+          },
+          data: {
+            name: user.email.split("@")[0],
+          },
+        });
+    },
+  },
 });

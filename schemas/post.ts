@@ -8,8 +8,14 @@ export const editorSchema = z.object({
 export const tableSchema = z.object({
   id: z.string(),
   title: z.string(),
+  published: z.boolean(),
   createdAt: z.date(),
   updatedAt: z.date(),
-  published: z.boolean(),
-  authorId: z.string(),
+  authors: z
+    .object({
+      id: z.string(),
+      name: z.string().nullable(),
+      image: z.string().nullable(),
+    })
+    .array(),
 });

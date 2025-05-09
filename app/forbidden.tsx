@@ -1,11 +1,17 @@
-import { getTranslations } from "next-intl/server";
-import Link from "next/link";
+"use client";
 
-import { buttonVariants } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
+import { useTransition } from "react";
+import { useRouter } from "next/navigation";
+
+import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { signOut } from "@/actions/auth";
 
-const Forbidden = async () => {
-  const t = await getTranslations("root.forbidden");
+const Forbidden = () => {
+  const t = useTranslations("root.forbidden");
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
 
   return (
     <div className="container flex h-screen w-screen flex-col items-center justify-center space-y-16">
@@ -17,12 +23,19 @@ const Forbidden = async () => {
           {t("metadata.description")}
         </p>
       </div>
-      <Link
-        href="/"
+      <Button
         className={cn(buttonVariants(), "px-8 py-6 rounded-full")}
+        onClick={() => {
+          startTransition(async () => {
+            await signOut();
+
+            router.refresh();
+          });
+        }}
+        disabled={isPending}
       >
-        {t("back_to_top")}
-      </Link>
+        {t("signout")}
+      </Button>
     </div>
   );
 };

@@ -12,7 +12,7 @@
         "title": "403 Forbidden",
         "description": "You are not authorized to access this page."
       },
-      "back_to_top": "Back to Top"
+      "signout": "Sign Out"
     },
     "unauthorized": {
       "metadata": {
@@ -75,7 +75,7 @@
     "signout": "Sign Out",
     "metadata": {
       "title": "Post",
-      "description": "Manage your articles. You can edit or delete your posts."
+      "description": "Manage our articles. You can edit or delete our posts."
     },
     "new_post": "New Post",
     "status": "Status",
@@ -83,9 +83,10 @@
     "draft": "Draft",
     "title": "title",
     "content": "Content",
-    "updated_at": "Update",
-    "view": "View",
-    "like": "Like",
+    "created_at": "Created",
+    "updated_at": "Updated",
+    "editor": "Editor",
+    "unknown_user": "Unknown User",
     "select_all": "Select all",
     "select_row": "Select row",
     "asc": "Asc",

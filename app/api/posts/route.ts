@@ -29,7 +29,11 @@ export const POST = async (req: NextRequest) => {
       data: {
         title: body.title,
         content: body.content,
-        authorId: session.user.id,
+        authors: {
+          connect: {
+            id: session.user.id,
+          },
+        },
       },
       select: { id: true },
     });

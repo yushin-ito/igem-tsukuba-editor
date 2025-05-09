@@ -12,7 +12,7 @@
         "title": "管理者権限がありません。",
         "description": "このページにアクセスするには、管理者権限が必要です。"
       },
-      "back_to_top": "トップページに戻る"
+      "signout": "サインアウトする"
     },
     "unauthorized": {
       "metadata": {
@@ -75,7 +75,7 @@
     "signout": "サインアウト",
     "metadata": {
       "title": "記事",
-      "description": "自分の記事を管理しましょう。記事の編集・削除などができます。"
+      "description": "記事を管理しましょう。記事の編集・削除などができます。"
     },
     "new_post": "投稿する",
     "status": "状態",
@@ -83,9 +83,10 @@
     "draft": "下書き",
     "title": "タイトル",
     "content": "内容",
+    "created_at": "作成日",
     "updated_at": "更新日",
-    "view": "閲覧数",
-    "like": "いいね数",
+    "editor": "編集者",
+    "unknown_user": "不明なユーザー",
     "select_all": "すべて選択",
     "select_row": "行を選択",
     "asc": "昇順",
