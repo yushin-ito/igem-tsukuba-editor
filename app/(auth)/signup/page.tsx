@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
-import Icons from "@/components/icons";
 import SignupForm from "@/components/signup-form";
+import { siteConfig } from "@/config/site";
 
 export const generateMetadata = async () => {
   const t = await getTranslations("auth.signup.metadata");
@@ -28,8 +29,8 @@ const SignupPage = async () => {
           "absolute left-4 top-4 md:left-8 md:top-8 pl-2 flex items-center"
         )}
       >
-        <Icons.chevronLeft className="size-8" />
-        <span className="text-sm">{t("back")}</span>
+        <Image src="/images/logo.png" alt="Logo" width={32} height={32} />
+        <span className="font-bold">{siteConfig.name}</span>
       </Link>
       <div className="space-y-6 sm:w-[320px]">
         <div className="space-y-2 text-center">

@@ -30,7 +30,7 @@ const VerifyEmail = async ({ url }: VerifyEmailProps) => {
           <Container className="mx-auto my-8 max-w-md rounded-xl border border-solid border-zinc-200 bg-white px-12 pb-2 pt-8 text-center shadow">
             <Section>
               <Img
-                src={`${siteConfig.url}/images/icon.png`}
+                src={`${siteConfig.url}/images/logo.png`}
                 width="84"
                 height="84"
                 alt="icon"
