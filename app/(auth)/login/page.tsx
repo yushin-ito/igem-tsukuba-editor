@@ -26,7 +26,7 @@ const LoginPage = async () => {
         href="/"
         className={cn(
           buttonVariants({ variant: "ghost" }),
-          "hidden absolute left-2 top-2 md:left-3 md:top-5 md:flex items-center"
+          "hidden absolute left-2 top-2 md:left-3 md:top-5 items-center md:flex"
         )}
       >
         <Image src="/images/logo.png" alt="Logo" width={32} height={32} />
