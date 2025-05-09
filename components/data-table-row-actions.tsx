@@ -36,7 +36,7 @@ interface DataTableRowActionsProps<TData> {
 const DataTableRowActions = <TData,>({
   row,
 }: DataTableRowActionsProps<TData>) => {
-  const t = useTranslations("dashboard.posts");
+  const t = useTranslations("dashboard");
 
   const router = useRouter();
 

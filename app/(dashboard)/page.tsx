@@ -14,7 +14,7 @@ import DataTable from "@/components/data-table";
 import { columns } from "@/components/columns";
 
 export const generateMetadata = async () => {
-  const t = await getTranslations("dashboard.posts.metadata");
+  const t = await getTranslations("dashboard.metadata");
 
   return {
     title: t("title"),
@@ -23,7 +23,7 @@ export const generateMetadata = async () => {
 };
 
 const PostsPage = async () => {
-  const t = await getTranslations("dashboard.posts");
+  const t = await getTranslations("dashboard");
   const session = await auth();
 
   if (!session?.user) {

@@ -18,7 +18,7 @@ interface DataTableViewOptionsProps<TData> {
 const DataTableViewOptions = <TData,>({
   table,
 }: DataTableViewOptionsProps<TData>) => {
-  const t = useTranslations("dashboard.posts");
+  const t = useTranslations("dashboard");
 
   return (
     <DropdownMenu>

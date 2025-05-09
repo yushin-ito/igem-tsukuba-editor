@@ -73,83 +73,50 @@
     "navigation": "ナビゲーション",
     "untitled": "無題の記事",
     "signout": "サインアウト",
+    "metadata": {
+      "title": "記事",
+      "description": "自分の記事を管理しましょう。記事の編集・削除などができます。"
+    },
+    "new_post": "投稿する",
+    "status": "状態",
+    "published": "公開中",
+    "draft": "下書き",
+    "title": "タイトル",
+    "content": "内容",
+    "updated_at": "更新日",
+    "view": "閲覧数",
+    "like": "いいね数",
+    "select_all": "すべて選択",
+    "select_row": "行を選択",
+    "asc": "昇順",
+    "desc": "降順",
+    "hide": "非表示",
+    "field": "項目",
+    "search": "検索する",
+    "open_menu": "メニューを開く",
+    "edit": "編集",
+    "publish": "公開",
+    "unpublish": "非公開",
     "error": {
       "title": "エラーが発生しました。",
-      "description": "記事の作成に失敗しました。もう一度お試しください。"
+      "description": "記事の更新に失敗しました。もう一度お試しください。"
     },
-    "posts": {
-      "metadata": {
-        "title": "記事",
-        "description": "自分の記事を管理しましょう。記事の編集・削除などができます。"
-      },
-      "new_post": "投稿する",
-      "status": "状態",
-      "published": "公開中",
-      "draft": "下書き",
-      "title": "タイトル",
-      "content": "内容",
-      "updated_at": "更新日",
-      "view": "閲覧数",
-      "like": "いいね数",
-      "select_all": "すべて選択",
-      "select_row": "行を選択",
-      "asc": "昇順",
-      "desc": "降順",
-      "hide": "非表示",
-      "field": "項目",
-      "search": "検索する",
-      "open_menu": "メニューを開く",
-      "edit": "編集",
-      "publish": "公開",
-      "unpublish": "非公開",
-      "error": {
-        "title": "エラーが発生しました。",
-        "description": "記事の更新に失敗しました。もう一度お試しください。"
-      },
-      "duplicate": "複製",
-      "delete": "削除",
-      "cancel": "キャンセル",
-      "continue": "続ける",
-      "dialog": {
-        "title": "削除してよろしいですか？",
-        "description": "この操作は元に戻せません。"
-      },
-      "selected": "{count}個を選択中",
-      "page": "{index}ページ目",
-      "go_to_prev_page": "前のページに戻る",
-      "go_to_next_page": "次のページに進む",
-      "no_post_found": "記事が見つかりません。",
-      "empty_placeholder": {
-        "title": "記事が作成されていません",
-        "description": "下のボタンから新しい記事を作成しましょう。"
-      }
+    "duplicate": "複製",
+    "delete": "削除",
+    "cancel": "キャンセル",
+    "continue": "続ける",
+    "dialog": {
+      "title": "削除してよろしいですか？",
+      "description": "この操作は元に戻せません。"
     },
-    "analytics": {
-      "metadata": {
-        "title": "分析",
-        "description": "自分の記事を分析しましょう。閲覧数やいいね数などが確認できます。"
-      },
-      "select_post": "記事を選択する",
-      "search_post": "記事を検索する",
-      "ctr": "クリック率",
-      "from_last_week": "{value}％（先週）",
-      "since_last_week": "{value}（先週比）",
-      "impression": "表示回数",
-      "view": "閲覧数",
-      "like": "いいね数",
-      "new_post": "投稿する",
-      "no_post_found": "記事が見つかりません。",
-      "empty_placeholder": {
-        "title": "記事が選択されていません",
-        "description": "右上のボタンから記事を選択してください。"
-      },
-      "pick_a_date": "範囲を選択してください"
-    },
-    "settings": {
-      "metadata": {
-        "title": "設定",
-        "description": ""
-      }
+    "selected": "{count}個を選択中",
+    "page": "{index}ページ目",
+    "go_to_prev_page": "前のページに戻る",
+    "go_to_next_page": "次のページに進む",
+    "no_post_found": "記事が見つかりません。",
+    "empty_placeholder": {
+      "title": "記事が作成されていません",
+      "description": "下のボタンから新しい記事を作成しましょう。"
     }
   },
   "editor": {

@@ -14,7 +14,7 @@ export const columns: ColumnDef<z.infer<typeof tableSchema>>[] = [
   {
     id: "select",
     header: function Header({ table }) {
-      const t = useTranslations("dashboard.posts");
+      const t = useTranslations("dashboard");
 
       return (
         <Checkbox
@@ -29,7 +29,7 @@ export const columns: ColumnDef<z.infer<typeof tableSchema>>[] = [
       );
     },
     cell: function Cell({ row }) {
-      const t = useTranslations("dashboard.posts");
+      const t = useTranslations("dashboard");
 
       return (
         <Checkbox
@@ -47,12 +47,12 @@ export const columns: ColumnDef<z.infer<typeof tableSchema>>[] = [
     accessorKey: "title",
     meta: { label: "title" },
     header: function Header({ column }) {
-      const t = useTranslations("dashboard.posts");
+      const t = useTranslations("dashboard");
 
       return <DataTableColumnHeader column={column} title={t("title")} />;
     },
     cell: function Cell({ row }) {
-      const t = useTranslations("dashboard.posts");
+      const t = useTranslations("dashboard");
       const published = row.original.published;
       const status = published ? t("published") : t("draft");
 
@@ -76,7 +76,7 @@ export const columns: ColumnDef<z.infer<typeof tableSchema>>[] = [
     accessorKey: "description",
     meta: { label: "content" },
     header: function Header({ column }) {
-      const t = useTranslations("dashboard.posts");
+      const t = useTranslations("dashboard");
 
       return <DataTableColumnHeader column={column} title={t("content")} />;
     },
@@ -93,7 +93,7 @@ export const columns: ColumnDef<z.infer<typeof tableSchema>>[] = [
     accessorKey: "updatedAt",
     meta: { label: "updated_at" },
     header: function Header({ column }) {
-      const t = useTranslations("dashboard.posts");
+      const t = useTranslations("dashboard");
 
       return <DataTableColumnHeader column={column} title={t("updated_at")} />;
     },

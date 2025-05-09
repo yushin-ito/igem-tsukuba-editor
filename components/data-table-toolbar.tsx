@@ -12,7 +12,7 @@ interface DataTableToolbarProps<TData> {
 }
 
 const DataTableToolbar = <TData,>({ table }: DataTableToolbarProps<TData>) => {
-  const t = useTranslations("dashboard.posts");
+  const t = useTranslations("dashboard");
 
   return (
     <div className="flex items-center justify-between">

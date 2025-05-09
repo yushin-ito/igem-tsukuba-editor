@@ -73,83 +73,50 @@
     "navigation": "Navigation",
     "untitled": "Untitled",
     "signout": "Sign Out",
+    "metadata": {
+      "title": "Post",
+      "description": "Manage your articles. You can edit or delete your posts."
+    },
+    "new_post": "New Post",
+    "status": "Status",
+    "published": "Published",
+    "draft": "Draft",
+    "title": "title",
+    "content": "Content",
+    "updated_at": "Update",
+    "view": "View",
+    "like": "Like",
+    "select_all": "Select all",
+    "select_row": "Select row",
+    "asc": "Asc",
+    "desc": "Desc",
+    "hide": "Hide",
+    "field": "Field",
+    "search": "Search",
+    "open_menu": "Open menu",
+    "edit": "Edit",
+    "publish": "Publish",
+    "unpublish": "Unpublish",
+    "duplicate": "Duplicate",
     "error": {
       "title": "Something went wrong.",
-      "description": "Your post was not created. Please try again."
+      "description": "Your post was not updated. Please try again."
     },
-    "posts": {
-      "metadata": {
-        "title": "Post",
-        "description": "Manage your articles. You can edit or delete your posts."
-      },
-      "new_post": "New Post",
-      "status": "Status",
-      "published": "Published",
-      "draft": "Draft",
-      "title": "title",
-      "content": "Content",
-      "updated_at": "Update",
-      "view": "View",
-      "like": "Like",
-      "select_all": "Select all",
-      "select_row": "Select row",
-      "asc": "Asc",
-      "desc": "Desc",
-      "hide": "Hide",
-      "field": "Field",
-      "search": "Search",
-      "open_menu": "Open menu",
-      "edit": "Edit",
-      "publish": "Publish",
-      "unpublish": "Unpublish",
-      "duplicate": "Duplicate",
-      "error": {
-        "title": "Something went wrong.",
-        "description": "Your post was not updated. Please try again."
-      },
-      "delete": "Delete",
-      "cancel": "Cancel",
-      "continue": "Continue",
-      "dialog": {
-        "title": "Are you sure you want to delete this post?",
-        "description": "This action cannot be undone."
-      },
-      "selected": "{count} rows selected.",
-      "page": "Page {index}",
-      "go_to_prev_page": "Go to previous page",
-      "go_to_next_page": "Go to next page",
-      "no_post_found": "No post found.",
-      "empty_placeholder": {
-        "title": "No posts created.",
-        "description": "Create a new post from the bottom button."
-      }
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "dialog": {
+      "title": "Are you sure you want to delete this post?",
+      "description": "This action cannot be undone."
     },
-    "analytics": {
-      "metadata": {
-        "title": "Analytics",
-        "description": "Analyze your articles. You can check views, likes, and more."
-      },
-      "select_post": "Select post",
-      "search_post": "Search post",
-      "ctr": "CTR",
-      "from_last_week": "{value} from last week",
-      "since_last_week": "{value} since last week",
-      "impression": "Impression",
-      "view": "View",
-      "like": "Like",
-      "new_post": "New Post",
-      "no_post_found": "No post found.",
-      "empty_placeholder": {
-        "title": "No post selected.",
-        "description": "Select a post from the top right button."
-      },
-      "pick_a_date": "Pick a date"
-    },
-    "settings": {
-      "metadata": {
-        "title": "Settings",
-        "description": ""
-      }
+    "selected": "{count} rows selected.",
+    "page": "Page {index}",
+    "go_to_prev_page": "Go to previous page",
+    "go_to_next_page": "Go to next page",
+    "no_post_found": "No post found.",
+    "empty_placeholder": {
+      "title": "No posts created.",
+      "description": "Create a new post from the bottom button."
     }
   },
   "editor": {
