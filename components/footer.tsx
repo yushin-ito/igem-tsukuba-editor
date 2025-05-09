@@ -11,7 +11,7 @@ const Footer = () => {
           rel="noreferrer"
           className="underline underline-offset-2"
         >
-          {siteConfig.name}
+          {siteConfig.organization}
         </a>{" "}
         {/* All rights reserved. */}
       </p>
