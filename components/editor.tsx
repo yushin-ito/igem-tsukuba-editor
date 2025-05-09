@@ -179,7 +179,7 @@ const Editor = ({ post }: EditorProps) => {
         <div className="space-y-8">
           <div className="flex items-center justify-between">
             <Link
-              href="/dashboard"
+              href="/"
               className={cn(
                 buttonVariants({ variant: "ghost" }),
                 "pl-2 flex items-center"
