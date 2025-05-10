@@ -22,7 +22,7 @@ const RootPage = async () => {
   return (
     <section className="container max-w-7xl py-8 md:py-16">
       <div className="grid w-full items-center gap-10 text-center md:grid-cols-[1fr_840px] md:text-left">
-        <div className="min-w-[380px] space-y-10">
+        <div className="space-y-10 md:min-w-[380px]">
           <div className="space-y-2 md:space-y-4">
             <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
               {siteConfig.name}
@@ -64,13 +64,13 @@ const RootPage = async () => {
         <div className="flex flex-col items-center space-y-4 md:hidden">
           <Link
             href="/login"
-            className={cn(buttonVariants({ variant: "default" }), "w-64")}
+            className={cn(buttonVariants({ variant: "default" }), "w-full max-w-64")}
           >
             {t("get_started")}
           </Link>
           <Link
             href="/"
-            className={cn(buttonVariants({ variant: "ghost" }), "w-64")}
+            className={cn(buttonVariants({ variant: "ghost" }), "w-full max-w-64")}
           >
             {t("about_us")}
           </Link>
