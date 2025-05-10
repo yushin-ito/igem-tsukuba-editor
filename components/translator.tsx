@@ -42,10 +42,14 @@ const Translator = ({ post }: TranslatorProps) => {
   const {
     register,
     watch,
+    reset,
     handleSubmit,
     formState: { isDirty },
   } = useForm<FormData>({
     resolver: zodResolver(translatorSchema),
+    defaultValues: {
+      translation: post.translation ?? undefined,
+    },
   });
   const [isPending, startTransition] = useTransition();
   const [open, setOpen] = useState(false);
@@ -71,6 +75,7 @@ const Translator = ({ post }: TranslatorProps) => {
           return;
         }
 
+        reset(data);
         router.refresh();
 
         toast.success(t("success.title"), {
@@ -78,7 +83,7 @@ const Translator = ({ post }: TranslatorProps) => {
         });
       });
     },
-    [post.id, router, t]
+    [post.id, reset, router, t]
   );
 
   useEffect(() => {
