@@ -11,6 +11,7 @@ const env = createEnv({
     AUTH_GOOGLE_ID: z.string().min(1),
     AUTH_GOOGLE_SECRET: z.string().min(1),
     EMAIL_FROM: z.string().email().optional(),
+    OPENAI_API_KEY: z.string().min(1),
   },
   client: {
     NEXT_PUBLIC_APP_NAME: z.string().min(1),
@@ -29,6 +30,7 @@ const env = createEnv({
     NEXT_PUBLIC_APP_NAME: process.env.NEXT_PUBLIC_APP_NAME,
     NEXT_PUBLIC_APP_DOMAIN: process.env.NEXT_PUBLIC_APP_DOMAIN,
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   },
 });
 

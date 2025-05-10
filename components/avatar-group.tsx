@@ -22,10 +22,10 @@ const GroupAvatar = ({ users, threshold = 3 }: GroupAvatarProps) => {
         <Avatar key={user.id} className="size-8">
           <AvatarImage
             src={user.image ?? undefined}
-            alt={user.name || t("unknown_user")}
+            alt={user.name ?? t("unknown_user")}
           />
           <AvatarFallback>
-            {user.name?.charAt(0) || t("unknown_user")}
+            {user.name?.charAt(0) ?? t("unknown_user")}
           </AvatarFallback>
         </Avatar>
       ))}

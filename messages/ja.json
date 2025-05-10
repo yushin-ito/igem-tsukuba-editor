@@ -102,6 +102,7 @@
     "search": "検索する",
     "open_menu": "メニューを開く",
     "edit": "編集",
+    "translate": "翻訳",
     "publish": "公開",
     "unpublish": "非公開",
     "error": {
@@ -129,12 +130,10 @@
   "editor": {
     "metadata": {
       "title": "エディター",
-      "description": "新しい記事を作成してください"
+      "description": "記事を作成しましょう。"
     },
     "title_placeholder": "無題の記事",
     "content_placeholder": "ここに入力してください...",
-    "draft": "下書き",
-    "publish": "公開する",
     "char": "{count}文字",
     "save": "保存する",
     "back": "戻る",
@@ -152,6 +151,47 @@
       "upload": {
         "title": "エラーが発生しました。",
         "description": "画像のアップロードに失敗しました。もう一度お試しください。"
+      },
+      "save": {
+        "title": "エラーが発生しました。",
+        "description": "記事の保存に失敗しました。もう一度お試しください。"
+      }
+    }
+  },
+  "translator": {
+    "metadata": {
+      "title": "翻訳",
+      "description": "記事を翻訳しましょう。"
+    },
+    "markdown": "マークダウン",
+    "preview": "プレビュー",
+    "japanese": "日本語",
+    "english": "英語",
+    "empty_content": "内容がありません。",
+    "empty_placeholder": "翻訳を入力してください。",
+    "char": "{count}文字",
+    "save": "保存する",
+    "back": "戻る",
+    "cancel": "キャンセル",
+    "continue": "続ける",
+    "dialog": {
+      "translate": {
+        "title": "ChatGPTによる翻訳を使用する",
+        "description": "ChatGPTによる翻訳を使用すると、既存の翻訳が上書きされます。使用する際は、十分に注意してください。"
+      },
+      "unsaved": {
+        "title": "内容が保存されていません",
+        "description": "保存されていない変更が失われる可能性があります。"
+      }
+    },
+    "success": {
+      "title": "記事を保存しました。",
+      "description": "変更した内容が正常に保存されました。"
+    },
+    "error": {
+      "translate": {
+        "title": "エラーが発生しました。",
+        "description": "翻訳に失敗しました。もう一度お試しください。"
       },
       "save": {
         "title": "エラーが発生しました。",

@@ -99,6 +99,12 @@ const DataTableRowActions = <TData,>({
               <span>{t("edit")}</span>
             </Link>
           </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link href={`/translator/${post.id}`}>
+              <Icons.translation className="ml-1 mr-2" />
+              <span>{t("translate")}</span>
+            </Link>
+          </DropdownMenuItem>
           <DropdownMenuItem onClick={onPublish}>
             <Icons.globe className="ml-1 mr-2" />
             <span>{post.published ? t("unpublish") : t("publish")}</span>

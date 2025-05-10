@@ -102,6 +102,7 @@
     "search": "Search",
     "open_menu": "Open menu",
     "edit": "Edit",
+    "translate": "Translate",
     "publish": "Publish",
     "unpublish": "Unpublish",
     "duplicate": "Duplicate",
@@ -133,8 +134,6 @@
     },
     "title_placeholder": "Untitled",
     "content_placeholder": "Type here to write your post...",
-    "draft": "Draft",
-    "publish": "Publish",
     "char": "{count} characters",
     "save": "Save",
     "back": "Back",
@@ -152,6 +151,47 @@
       "upload": {
         "title": "Something went wrong.",
         "description": "Your file upload failed. Please try again."
+      },
+      "save": {
+        "title": "Something went wrong.",
+        "description": "Your post was not saved. Please try again."
+      }
+    }
+  },
+  "translator": {
+    "metadata": {
+      "title": "Translation",
+      "description": "Translate your post."
+    },
+    "markdown": "Markdown",
+    "preview": "Preview",
+    "japanese": "Japanese",
+    "english": "English",
+    "empty_content": "No content.",
+    "empty_placeholder": "Type here to translate your post...",
+    "char": "{count} characters",
+    "save": "Save",
+    "back": "Back",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "dialog": {
+      "translate": {
+        "title": "Translate with ChatGPT",
+        "description": "Using ChatGPT for translation will overwrite existing translations. Please be careful when using it."
+      },
+      "unsaved": {
+        "title": "Unsaved changes",
+        "description": "You have unsaved changes. If you leave this page, your changes may be lost."
+      }
+    },
+    "success": {
+      "title": "Your post has been saved.",
+      "description": "Your post has been created successfully."
+    },
+    "error": {
+      "translate": {
+        "title": "Something went wrong.",
+        "description": "Your translation failed. Please try again."
       },
       "save": {
         "title": "Something went wrong.",

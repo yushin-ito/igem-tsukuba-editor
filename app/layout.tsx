@@ -13,6 +13,7 @@ import { siteConfig } from "@/config/site";
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import TailwindIndicator from "@/components/tailwind-indicator";
+import Icons from "@/components/icons";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -73,7 +74,16 @@ const RootLayout = async ({ children }: RootLayoutProps) => {
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <NextIntlClientProvider>{children}</NextIntlClientProvider>
         </ThemeProvider>
-        <Toaster />
+        <Toaster
+          icons={{
+            success: (
+              <Icons.checkCircle className="size-5 text-green-500 dark:text-green-700" />
+            ),
+            error: (
+              <Icons.aleartCircle className="size-5 text-red-500 dark:text-red-700" />
+            ),
+          }}
+        />
         <Analytics />
         <SpeedInsights />
         <TailwindIndicator />

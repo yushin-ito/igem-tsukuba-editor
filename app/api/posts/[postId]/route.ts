@@ -83,26 +83,26 @@ export const PATCH = async (
       where: { id: postId, authors: { some: { id: session.user.id } } },
     });
 
-    if (!already) {
-      await db.post.update({
-        where: {
-          id: postId,
-        },
-        data: {
-          title: body.title,
-          description: body.description,
-          content: body.content,
-          blocks: body.blocks,
-          published: body.published,
-          updatedAt: new Date(),
-          authors: {
-            connect: {
-              id: session.user.id,
+    await db.post.update({
+      where: {
+        id: postId,
+      },
+      data: {
+        title: body.title,
+        description: body.description,
+        content: body.content,
+        blocks: body.blocks,
+        published: body.published,
+        updatedAt: new Date(),
+        authors: already
+          ? undefined
+          : {
+              connect: {
+                id: session.user.id,
+              },
             },
-          }
-        },
-      });
-    }
+      },
+    });
 
     return new NextResponse(null, { status: 204 });
   } catch (error) {

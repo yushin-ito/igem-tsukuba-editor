@@ -45,15 +45,16 @@ interface EditorProps {
 type FormData = z.infer<typeof editorSchema>;
 
 const Editor = ({ post }: EditorProps) => {
-  const { resolvedTheme } = useTheme();
+  const t = useTranslations("editor");
   const router = useRouter();
   const locale = useLocale();
-  const t = useTranslations("editor");
+  const { resolvedTheme } = useTheme();
   const { register, handleSubmit } = useForm<FormData>({
     resolver: zodResolver(editorSchema),
   });
   const [isPending, startTransition] = useTransition();
   const [open, setOpen] = useState(false);
+  const [isDirty, setIsDirty] = useState(false);
 
   const dictionary = locale === "ja" ? ja : en;
 
@@ -104,7 +105,6 @@ const Editor = ({ post }: EditorProps) => {
     },
   });
 
-  const [isDirty, setIsDirty] = useState(false);
   const [count, setCount] = useState(
     editor._tiptapEditor.storage.characterCount.characters()
   );
@@ -113,7 +113,7 @@ const Editor = ({ post }: EditorProps) => {
     (data: FormData) => {
       startTransition(async () => {
         const text = editor._tiptapEditor.getText();
-        const markdown = await editor.blocksToMarkdownLossy();
+        const markdown = await editor.blocksToMarkdownLossy(editor.document);
         const blocks = JSON.stringify(editor.document);
 
         const response = await fetch(`/api/posts/${post.id}`, {
@@ -124,7 +124,7 @@ const Editor = ({ post }: EditorProps) => {
           body: JSON.stringify({
             title: data.title,
             description: text.slice(0, 100),
-            markdown,
+            content: markdown,
             blocks,
           }),
         });
@@ -176,63 +176,61 @@ const Editor = ({ post }: EditorProps) => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="space-y-8">
-          <div className="flex items-center justify-between">
-            <Link
-              href="/"
-              className={cn(
-                buttonVariants({ variant: "ghost" }),
-                "pl-2 flex items-center"
-              )}
-              onNavigate={(e) => {
-                if (isDirty) {
-                  e.preventDefault();
-                  setOpen(true);
-                }
-              }}
+        <div className="flex items-center justify-between">
+          <Link
+            href="/dashboard"
+            className={cn(
+              buttonVariants({ variant: "ghost" }),
+              "pl-2 flex items-center"
+            )}
+            onNavigate={(e) => {
+              if (isDirty) {
+                e.preventDefault();
+                setOpen(true);
+              }
+            }}
+          >
+            <Icons.chevronLeft className="size-8" />
+            <span className="text-sm">{t("back")}</span>
+          </Link>
+          <div className="flex items-center space-x-6">
+            <span className="text-sm text-muted-foreground">
+              {t("char", { count })}
+            </span>
+            <Button
+              type="submit"
+              className={cn({ "cursor-not-allowed opacity-60": isPending })}
+              disabled={isPending}
             >
-              <Icons.chevronLeft className="size-8" />
-              <span className="text-sm">{t("back")}</span>
-            </Link>
-            <div className="flex items-center space-x-6">
-              <span className="text-sm text-muted-foreground">
-                {t("char", { count })}
-              </span>
-              <Button
-                type="submit"
-                className={cn({ "cursor-not-allowed opacity-60": isPending })}
-                disabled={isPending}
-              >
-                {isPending ? (
-                  <Icons.spinner className="size-4 animate-spin" />
-                ) : (
-                  <span>{t("save")}</span>
-                )}
-              </Button>
-            </div>
+              {isPending ? (
+                <Icons.spinner className="size-4 animate-spin" />
+              ) : (
+                <span>{t("save")}</span>
+              )}
+            </Button>
           </div>
-          <div className="container mx-auto max-w-3xl space-y-4">
-            <TextareaAutosize
-              id="title"
-              defaultValue={post.title}
-              className="w-full resize-none appearance-none overflow-hidden  bg-transparent text-5xl font-bold leading-tight focus:outline-none"
-              {...register("title")}
-              onChange={(e) => {
-                setIsDirty(true);
-                register("title").onChange(e);
-              }}
-            />
-            <BlockNoteView
-              theme={resolvedTheme as "light" | "dark"}
-              editor={editor}
-              onChange={() => {
-                setIsDirty(true);
-                setCount(
-                  editor._tiptapEditor.storage.characterCount.characters()
-                );
-              }}
-            />
-          </div>
+        </div>
+        <div className="container mx-auto max-w-3xl space-y-4 py-10">
+          <TextareaAutosize
+            id="title"
+            defaultValue={post.title}
+            className="w-full resize-none appearance-none overflow-hidden bg-transparent text-5xl font-bold leading-tight focus:outline-none"
+            {...register("title")}
+            onChange={(e) => {
+              setIsDirty(true);
+              register("title").onChange(e);
+            }}
+          />
+          <BlockNoteView
+            theme={resolvedTheme as "light" | "dark"}
+            editor={editor}
+            onChange={() => {
+              setIsDirty(true);
+              setCount(
+                editor._tiptapEditor.storage.characterCount.characters()
+              );
+            }}
+          />
         </div>
       </form>
       <AlertDialog open={open} onOpenChange={setOpen}>
