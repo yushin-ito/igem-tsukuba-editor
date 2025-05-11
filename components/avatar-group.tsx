@@ -10,10 +10,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export interface GroupAvatarProps {
   users: Pick<User, "id" | "name" | "image" | "color">[];
-  threshold?: number;
+  max?: number;
 }
 
-const GroupAvatar = ({ users, threshold = 3 }: GroupAvatarProps) => {
+const GroupAvatar = ({ users, max = 2 }: GroupAvatarProps) => {
   const t = useTranslations("dashboard");
 
   const count = users.length;
@@ -37,9 +37,9 @@ const GroupAvatar = ({ users, threshold = 3 }: GroupAvatarProps) => {
           )}
         </Avatar>
       ))}
-      {count > threshold && (
+      {count > max && (
         <Avatar className="size-8">
-          <AvatarFallback>+{count - threshold}</AvatarFallback>
+          <AvatarFallback>+{count - max}</AvatarFallback>
         </Avatar>
       )}
     </div>

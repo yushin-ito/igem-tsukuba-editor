@@ -65,7 +65,7 @@ export const columns: ColumnDef<z.infer<typeof tableSchema>>[] = [
           >
             {status}
           </Badge>
-          <span className="max-w-[200px] truncate">
+          <span className="max-w-[240px] truncate">
             {row.getValue("title")}
           </span>
         </div>
@@ -136,7 +136,11 @@ export const columns: ColumnDef<z.infer<typeof tableSchema>>[] = [
       return <DataTableColumnHeader column={column} title={t("editor")} />;
     },
     cell: function Cell({ row }) {
-      return <AvatarGroup users={row.getValue("authors")} />;
+      return (
+        <div className="flex w-24 justify-center">
+          <AvatarGroup users={row.getValue("authors")} />
+        </div>
+      );
     },
   },
   {
