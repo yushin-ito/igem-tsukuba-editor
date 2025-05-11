@@ -17,9 +17,11 @@ export const tableSchema = z.object({
   updatedAt: z.date(),
   authors: z
     .object({
-      id: z.string(),
-      name: z.string().nullable(),
-      image: z.string().nullable(),
+      user: z.object({
+        id: z.string(),
+        name: z.string().nullable(),
+        image: z.string().nullable(),
+      }),
     })
     .array(),
 });

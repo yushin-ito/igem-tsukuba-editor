@@ -30,8 +30,8 @@ export const POST = async (req: NextRequest) => {
         title: body.title,
         content: body.content,
         authors: {
-          connect: {
-            id: session.user.id,
+          create: {
+            userId: session.user.id,
           },
         },
       },

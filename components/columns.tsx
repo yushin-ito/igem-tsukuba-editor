@@ -128,6 +128,7 @@ export const columns: ColumnDef<z.infer<typeof tableSchema>>[] = [
   },
   {
     accessorKey: "authors",
+    accessorFn: (row) => row.authors.map((author) => author.user),
     meta: { label: "editor" },
     header: function Header({ column }) {
       const t = useTranslations("dashboard");

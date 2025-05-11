@@ -1,11 +1,12 @@
 {
   "root": {
-    "metadata": {
-      "title": "Home",
-      "description": "iGEM TSUKUBA Editor is an editor created by iGEM TSUKUBA, a general student organization at the University of Tsukuba. It is used as an editor to compile materials for participating in iGEM. It is not available for use by anyone other than members."
+    "nav": {
+      "unknown_user": "Unknown User",
+      "dashboard": "Dashboard",
+      "profile": "Profile",
+      "notification": "Notification",
+      "signout": "Sign Out"
     },
-    "about_us": "About Us",
-    "get_started": "Get Started",
     "error": {
       "metadata": {
         "title": "Something went wrong!",
@@ -34,6 +35,14 @@
       },
       "back_to_top": "Back to Top"
     }
+  },
+  "top": {
+    "metadata": {
+      "title": "Home",
+      "description": "iGEM TSUKUBA Editor is an editor created by iGEM TSUKUBA, a general student organization at the University of Tsukuba. It is used as an editor to compile materials for participating in iGEM. It is not available for use by anyone other than members."
+    },
+    "about_us": "About Us",
+    "get_started": "Get Started"
   },
   "auth": {
     "email": "Email",
@@ -127,6 +136,81 @@
       "description": "Create a new post from the bottom button."
     }
   },
+  "settings": {
+    "metadata": {
+      "title": "Settings",
+      "description": "Manage your account settings. You can change your profile and notification settings."
+    },
+    "profile": {
+      "metadata": {
+        "title": "Profile",
+        "description": "Manage your profile."
+      },
+      "avatar": "Avatar",
+      "avatar_placeholder": "Select an avatar",
+      "unknown_user": "Unknown User",
+      "file_format": "File format: PNG / JPG / GIF",
+      "file_size": "Max size: 2MB",
+      "name": "Name",
+      "name_placeholder": "Enter your name",
+      "theme_color": "Theme",
+      "colors": {
+        "red": "Red",
+        "rose": "Rose",
+        "orange": "Orange",
+        "green": "Green",
+        "blue": " Blue",
+        "yellow": "Yellow",
+        "violet": "Violet"
+      },
+      "selected_color": "Selected color: {color}",
+      "danger_zone": "Danger zone",
+      "delete_account": "Delete account",
+      "dialog": {
+        "title": "Are you sure you want to delete your account?",
+        "description": "This action cannot be undone. Please be careful when proceeding."
+      },
+      "success": {
+        "save": {
+          "title": "Your changes have been saved.",
+          "description": "Your changes have been saved successfully."
+        },
+        "delete": {
+          "title": "Your account has been deleted.",
+          "description": "Your account has been deleted successfully."
+        }
+      },
+      "error": {
+        "upload": {
+          "title": "Something went wrong.",
+          "description": "Your file upload failed. Please try again."
+        },
+        "save": {
+          "title": "Something went wrong.",
+          "description": "Your account was not updated. Please try again."
+        },
+        "delete": {
+          "title": "Something went wrong.",
+          "description": "Your account was not deleted. Please try again."
+        }
+      },
+      "cancel": "Cancel",
+      "continue": "Continue",
+      "save": "Save"
+    },
+    "notification": {
+      "metadata": {
+        "title": "Notification",
+        "description": "Manage your notification."
+      }
+    },
+    "security": {
+      "metadata": {
+        "title": "Security",
+        "description": "Manage your security."
+      }
+    }
+  },
   "editor": {
     "metadata": {
       "title": "Editor",
@@ -185,8 +269,14 @@
       }
     },
     "success": {
-      "title": "Your post has been saved.",
-      "description": "Your post has been created successfully."
+      "translate": {
+        "title": "Your post has been translated.",
+        "description": "Your post has been translated successfully."
+      },
+      "save": {
+        "title": "Your post has been saved.",
+        "description": "Your post has been created successfully."
+      }
     },
     "error": {
       "translate": {

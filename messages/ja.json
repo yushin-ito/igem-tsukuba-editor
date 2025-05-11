@@ -1,11 +1,12 @@
 {
   "root": {
-    "metadata": {
-      "title": "ホーム",
-      "description": "iGEM TSUKUBA Editorは、筑波大学の一般学生団体であるiGEM TSUKUBAが作成したエディタです。iGEMに出場する資料をまとめるためのエディタとして使用しています。メンバー以外の方は、ご利用いただけません。"
+    "nav": {
+      "unknown_user": "不明なユーザー",
+      "dashboard": "ダッシュボード",
+      "profile": "プロフィール",
+      "notification": "プッシュ通知",
+      "signout": "サインアウト"
     },
-    "about_us": "私たちについて",
-    "get_started": "はじめる",
     "error": {
       "metadata": {
         "title": "予期せぬエラーが発生しました。",
@@ -34,6 +35,14 @@
       },
       "back_to_top": "トップページに戻る"
     }
+  },
+  "top": {
+    "metadata": {
+      "title": "トップ",
+      "description": "iGEM TSUKUBA Editorは、筑波大学の一般学生団体であるiGEM TSUKUBAが作成したエディタです。iGEMに出場する資料をまとめるためのエディタとして使用しています。メンバー以外の方は、ご利用いただけません。"
+    },
+    "about_us": "私たちについて",
+    "get_started": "はじめる"
   },
   "auth": {
     "email": "メールアドレス",
@@ -127,6 +136,81 @@
       "description": "下のボタンから新しい記事を作成しましょう。"
     }
   },
+  "settings": {
+    "metadata": {
+      "title": "ユーザー設定",
+      "description": "ユーザー設定を管理しましょう。プロフィールや通知の設定ができます。"
+    },
+    "profile": {
+      "metadata": {
+        "title": "プロフィール",
+        "description": "プロフィールを管理しましょう。"
+      },
+      "avatar": "アイコン",
+      "avatar_placeholder": "アイコンを選択してください",
+      "unknown_user": "不明なユーザー",
+      "file_format": "対応ファイル: PNG / JPG / GIF",
+      "file_size": "最大サイズ: 2MB",
+      "name": "ユーザー名",
+      "name_placeholder": "ユーザー名を入力してください",
+      "theme_color": "テーマカラー",
+      "colors": {
+        "red": "レッド",
+        "rose": "ローズ",
+        "orange": "オレンジ",
+        "green": "グリーン",
+        "blue": "ブルー",
+        "yellow": "イエロー",
+        "violet": "バイオレット"
+      },
+      "selected_color": "選択した色: {color}",
+      "danger_zone": "危険な操作",
+      "delete_account": "アカウントを削除",
+      "dialog": {
+        "title": "アカウントを削除してよろしいですか",
+        "description": "この操作は元に戻せません。続行する場合は、十分に注意してください。"
+      },
+      "success": {
+        "save": {
+          "title": "変更を保存しました。",
+          "description": "変更した内容が正常に保存されました。"
+        },
+        "delete": {
+          "title": "アカウントを削除しました。",
+          "description": "アカウントが正常に削除されました。"
+        }
+      },
+      "error": {
+        "upload": {
+          "title": "エラーが発生しました。",
+          "description": "アイコンのアップロードに失敗しました。もう一度お試しください。"
+        },
+        "save": {
+          "title": "エラーが発生しました。",
+          "description": "アカウントの更新に失敗しました。もう一度お試しください。"
+        },
+        "delete": {
+          "title": "エラーが発生しました。",
+          "description": "アカウントの削除に失敗しました。もう一度お試しください。"
+        }
+      },
+      "cancel": "キャンセル",
+      "continue": "続ける",
+      "save": "保存する"
+    },
+    "notification": {
+      "metadata": {
+        "title": "プッシュ通知",
+        "description": "通知を管理しましょう。"
+      }
+    },
+    "security": {
+      "metadata": {
+        "title": "セキュリティ",
+        "description": "セキュリティを管理しましょう。"
+      }
+    }
+  },
   "editor": {
     "metadata": {
       "title": "エディター",
@@ -185,8 +269,14 @@
       }
     },
     "success": {
-      "title": "記事を保存しました。",
-      "description": "変更した内容が正常に保存されました。"
+      "translate": {
+        "title": "翻訳が完了しました。",
+        "description": "翻訳が正常に完了しました。"
+      },
+      "save": {
+        "title": "記事を保存しました。",
+        "description": "変更した内容が正常に保存されました。"
+      }
     },
     "error": {
       "translate": {

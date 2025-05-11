@@ -3,6 +3,7 @@ import Resend from "next-auth/providers/resend";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { getTranslations } from "next-intl/server";
 import { render } from "@react-email/render";
+import { randomUUID } from "crypto";
 
 import { db } from "@/lib/db";
 import authConfig from "@/auth.config";
@@ -47,15 +48,32 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
   ],
   events: {
     async createUser({ user }) {
-      if (!user.name && user.email)
-        await db.user.update({
-          where: {
-            id: user.id,
-          },
-          data: {
-            name: user.email.split("@")[0],
-          },
-        });
+      const colors = [
+        "red",
+        "rose",
+        "orange",
+        "green",
+        "blue",
+        "yellow",
+        "violet",
+      ];
+
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const name = user.name
+        ? undefined
+        : user.email
+          ? user.email.split("@")[0]
+          : randomUUID();
+
+      await db.user.update({
+        where: {
+          id: user.id,
+        },
+        data: {
+          color,
+          name,
+        },
+      });
     },
   },
 });

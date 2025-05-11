@@ -22,7 +22,7 @@ export const generateMetadata = async () => {
   };
 };
 
-const PostsPage = async () => {
+const DashboardPage = async () => {
   const t = await getTranslations("dashboard");
   const session = await auth();
 
@@ -42,10 +42,15 @@ const PostsPage = async () => {
       createdAt: true,
       updatedAt: true,
       authors: {
-        select: {
-          id: true,
-          name: true,
-          image: true,
+        include: {
+          user: {
+            select: {
+              id: true,
+              name: true,
+              image: true,
+              color: true,
+            },
+          },
         },
       },
     },
@@ -87,4 +92,4 @@ const PostsPage = async () => {
   );
 };
 
-export default PostsPage;
+export default DashboardPage;

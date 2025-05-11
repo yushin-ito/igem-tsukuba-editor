@@ -14,9 +14,9 @@ const contextSchema = z.object({
 });
 
 const bodySchema = z.object({
-  name: z.string().optional(),
-  email: z.string().email().optional(),
   image: z.string().optional(),
+  name: z.string().optional(),
+  color: z.string().optional(),
 });
 
 export const DELETE = async (
@@ -28,10 +28,6 @@ export const DELETE = async (
 
     if (!session?.user) {
       unauthorized();
-    }
-
-    if (session.user.role !== "ADMIN") {
-      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
     const { params } = contextSchema.parse(context);
@@ -78,9 +74,9 @@ export const PATCH = async (
         id: userId,
       },
       data: {
-        name: body.name,
-        email: body.email,
         image: body.image,
+        name: body.name,
+        color: body.color,
       },
     });
 

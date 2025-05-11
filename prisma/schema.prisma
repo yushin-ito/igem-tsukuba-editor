@@ -39,17 +39,18 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String         @id @default(cuid())
   name          String?
-  role          Role      @default(USER)
-  email         String?   @unique
-  emailVerified DateTime? @map("email_verified")
+  color         String?
+  role          Role           @default(USER)
+  email         String?        @unique
+  emailVerified DateTime?      @map("email_verified")
   image         String?
-  createdAt     DateTime  @default(now()) @map("created_at")
-  updatedAt     DateTime  @default(now()) @map("updated_at")
+  createdAt     DateTime       @default(now()) @map("created_at")
+  updatedAt     DateTime       @default(now()) @map("updated_at")
   accounts      Account[]
   sessions      Session[]
-  posts         Post[]
+  posts         PostsOnUsers[]
 
   @@map("users")
 }
@@ -64,18 +65,27 @@ model VerificationToken {
 }
 
 model Post {
-  id          String       @id @default(cuid())
+  id          String         @id @default(cuid())
   title       String
   description String?
   content     String?
   translation String?
   blocks      Json?
-  published   Boolean      @default(false)
-  createdAt   DateTime     @default(now()) @map("created_at")
-  updatedAt   DateTime     @default(now()) @map("updated_at")
-  authors     User[]
+  published   Boolean        @default(false)
+  createdAt   DateTime       @default(now()) @map("created_at")
+  updatedAt   DateTime       @default(now()) @map("updated_at")
+  authors     PostsOnUsers[]
 
   @@map("posts")
+}
+
+model PostsOnUsers {
+  userId String
+  postId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@id([userId, postId])
 }
 
 enum Role {

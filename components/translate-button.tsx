@@ -40,6 +40,10 @@ const TranslateButton = ({ postId }: TranslateButtonProps) => {
       return;
     }
 
+    toast.success(t("success.translate.title"), {
+      description: t("success.translate.description"),
+    });
+
     router.refresh();
   }, [postId, router, t]);
 

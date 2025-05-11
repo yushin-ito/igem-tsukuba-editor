@@ -78,8 +78,8 @@ const Translator = ({ post }: TranslatorProps) => {
         reset(data);
         router.refresh();
 
-        toast.success(t("success.title"), {
-          description: t("success.description"),
+        toast.success(t("success.save.title"), {
+          description: t("success.save.description"),
         });
       });
     },

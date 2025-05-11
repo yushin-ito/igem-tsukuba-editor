@@ -8,7 +8,7 @@ import Icons from "@/components/icons";
 import { cn } from "@/lib/utils";
 
 export const generateMetadata = async () => {
-  const t = await getTranslations("root");
+  const t = await getTranslations("top");
 
   return {
     title: t("metadata.title"),
@@ -17,7 +17,7 @@ export const generateMetadata = async () => {
 };
 
 const RootPage = async () => {
-  const t = await getTranslations("root");
+  const t = await getTranslations("top");
 
   return (
     <section className="container max-w-7xl py-8 md:py-16">
@@ -64,13 +64,19 @@ const RootPage = async () => {
         <div className="flex flex-col items-center space-y-4 md:hidden">
           <Link
             href="/login"
-            className={cn(buttonVariants({ variant: "default" }), "w-full max-w-64")}
+            className={cn(
+              buttonVariants({ variant: "default" }),
+              "w-full max-w-64"
+            )}
           >
             {t("get_started")}
           </Link>
           <Link
             href="/"
-            className={cn(buttonVariants({ variant: "ghost" }), "w-full max-w-64")}
+            className={cn(
+              buttonVariants({ variant: "ghost" }),
+              "w-full max-w-64"
+            )}
           >
             {t("about_us")}
           </Link>

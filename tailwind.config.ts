@@ -4,9 +4,12 @@ import typography from "@tailwindcss/typography";
 
 export default {
   darkMode: ["class"],
-  content: [
-    "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
+  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
+  safelist: [
+    {
+      pattern: /bg-(red|rose|orange|green|blue|yellow|violet)-600/,
+      variants: ["hover"],
+    },
   ],
   theme: {
     container: {

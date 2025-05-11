@@ -79,10 +79,6 @@ export const PATCH = async (
     const json = await req.json();
     const body = bodySchema.parse(json);
 
-    const already = await db.post.findFirst({
-      where: { id: postId, authors: { some: { id: session.user.id } } },
-    });
-
     await db.post.update({
       where: {
         id: postId,
@@ -94,13 +90,19 @@ export const PATCH = async (
         blocks: body.blocks,
         published: body.published,
         updatedAt: new Date(),
-        authors: already
-          ? undefined
-          : {
-              connect: {
-                id: session.user.id,
+        authors: {
+          connectOrCreate: {
+            where: {
+              userId_postId: {
+                userId: session.user.id,
+                postId,
               },
             },
+            create: {
+              userId: session.user.id,
+            },
+          },
+        },
       },
     });
 
