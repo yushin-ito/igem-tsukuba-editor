@@ -3,6 +3,7 @@
 import "@blocknote/core/fonts/inter.css";
 import "@blocknote/mantine/style.css";
 import "@/styles/editor.css";
+import "katex/dist/katex.min.css";
 
 import { codeBlock } from "@blocknote/code-block";
 import { BlockNoteView } from "@blocknote/mantine";
@@ -10,6 +11,7 @@ import { useCreateBlockNote } from "@blocknote/react";
 import { en, ja } from "@blocknote/core/locales";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
+import { MathExtension } from "@aarkue/tiptap-math-extension";
 import TextareaAutosize from "react-textarea-autosize";
 import { useCallback, useEffect, useState, useTransition } from "react";
 import { useTheme } from "next-themes";
@@ -96,6 +98,7 @@ const Editor = ({ post }: EditorProps) => {
     },
     _tiptapOptions: {
       extensions: [
+        MathExtension.configure({ evaluation: true }),
         LeftArrowConversionExtension,
         RightArrowConversionExtension,
         CharacterCount.configure({
