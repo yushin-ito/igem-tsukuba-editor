@@ -76,12 +76,8 @@ const RootLayout = async ({ children }: RootLayoutProps) => {
         </ThemeProvider>
         <Toaster
           icons={{
-            success: (
-              <Icons.checkCircle className="size-5 text-green-500 dark:text-green-700" />
-            ),
-            error: (
-              <Icons.aleartCircle className="size-5 text-red-500 dark:text-red-700" />
-            ),
+            success: <Icons.checkCircle className="size-5 text-primary" />,
+            error: <Icons.aleartCircle className="size-5 text-destructive" />,
           }}
         />
         <Analytics />

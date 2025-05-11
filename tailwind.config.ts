@@ -10,6 +10,9 @@ export default {
       pattern: /bg-(red|rose|orange|green|blue|yellow|violet)-600/,
       variants: ["hover"],
     },
+    {
+      pattern: /text-(red|rose|orange|green|blue|yellow|violet)-600/,
+    },
   ],
   theme: {
     container: {

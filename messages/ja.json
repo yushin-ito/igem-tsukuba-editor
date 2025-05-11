@@ -151,7 +151,10 @@
       "unknown_user": "不明なユーザー",
       "file_format": "対応ファイル: PNG / JPG / GIF",
       "file_size": "最大サイズ: 2MB",
+      "file_too_large": "ファイルサイズが大きすぎます。",
       "name": "ユーザー名",
+      "name_too_short": "ユーザー名は3文字以上で入力してください。",
+      "name_too_long": "ユーザー名は24文字以内で入力してください。",
       "name_placeholder": "ユーザー名を入力してください",
       "theme_color": "テーマカラー",
       "colors": {
@@ -163,7 +166,7 @@
         "yellow": "イエロー",
         "violet": "バイオレット"
       },
-      "selected_color": "選択した色: {color}",
+      "selected_color": "選択した色",
       "danger_zone": "危険な操作",
       "delete_account": "アカウントを削除",
       "dialog": {

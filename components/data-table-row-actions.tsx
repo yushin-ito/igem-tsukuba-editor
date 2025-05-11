@@ -115,7 +115,7 @@ const DataTableRowActions = <TData,>({
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <AlertDialogTrigger asChild>
-            <DropdownMenuItem className="text-error focus:text-error">
+            <DropdownMenuItem className="text-destructive focus:text-destructive">
               <Icons.trash className="ml-1 mr-2" />
               <span>{t("delete")}</span>
             </DropdownMenuItem>

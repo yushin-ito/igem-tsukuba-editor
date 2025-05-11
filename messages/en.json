@@ -150,8 +150,11 @@
       "avatar_placeholder": "Select an avatar",
       "unknown_user": "Unknown User",
       "file_format": "File format: PNG / JPG / GIF",
-      "file_size": "Max size: 2MB",
+      "file_size": "File size: 2MB",
+      "file_too_large": "File size is too large.",
       "name": "Name",
+      "name_too_short": "Name must be at least 3 characters.",
+      "name_too_long": "Name must be at most 24 characters.",
       "name_placeholder": "Enter your name",
       "theme_color": "Theme",
       "colors": {
@@ -163,7 +166,7 @@
         "yellow": "Yellow",
         "violet": "Violet"
       },
-      "selected_color": "Selected color: {color}",
+      "selected_color": "Selected color",
       "danger_zone": "Danger zone",
       "delete_account": "Delete account",
       "dialog": {

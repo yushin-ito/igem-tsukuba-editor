@@ -45,7 +45,7 @@ const ProfileForm = ({ user }: ProfileFormProps) => {
     register,
     control,
     handleSubmit,
-    formState: { isDirty },
+    formState: { errors, isDirty },
   } = useForm<FormData>({
     resolver: zodResolver(profileSchema),
     defaultValues: {
@@ -163,67 +163,76 @@ const ProfileForm = ({ user }: ProfileFormProps) => {
         <div className="space-y-8">
           <div className="space-y-4">
             <Label className="text-lg font-medium">{t("avatar")}</Label>
-            <div className="flex items-end space-x-6">
-              <div className="relative">
-                <Controller
-                  name="image"
-                  control={control}
-                  render={({ field }) => (
-                    <>
-                      <Label
-                        htmlFor="image"
-                        className="cursor-pointer hover:opacity-90"
-                      >
-                        <Avatar className="size-20">
-                          <AvatarImage
-                            src={
-                              field.value
-                                ? URL.createObjectURL(field.value)
-                                : (user.image ?? undefined)
+            <div className="flex flex-col space-y-4">
+              <div className="flex items-end space-x-6">
+                <div className="relative">
+                  <Controller
+                    name="image"
+                    control={control}
+                    render={({ field }) => (
+                      <>
+                        <Label
+                          htmlFor="image"
+                          className="cursor-pointer hover:opacity-90"
+                        >
+                          <Avatar className="size-20">
+                            <AvatarImage
+                              src={
+                                field.value
+                                  ? URL.createObjectURL(field.value)
+                                  : (user.image ?? undefined)
+                              }
+                              alt={user.name ?? t("unknown_user")}
+                            />
+                            {user.image ? (
+                              <Skeleton className="rouned-full size-20" />
+                            ) : (
+                              <AvatarFallback
+                                className={cn(
+                                  "text-2xl text-primary-foreground",
+                                  `bg-${user.color}-600`
+                                )}
+                              >
+                                {user.name?.charAt(0).toUpperCase()}
+                              </AvatarFallback>
+                            )}
+                          </Avatar>
+                          <div className="absolute -bottom-px -right-px flex size-8 cursor-pointer items-center justify-center rounded-full bg-primary shadow">
+                            <Icons.camera className="size-4 text-primary-foreground" />
+                            <span className="sr-only">
+                              {t("avatar_placeholder")}
+                            </span>
+                          </div>
+                        </Label>
+                        <Input
+                          id="image"
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) {
+                              field.onChange(file);
                             }
-                            alt={user.name ?? t("unknown_user")}
-                          />
-                          {user.image ? (
-                            <Skeleton className="rouned-full size-20" />
-                          ) : (
-                            <AvatarFallback
-                              className={cn(
-                                "text-2xl text-primary-foreground",
-                                `bg-${user.color}-600`
-                              )}
-                            >
-                              {user.name?.charAt(0).toUpperCase()}
-                            </AvatarFallback>
-                          )}
-                        </Avatar>
-                        <div className="absolute -bottom-px -right-px flex size-8 cursor-pointer items-center justify-center rounded-full bg-primary shadow">
-                          <Icons.camera className="size-4 text-primary-foreground" />
-                          <span className="sr-only">
-                            {t("avatar_placeholder")}
-                          </span>
-                        </div>
-                      </Label>
-                      <Input
-                        id="image"
-                        type="file"
-                        accept="image/*"
-                        className="hidden"
-                        onChange={(e) => {
-                          const file = e.target.files?.[0];
-                          if (file) {
-                            field.onChange(file);
-                          }
-                        }}
-                      />
-                    </>
-                  )}
-                />
+                          }}
+                        />
+                      </>
+                    )}
+                  />
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  {t("file_format")}
+                  <br />
+                  {t("file_size")}
+                </div>
               </div>
-              <div className="text-sm text-muted-foreground">
-                {t("file_format")}
-                <br />
-                {t("file_size")}
-              </div>
+              {errors.image && (
+                <span className="px-1 text-xs text-destructive">
+                  {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                  {/* @ts-expect-error */}
+                  {t(errors.image.message)}
+                </span>
+              )}
             </div>
           </div>
           <hr className="w-full" />
@@ -235,6 +244,13 @@ const ProfileForm = ({ user }: ProfileFormProps) => {
                 placeholder={t("name_placeholder")}
                 {...register("name")}
               />
+              {errors.name && (
+                <span className="px-1 text-xs text-destructive">
+                  {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                  {/* @ts-expect-error */}
+                  {t(errors.name.message)}
+                </span>
+              )}
             </div>
           </div>
           <hr className="w-full" />
@@ -262,13 +278,15 @@ const ProfileForm = ({ user }: ProfileFormProps) => {
                       </Button>
                     ))}
                   </div>
-                  <div className="text-sm text-muted-foreground">
-                    {t("selected_color", {
-                      color:
-                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                        // @ts-expect-error
-                        t(`colors.${field.value}`) ?? "",
-                    })}
+                  <div className="flex items-center space-x-1">
+                    <span className="text-muted-foreground">
+                      {t("selected_color")}:
+                    </span>
+                    <span className={`text-${field.value}-600`}>
+                      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                      {/* @ts-expect-error */}
+                      {t(`colors.${field.value}`)}
+                    </span>
                   </div>
                 </>
               )}

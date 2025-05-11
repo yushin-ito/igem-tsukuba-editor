@@ -66,7 +66,7 @@ const UserNav = ({ user }: UserNavProps) => {
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
             <Link href={"/dashboard"}>
-              <Icons.post className="mr-1" />
+              <Icons.book className="mr-1" />
               <span>{t("dashboard")}</span>
             </Link>
           </DropdownMenuItem>

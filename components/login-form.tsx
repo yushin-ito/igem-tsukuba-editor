@@ -64,9 +64,11 @@ const LoginForm = () => {
                 {...register("email")}
               />
               {errors.email && (
-                <p className="text-error px-1 text-xs">
-                  {t(errors.email.message as "invalid_email")}
-                </p>
+                <span className="px-1 text-xs text-destructive">
+                  {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                  {/* @ts-expect-error */}
+                  {t(errors.email.message)}
+                </span>
               )}
             </div>
           </div>
