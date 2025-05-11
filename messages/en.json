@@ -167,8 +167,14 @@
       "danger_zone": "Danger zone",
       "delete_account": "Delete account",
       "dialog": {
-        "title": "Are you sure you want to delete your account?",
-        "description": "This action cannot be undone. Please be careful when proceeding."
+        "unsaved": {
+          "title": "Unsaved changes",
+          "description": "You have unsaved changes. If you leave this page, your changes may be lost."
+        },
+        "delete": {
+          "title": "Are you sure you want to delete your account?",
+          "description": "This action cannot be undone. Please be careful when proceeding."
+        }
       },
       "success": {
         "save": {
@@ -196,7 +202,8 @@
       },
       "cancel": "Cancel",
       "continue": "Continue",
-      "save": "Save"
+      "save": "Save",
+      "back": "Back"
     },
     "notification": {
       "metadata": {

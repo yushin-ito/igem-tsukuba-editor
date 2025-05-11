@@ -5,12 +5,13 @@ import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { z } from "zod";
 import { User } from "@prisma/client";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -40,13 +41,20 @@ interface ProfileFormProps {
 const ProfileForm = ({ user }: ProfileFormProps) => {
   const t = useTranslations("settings.profile");
   const router = useRouter();
-  const { register, control, handleSubmit } = useForm<FormData>({
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { isDirty },
+  } = useForm<FormData>({
     resolver: zodResolver(profileSchema),
     defaultValues: {
-      name: user.name ?? "",
-      color: user.color ?? "",
+      name: user.name ?? undefined,
+      color: user.color ?? undefined,
+      image: undefined,
     },
   });
+  const [open, setOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
 
   const colors = ["red", "rose", "orange", "green", "blue", "yellow", "violet"];
@@ -125,158 +133,220 @@ const ProfileForm = ({ user }: ProfileFormProps) => {
     });
   };
 
+  useEffect(() => {
+    window.history.pushState(null, "", window.location.pathname);
+
+    const onPopState = () => {
+      if (isDirty) {
+        setOpen(true);
+      }
+    };
+
+    const onBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (isDirty) {
+        e.preventDefault();
+      }
+    };
+
+    window.addEventListener("popstate", onPopState);
+    window.addEventListener("beforeunload", onBeforeUnload);
+
+    return () => {
+      window.removeEventListener("popstate", onPopState);
+      window.removeEventListener("beforeunload", onBeforeUnload);
+    };
+  }, [isDirty]);
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="space-y-8">
-        <div className="space-y-4">
-          <h3 className="text-lg font-medium">{t("avatar")}</h3>
-          <div className="flex items-end space-x-6">
-            <div className="relative">
-              <Controller
-                name="image"
-                control={control}
-                render={({ field }) => (
-                  <>
-                    <Label
-                      htmlFor="image"
-                      className="cursor-pointer hover:opacity-90"
-                    >
-                      <Avatar className="size-20">
-                        <AvatarImage
-                          src={
-                            field.value
-                              ? URL.createObjectURL(field.value)
-                              : (user.image ?? undefined)
+    <>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="space-y-8">
+          <div className="space-y-4">
+            <Label className="text-lg font-medium">{t("avatar")}</Label>
+            <div className="flex items-end space-x-6">
+              <div className="relative">
+                <Controller
+                  name="image"
+                  control={control}
+                  render={({ field }) => (
+                    <>
+                      <Label
+                        htmlFor="image"
+                        className="cursor-pointer hover:opacity-90"
+                      >
+                        <Avatar className="size-20">
+                          <AvatarImage
+                            src={
+                              field.value
+                                ? URL.createObjectURL(field.value)
+                                : (user.image ?? undefined)
+                            }
+                            alt={user.name ?? t("unknown_user")}
+                          />
+                          {user.image ? (
+                            <Skeleton className="rouned-full size-20" />
+                          ) : (
+                            <AvatarFallback
+                              className={cn(
+                                "text-2xl text-primary-foreground",
+                                `bg-${user.color}-600`
+                              )}
+                            >
+                              {user.name?.charAt(0).toUpperCase()}
+                            </AvatarFallback>
+                          )}
+                        </Avatar>
+                        <div className="absolute -bottom-px -right-px flex size-8 cursor-pointer items-center justify-center rounded-full bg-primary shadow">
+                          <Icons.camera className="size-4 text-primary-foreground" />
+                          <span className="sr-only">
+                            {t("avatar_placeholder")}
+                          </span>
+                        </div>
+                      </Label>
+                      <Input
+                        id="image"
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) {
+                            field.onChange(file);
                           }
-                          alt={user.name ?? t("unknown_user")}
-                        />
-                        {user.image ? (
-                          <Skeleton className="rouned-full size-20" />
-                        ) : (
-                          <AvatarFallback
-                            className={cn(
-                              "text-2xl text-primary-foreground",
-                              `bg-${user.color}-600`
-                            )}
-                          >
-                            {user.name?.charAt(0).toUpperCase()}
-                          </AvatarFallback>
-                        )}
-                      </Avatar>
-                      <div className="absolute -bottom-px -right-px flex size-8 cursor-pointer items-center justify-center rounded-full bg-primary shadow">
-                        <Icons.camera className="size-4 text-primary-foreground" />
-                        <span className="sr-only">
-                          {t("avatar_placeholder")}
-                        </span>
-                      </div>
-                    </Label>
-                    <Input
-                      id="image"
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      onChange={(e) => {
-                        const file = e.target.files?.[0];
-                        if (file) {
-                          field.onChange(file);
-                        }
-                      }}
-                    />
-                  </>
-                )}
+                        }}
+                      />
+                    </>
+                  )}
+                />
+              </div>
+              <div className="text-sm text-muted-foreground">
+                {t("file_format")}
+                <br />
+                {t("file_size")}
+              </div>
+            </div>
+          </div>
+          <hr className="w-full" />
+          <div className="space-y-4">
+            <Label className="text-lg font-medium">{t("name")}</Label>
+            <div className="grid w-full max-w-sm items-center gap-1.5">
+              <Input
+                id="name"
+                placeholder={t("name_placeholder")}
+                {...register("name")}
               />
             </div>
-            <div className="text-sm text-muted-foreground">
-              {t("file_format")}
-              <br />
-              {t("file_size")}
-            </div>
           </div>
-        </div>
-        <hr className="w-full" />
-        <div className="space-y-4">
-          <h3 className="text-lg font-medium">{t("name")}</h3>
-          <div className="grid w-full max-w-sm items-center gap-1.5">
-            <Input
-              id="name"
-              placeholder={t("name_placeholder")}
-              {...register("name")}
+          <hr className="w-full" />
+          <div className="space-y-4">
+            <Label className="text-lg font-medium">{t("theme_color")}</Label>
+            <Controller
+              name="color"
+              control={control}
+              render={({ field }) => (
+                <>
+                  <div className="flex space-x-4">
+                    {colors.map((color, index) => (
+                      <Button
+                        key={index}
+                        type="button"
+                        className={cn(
+                          "relative size-10 rounded-full [&_svg]:size-5",
+                          `bg-${color}-600 hover:bg-${color}-600/90`
+                        )}
+                        onClick={() => field.onChange(color)}
+                      >
+                        {field.value === color && (
+                          <Icons.check className="absolute inset-0 m-auto text-primary-foreground" />
+                        )}
+                      </Button>
+                    ))}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    {t("selected_color", {
+                      color:
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-expect-error
+                        t(`colors.${field.value}`) ?? "",
+                    })}
+                  </div>
+                </>
+              )}
             />
           </div>
+          <hr className="w-full" />
+          <div className="flex flex-col space-y-6">
+            <Label className="text-lg font-medium">{t("danger_zone")}</Label>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="destructive" className="w-40">
+                  {t("delete_account")}
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>
+                    {t("dialog.unsaved.title")}
+                  </AlertDialogTitle>
+                  <AlertDialogDescription>
+                    {t("dialog.unsaved.description")}
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>{t("cancel")}</AlertDialogCancel>
+                  <AlertDialogAction onClick={onDelete}>
+                    {t("continue")}
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          </div>
+          <div className="flex w-full justify-end space-x-3">
+            <Link
+              href="/dashboard"
+              className={buttonVariants({ variant: "outline" })}
+              onNavigate={(e) => {
+                if (isDirty) {
+                  e.preventDefault();
+                  setOpen(true);
+                }
+              }}
+            >
+              {t("back")}
+            </Link>
+            <Button type="submit" disabled={isPending}>
+              {isPending ? (
+                <Icons.spinner className="size-4 animate-spin" />
+              ) : (
+                t("save")
+              )}
+            </Button>
+          </div>
         </div>
-        <hr className="w-full" />
-        <div className="space-y-4">
-          <h3 className="text-lg font-medium">{t("theme_color")}</h3>
-          <Controller
-            name="color"
-            control={control}
-            render={({ field }) => (
-              <>
-                <div className="flex space-x-4">
-                  {colors.map((color, index) => (
-                    <Button
-                      key={index}
-                      type="button"
-                      className={cn(
-                        "relative size-10 rounded-full [&_svg]:size-5",
-                        `bg-${color}-600 hover:bg-${color}-600/90`
-                      )}
-                      onClick={() => field.onChange(color)}
-                    >
-                      {field.value === color && (
-                        <Icons.check className="absolute inset-0 m-auto text-primary-foreground" />
-                      )}
-                    </Button>
-                  ))}
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  {t("selected_color", {
-                    color:
-                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-expect-error
-                      t(`colors.${field.value}`) ?? "",
-                  })}
-                </div>
-              </>
-            )}
-          />
-        </div>
-        <hr className="w-full" />
-        <div className="space-y-6">
-          <h3 className="text-lg font-medium">{t("danger_zone")}</h3>
-          <AlertDialog>
-            <AlertDialogTrigger asChild>
-              <Button variant="destructive" className="w-40">
-                {t("delete_account")}
-              </Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>{t("dialog.title")}</AlertDialogTitle>
-                <AlertDialogDescription>
-                  {t("dialog.description")}
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>{t("cancel")}</AlertDialogCancel>
-                <AlertDialogAction onClick={onDelete}>
-                  {t("continue")}
-                </AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
-        </div>
-      </div>
-      <div className="flex w-full justify-end">
-        <Button type="submit" disabled={isPending}>
-          {isPending ? (
-            <Icons.spinner className="size-4 animate-spin" />
-          ) : (
-            t("save")
-          )}
-        </Button>
-      </div>
-    </form>
+      </form>
+      <AlertDialog open={open} onOpenChange={setOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>{t("dialog.unsaved.title")}</AlertDialogTitle>
+            <AlertDialogDescription>
+              {t("dialog.unsaved.description")}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel
+              onClick={() =>
+                window.history.pushState(null, "", window.location.pathname)
+              }
+            >
+              {t("cancel")}
+            </AlertDialogCancel>
+            <AlertDialogAction onClick={() => router.push("/dashboard")}>
+              {t("continue")}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </>
   );
 };
 

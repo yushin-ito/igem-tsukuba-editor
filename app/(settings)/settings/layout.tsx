@@ -58,7 +58,7 @@ const DashboardLayout = async ({ children }: DashboardLayoutProps) => {
             </div>
           </div>
           <hr className="mb-8 mt-4 w-full" />
-          <div className="grid grid-cols-[180px_1fr] gap-24">
+          <div className="grid gap-12 md:grid-cols-[180px_1fr] md:gap-24">
             <div className="flex flex-col space-y-2">
               <SidebarNav
                 items={[

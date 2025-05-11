@@ -19,7 +19,7 @@ const SidebarNav = ({ items }: SidebarNavProps) => {
   const pathname = usePathname();
 
   return (
-    <nav className="space-y-4">
+    <nav className="flex items-center space-x-2 md:flex-col md:space-y-4">
       {items.map((item, index) => {
         const Icon = Icons[item.icon];
 
@@ -30,12 +30,12 @@ const SidebarNav = ({ items }: SidebarNavProps) => {
             className={cn(
               buttonVariants({ variant: "ghost" }),
               pathname === item.href
-                ? "bg-muted hover:bg-muted"
+                ? "bg-primary hover:bg-primary text-primary-foreground md:bg-muted md:hover:bg-muted md:text-foreground"
                 : "hover:bg-transparent hover:underline",
-              "w-full relative"
+              "relative text-xs rounded-full w-auto px-4 h-7 md:w-full md:h-9 md:text-sm md:rounded-md"
             )}
           >
-            <Icon className="absolute left-4 size-6" />
+            <Icon className="absolute left-4 hidden size-6 md:block" />
             {item.title}
           </Link>
         );

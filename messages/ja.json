@@ -167,8 +167,14 @@
       "danger_zone": "危険な操作",
       "delete_account": "アカウントを削除",
       "dialog": {
-        "title": "アカウントを削除してよろしいですか",
-        "description": "この操作は元に戻せません。続行する場合は、十分に注意してください。"
+        "unsaved": {
+          "title": "内容が保存されていません",
+          "description": "保存されていない変更が失われる可能性があります。"
+        },
+        "delete": {
+          "title": "アカウントを削除してよろしいですか",
+          "description": "この操作は元に戻せません。続行する場合は、十分に注意してください。"
+        }
       },
       "success": {
         "save": {
@@ -196,7 +202,8 @@
       },
       "cancel": "キャンセル",
       "continue": "続ける",
-      "save": "保存する"
+      "save": "保存する",
+      "back": "戻る"
     },
     "notification": {
       "metadata": {
