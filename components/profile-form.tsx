@@ -44,6 +44,7 @@ const ProfileForm = ({ user }: ProfileFormProps) => {
   const {
     register,
     control,
+    reset,
     handleSubmit,
     formState: { errors, isDirty },
   } = useForm<FormData>({
@@ -129,6 +130,7 @@ const ProfileForm = ({ user }: ProfileFormProps) => {
         description: t("success.save.description"),
       });
 
+      reset(data);
       router.refresh();
     });
   };

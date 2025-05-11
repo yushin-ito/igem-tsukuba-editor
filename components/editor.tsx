@@ -86,7 +86,6 @@ const Editor = ({ post }: EditorProps) => {
   );
 
   const editor = useCreateBlockNote({
-    animations: false,
     initialContent: JSON.parse(post.blocks as string),
     codeBlock,
     uploadFile,

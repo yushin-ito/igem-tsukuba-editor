@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import { cn } from "@/lib/utils";
 import Icons from "@/components/icons";
@@ -29,26 +30,32 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import TranslateButton from "@/components/translate-button";
+import Mdx from "@/components/mdx";
 
 interface TranslatorProps {
   post: Pick<Post, "id" | "title" | "content" | "translation">;
+  source: {
+    en: MDXRemoteSerializeResult;
+    ja: MDXRemoteSerializeResult;
+  };
 }
 
 type FormData = z.infer<typeof translatorSchema>;
 
-const Translator = ({ post }: TranslatorProps) => {
+const Translator = ({ post, source }: TranslatorProps) => {
   const t = useTranslations("translator");
   const router = useRouter();
   const {
     register,
     watch,
     reset,
+    setValue,
     handleSubmit,
     formState: { isDirty },
   } = useForm<FormData>({
     resolver: zodResolver(translatorSchema),
     defaultValues: {
-      translation: post.translation ?? undefined,
+      translation: post.translation ?? "",
     },
   });
   const [isPending, startTransition] = useTransition();
@@ -85,6 +92,12 @@ const Translator = ({ post }: TranslatorProps) => {
     },
     [post.id, reset, router, t]
   );
+
+  useEffect(() => {
+    setValue("translation", post.translation ?? undefined, {
+      shouldDirty: true,
+    });
+  }, [post.translation, setValue]);
 
   useEffect(() => {
     window.history.pushState(null, "", window.location.pathname);
@@ -169,7 +182,13 @@ const Translator = ({ post }: TranslatorProps) => {
                   </CardContent>
                 </Card>
               </TabsContent>
-              <TabsContent value="preview"></TabsContent>
+              <TabsContent value="preview">
+                <Card className="h-[480px] overflow-y-scroll">
+                  <CardContent className="px-12 py-8">
+                    <Mdx source={source.ja} />
+                  </CardContent>
+                </Card>
+              </TabsContent>
             </Tabs>
           </div>
           <div className="flex flex-col space-y-2">
@@ -199,7 +218,13 @@ const Translator = ({ post }: TranslatorProps) => {
                   </CardContent>
                 </Card>
               </TabsContent>
-              <TabsContent value="preview"></TabsContent>
+              <TabsContent value="preview">
+                <Card className="relative h-[480px] overflow-y-scroll">
+                  <CardContent className="px-12 py-8">
+                    <Mdx source={source.en} />
+                  </CardContent>
+                </Card>
+              </TabsContent>
             </Tabs>
           </div>
         </div>
