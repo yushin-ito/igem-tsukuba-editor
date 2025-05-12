@@ -104,7 +104,7 @@ export const columns: ColumnDef<z.infer<typeof tableSchema>>[] = [
       const format = useFormatter();
 
       return (
-        <div className="w-24 text-center">
+        <div className="w-24 whitespace-nowrap text-center">
           {format.relativeTime(new Date(row.getValue("createdAt")), new Date())}
         </div>
       );
@@ -122,7 +122,7 @@ export const columns: ColumnDef<z.infer<typeof tableSchema>>[] = [
       const format = useFormatter();
 
       return (
-        <div className="w-24 text-center">
+        <div className="w-24 whitespace-nowrap text-center">
           {format.relativeTime(new Date(row.getValue("updatedAt")), new Date())}
         </div>
       );

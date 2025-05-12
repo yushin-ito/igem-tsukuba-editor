@@ -16,6 +16,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "./ui/skeleton";
 import { cn } from "@/lib/utils";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface UserListProps {
   users: Pick<User, "id" | "name" | "email" | "image" | "color" | "role">[];
@@ -55,9 +56,9 @@ const UserList = ({ users }: UserListProps) => {
   );
 
   return (
-    <div className="max-w-4xl space-y-6">
+    <ScrollArea className="h-[420px] max-w-4xl">
       {users.map((user) => (
-        <div key={user.id} className="space-y-4">
+        <div key={user.id} className="space-y-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <Avatar className="size-12">
@@ -98,10 +99,10 @@ const UserList = ({ users }: UserListProps) => {
               </SelectContent>
             </Select>
           </div>
-          <hr className="w-full" />
+          <hr className="w-full pb-6" />
         </div>
       ))}
-    </div>
+    </ScrollArea>
   );
 };
 
