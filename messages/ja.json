@@ -274,6 +274,18 @@
       "metadata": {
         "title": "セキュリティ",
         "description": "セキュリティを管理しましょう。"
+      },
+      "owner": "オーナー",
+      "admin": "アドミン",
+      "user": "ユーザー",
+      "unknown_user": "不明なユーザー",
+      "error": {
+        "title": "エラーが発生しました。",
+        "description": "権限の変更に失敗しました。もう一度お試しください。"
+      },
+      "success": {
+        "title": "権限を変更しました。",
+        "description": "権限の変更が正常に変更されました。"
       }
     }
   },

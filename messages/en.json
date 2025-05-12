@@ -274,6 +274,18 @@
       "metadata": {
         "title": "Security",
         "description": "Manage your security."
+      },
+      "owner": "Owner",
+      "admin": "Admin",
+      "user": "User",
+      "unknown_user": "Unknown User",
+      "error": {
+        "title": "Something went wrong.",
+        "description": "Your role changes was not updated. Please try again."
+      },
+      "success": {
+        "title": "Your role changes has been updated.",
+        "description": "Your role changes has been updated successfully."
       }
     }
   },
