@@ -51,7 +51,7 @@ export const DELETE = async (
 
     const payload = JSON.stringify({
       title: t("deleted.title"),
-      body: t("created.description", {
+      body: t("deleted.description", {
         name: session.user.name ?? t("unknown_user"),
       }),
       icon: "/images/logo.png",
@@ -124,7 +124,7 @@ export const PATCH = async (
 
     const payload = JSON.stringify({
       title: t("updated.title"),
-      body: t("created.description", {
+      body: t("updated.description", {
         name: session.user.name ?? t("unknown_user"),
       }),
       icon: "/images/logo.png",

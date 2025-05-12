@@ -17,6 +17,7 @@ const bodySchema = z.object({
   image: z.string().optional(),
   name: z.string().optional(),
   color: z.string().optional(),
+  role: z.enum(["USER", "ADMIN"]).optional(),
 });
 
 export const DELETE = async (
@@ -77,6 +78,7 @@ export const PATCH = async (
         image: body.image,
         name: body.name,
         color: body.color,
+        role: body.role,
       },
     });
 
