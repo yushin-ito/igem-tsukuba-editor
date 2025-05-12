@@ -48,6 +48,21 @@ export const metadata: Metadata = {
       url: siteConfig.url,
     },
   ],
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [`${siteConfig.url}/og.png`],
+    creator: "@igem-tsukua-editor",
+  },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-16x16.png",
