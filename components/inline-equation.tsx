@@ -346,13 +346,13 @@ const node = createStronglyTypedTiptapNode({
     ];
   },
 
-  renderHTML({ HTMLAttributes }) {
+  renderHTML({ node, HTMLAttributes }) {
     return [
       "inlineEquation",
       mergeAttributes(HTMLAttributes, {
         "data-content-type": this.name,
       }),
-      0,
+      `$${node.textContent}$`,
     ];
   },
 
