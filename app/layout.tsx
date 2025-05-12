@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [`${siteConfig.url}/og.png`],
+    images: [`${siteConfig.url}/opengraph-image.png`],
     creator: "@igem-tsukua-editor",
   },
   icons: {
