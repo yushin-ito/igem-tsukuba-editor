@@ -3,6 +3,7 @@
 import "@blocknote/core/fonts/inter.css";
 import "@blocknote/mantine/style.css";
 import "@/styles/editor.css";
+import "katex/dist/katex.min.css";
 
 import { codeBlock } from "@blocknote/code-block";
 import { BlockNoteView } from "@blocknote/mantine";
