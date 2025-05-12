@@ -31,6 +31,11 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import TranslateButton from "@/components/translate-button";
 import Mdx from "@/components/mdx";
+import {
+  EmptyPlaceholder,
+  EmptyPlaceholderTitle,
+  EmptyPlaceholderDescription,
+} from "@/components/empty-placeholder";
 
 interface TranslatorProps {
   post: Pick<Post, "id" | "title" | "content" | "translation">;
@@ -163,29 +168,59 @@ const Translator = ({ post, source }: TranslatorProps) => {
             <Tabs defaultValue="markdown" className="space-y-4">
               <TabsList>
                 <TabsTrigger value="markdown">{t("markdown")}</TabsTrigger>
-                <TabsTrigger value="preview">{t("preview")}</TabsTrigger>
+                <TabsTrigger value="preview" disabled={!post.content}>
+                  {t("preview")}
+                </TabsTrigger>
               </TabsList>
               <TabsContent value="markdown">
                 <Card className="relative min-h-[480px] overflow-hidden">
                   <CardContent className="p-0">
-                    <Textarea
-                      readOnly
-                      defaultValue={post.content ?? t("empty_content")}
-                      className="min-h-[440px] resize-none rounded-none border-none p-6 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
-                    />
-                    <div className="absolute inset-x-0 bottom-0 flex h-10 items-center justify-between px-4">
-                      <Label>{t("japanese")}</Label>
-                      <span className="text-xs text-muted-foreground">
-                        {t("char", { count: post.content?.length ?? 0 })}
-                      </span>
-                    </div>
+                    {post.content ? (
+                      <>
+                        <Textarea
+                          readOnly
+                          defaultValue={post.content}
+                          className="min-h-[440px] resize-none rounded-none border-none p-6 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                        />
+                        <div className="absolute inset-x-0 bottom-0 flex h-10 items-center justify-between px-4">
+                          <Label>{t("japanese")}</Label>
+                          <span className="text-xs text-muted-foreground">
+                            {t("char", { count: post.content?.length ?? 0 })}
+                          </span>
+                        </div>
+                      </>
+                    ) : (
+                      <EmptyPlaceholder className="border-none p-0">
+                        <EmptyPlaceholderTitle>
+                          {t("empty_placeholder.title")}
+                        </EmptyPlaceholderTitle>
+                        <EmptyPlaceholderDescription>
+                          {t("empty_placeholder.description")}
+                        </EmptyPlaceholderDescription>
+                        <Link
+                          href={`/editor/${post.id}`}
+                          className={cn(
+                            buttonVariants(),
+                            "px-8 py-6 rounded-full"
+                          )}
+                        >
+                          {t("open_editor")}
+                        </Link>
+                        <div className="absolute inset-x-0 bottom-0 flex h-10 items-center px-4">
+                          <Label>{t("japanese")}</Label>
+                        </div>
+                      </EmptyPlaceholder>
+                    )}
                   </CardContent>
                 </Card>
               </TabsContent>
               <TabsContent value="preview">
-                <Card className="h-[480px] overflow-y-scroll">
+                <Card className="relative h-[480px] overflow-y-scroll">
                   <CardContent className="px-12 py-8">
                     <Mdx source={source.ja} />
+                    <div className="absolute inset-x-0 bottom-0 flex h-10 items-center px-4">
+                      <Label>{t("japanese")}</Label>
+                    </div>
                   </CardContent>
                 </Card>
               </TabsContent>
@@ -195,14 +230,16 @@ const Translator = ({ post, source }: TranslatorProps) => {
             <Tabs defaultValue="markdown" className="space-y-4">
               <TabsList>
                 <TabsTrigger value="markdown">{t("markdown")}</TabsTrigger>
-                <TabsTrigger value="preview">{t("preview")}</TabsTrigger>
+                <TabsTrigger value="preview" disabled={!post.translation}>
+                  {t("preview")}
+                </TabsTrigger>
               </TabsList>
               <TabsContent value="markdown">
                 <Card className="relative min-h-[480px] overflow-hidden">
                   <CardContent className="p-0">
                     <Textarea
                       id="translation"
-                      placeholder={t("empty_placeholder")}
+                      placeholder={t("translation_placeholder")}
                       defaultValue={post.translation ?? ""}
                       className="min-h-[440px] resize-none rounded-none border-none p-6 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
                       {...register("translation")}
@@ -222,6 +259,9 @@ const Translator = ({ post, source }: TranslatorProps) => {
                 <Card className="relative h-[480px] overflow-y-scroll">
                   <CardContent className="px-12 py-8">
                     <Mdx source={source.en} />
+                    <div className="absolute inset-x-0 bottom-0 flex h-10 items-center px-4">
+                      <Label>{t("english")}</Label>
+                    </div>
                   </CardContent>
                 </Card>
               </TabsContent>

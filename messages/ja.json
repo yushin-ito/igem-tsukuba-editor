@@ -98,6 +98,7 @@
     "draft": "下書き",
     "title": "タイトル",
     "content": "内容",
+    "empty_content": "内容がありません。",
     "created_at": "作成日",
     "updated_at": "更新日",
     "editor": "編集者",
@@ -268,8 +269,12 @@
     "preview": "プレビュー",
     "japanese": "日本語",
     "english": "英語",
-    "empty_content": "内容がありません。",
-    "empty_placeholder": "翻訳を入力してください。",
+    "empty_placeholder": {
+      "title": "内容がありません。",
+      "description": "エディターから内容を作成してください。"
+    },
+    "open_editor": "エディターを開く",
+    "translation_placeholder": "翻訳を入力してください。",
     "char": "{count}文字",
     "save": "保存する",
     "back": "戻る",

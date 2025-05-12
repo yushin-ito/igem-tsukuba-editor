@@ -98,6 +98,7 @@
     "draft": "Draft",
     "title": "title",
     "content": "Content",
+    "empty_content": "No content.",
     "created_at": "Created",
     "updated_at": "Updated",
     "editor": "Editor",
@@ -268,8 +269,12 @@
     "preview": "Preview",
     "japanese": "Japanese",
     "english": "English",
-    "empty_content": "No content.",
-    "empty_placeholder": "Type here to translate your post...",
+    "empty_placeholder": {
+      "title": "No content",
+      "description": "Write your content in the editor."
+    },
+    "open_editor": "Open editor",
+    "translation_placeholder": "Type here to translate your post...",
     "char": "{count} characters",
     "save": "Save",
     "back": "Back",

@@ -81,10 +81,12 @@ export const columns: ColumnDef<z.infer<typeof tableSchema>>[] = [
 
       return <DataTableColumnHeader column={column} title={t("content")} />;
     },
-    cell: ({ row }) => {
+    cell: function Cell({ row }) {
+      const t = useTranslations("dashboard");
+
       return (
         <div className="max-w-[240px] truncate">
-          {row.getValue("description")}
+          {row.getValue("description") ?? t("empty_content")}
         </div>
       );
     },
