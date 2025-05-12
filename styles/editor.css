@@ -79,3 +79,17 @@
   line-height: 1.5;
   font-weight: 700;
 }
+
+.bn-mantine .bn-form-popover {
+  z-index: 10000 !important;
+}
+.katex * {
+  font-family: KaTeX_Main, KaTeX_Math, serif !important;
+}
+.equation::before,
+.equation::after {
+  content: "";
+  display: inline-block;
+  width: 0.2rem;
+  height: 1em;
+}

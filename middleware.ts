@@ -29,6 +29,8 @@ export default auth((req) => {
       new URL(`/login?from=${encodeURIComponent(from)}`, req.url)
     );
   }
+
+  return NextResponse.next();
 });
 
 export const config = {

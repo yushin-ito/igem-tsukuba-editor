@@ -233,6 +233,13 @@
     "back": "Back",
     "cancel": "Cancel",
     "continue": "Continue",
+    "other": "Other",
+    "inline_equation": {
+      "title": "Inline Equation",
+      "description": "Insert mathematical symbols in text.",
+      "empty_placeholder": "Type here to your inline equation...",
+      "done": "Done"
+    },
     "dialog": {
       "title": "Unsaved changes",
       "description": "You have unsaved changes. If you leave this page, your changes may be lost."

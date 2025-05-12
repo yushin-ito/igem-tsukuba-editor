@@ -7,11 +7,14 @@ import "katex/dist/katex.min.css";
 
 import { codeBlock } from "@blocknote/code-block";
 import { BlockNoteView } from "@blocknote/mantine";
-import { useCreateBlockNote } from "@blocknote/react";
+import {
+  getDefaultReactSlashMenuItems,
+  SuggestionMenuController,
+  useCreateBlockNote,
+} from "@blocknote/react";
 import { en, ja } from "@blocknote/core/locales";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
-import { MathExtension } from "@aarkue/tiptap-math-extension";
 import TextareaAutosize from "react-textarea-autosize";
 import { useCallback, useEffect, useState, useTransition } from "react";
 import { useTheme } from "next-themes";
@@ -22,6 +25,11 @@ import { Post } from "@prisma/client";
 import { toast } from "sonner";
 import { CharacterCount } from "@tiptap/extension-character-count";
 import { useRouter } from "next/navigation";
+import {
+  BlockNoteSchema,
+  defaultInlineContentSpecs,
+  filterSuggestionItems,
+} from "@blocknote/core";
 
 import Icons from "@/components/icons";
 import { cn } from "@/lib/utils";
@@ -39,12 +47,20 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { InlineEquation } from "./inline-equation";
 
 interface EditorProps {
   post: Pick<Post, "id" | "title" | "blocks" | "published">;
 }
 
 type FormData = z.infer<typeof editorSchema>;
+
+const schema = BlockNoteSchema.create({
+  inlineContentSpecs: {
+    ...defaultInlineContentSpecs,
+    inlineEquation: InlineEquation,
+  },
+});
 
 const Editor = ({ post }: EditorProps) => {
   const t = useTranslations("editor");
@@ -59,6 +75,26 @@ const Editor = ({ post }: EditorProps) => {
   const [isDirty, setIsDirty] = useState(false);
 
   const dictionary = locale === "ja" ? ja : en;
+
+  const insertLaTex = (editor: typeof schema.BlockNoteEditor) => ({
+    icon: <Icons.formula className="size-[18px]" />,
+    title: t("inline_equation.title"),
+    key: "inlineEquation",
+    subtext: t("inline_equation.description"),
+    aliases: ["equation", "latex", "katex"],
+    group: t("other"),
+    onItemClick: () => {
+      const view = editor._tiptapEditor.view;
+      const pos = editor._tiptapEditor.state.selection.from;
+      if (view) {
+        const tr = view.state.tr.insert(
+          pos,
+          view.state.schema.nodes.inlineEquation.create()
+        );
+        view.dispatch(tr);
+      }
+    },
+  });
 
   const uploadFile = useCallback(
     async (file: File) => {
@@ -86,6 +122,7 @@ const Editor = ({ post }: EditorProps) => {
   );
 
   const editor = useCreateBlockNote({
+    schema,
     initialContent: JSON.parse(post.blocks as string),
     codeBlock,
     uploadFile,
@@ -97,7 +134,6 @@ const Editor = ({ post }: EditorProps) => {
     },
     _tiptapOptions: {
       extensions: [
-        MathExtension.configure({ evaluation: true }),
         LeftArrowConversionExtension,
         RightArrowConversionExtension,
         CharacterCount.configure({
@@ -226,13 +262,27 @@ const Editor = ({ post }: EditorProps) => {
           <BlockNoteView
             theme={resolvedTheme as "light" | "dark"}
             editor={editor}
+            slashMenu={false}
             onChange={() => {
               setIsDirty(true);
               setCount(
                 editor._tiptapEditor.storage.characterCount.characters()
               );
             }}
-          />
+          >
+            <SuggestionMenuController
+              triggerCharacter={"/"}
+              getItems={async (query) =>
+                filterSuggestionItems(
+                  [
+                    ...getDefaultReactSlashMenuItems(editor),
+                    insertLaTex(editor),
+                  ],
+                  query
+                )
+              }
+            />
+          </BlockNoteView>
         </div>
       </form>
       <AlertDialog open={open} onOpenChange={setOpen}>

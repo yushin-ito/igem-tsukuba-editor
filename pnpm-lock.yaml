@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@aarkue/tiptap-math-extension':
-        specifier: ^1.3.6
-        version: 1.3.6(@tiptap/core@2.12.0(@tiptap/pm@2.12.0))(@tiptap/pm@2.12.0)
       '@auth/prisma-adapter':
         specifier: ^2.8.0
         version: 2.9.0(@prisma/client@6.7.0(prisma@6.7.0(typescript@5.8.3))(typescript@5.8.3))
@@ -125,6 +122,9 @@ importers:
       '@tiptap/extension-character-count':
         specifier: ^2.11.7
         version: 2.12.0(@tiptap/core@2.12.0(@tiptap/pm@2.12.0))(@tiptap/pm@2.12.0)
+      '@tiptap/react':
+        specifier: ^2.12.0
+        version: 2.12.0(@tiptap/core@2.12.0(@tiptap/pm@2.12.0))(@tiptap/pm@2.12.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@vercel/analytics':
         specifier: ^1.5.0
         version: 1.5.0(next@15.3.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
@@ -176,6 +176,9 @@ importers:
       openai:
         specifier: ^4.98.0
         version: 4.98.0(ws@8.18.2(bufferutil@4.0.9))(zod@3.24.4)
+      prosemirror-view:
+        specifier: ^1.39.2
+        version: 1.39.2
       react:
         specifier: ^19.0.0
         version: 19.1.0
@@ -281,12 +284,6 @@ importers:
         version: 6.0.1(webpack@5.99.8)
 
 packages:
-
-  '@aarkue/tiptap-math-extension@1.3.6':
-    resolution: {integrity: sha512-+wYePrAbziOmQfpbWMCiLth9IiirDr9r6DiMtz4kM8IYsZPSW4foUWQTSl5iu3bgDVY9oib9UWLlbOPrO4i1yg==}
-    peerDependencies:
-      '@tiptap/core': ^2.0.0
-      '@tiptap/pm': ^2.0.0
 
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
@@ -2736,9 +2733,6 @@ packages:
     resolution: {integrity: sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==}
     engines: {node: '>= 0.6'}
 
-  evaluatex@2.2.0:
-    resolution: {integrity: sha512-QVtGvYTf9HvQyDjbBCwoDQPP9KMuVB56H8KalrkLsPPCQfngpVmkiIoxJ4FU/SVmlmhnbr/heOmP5VlbCTEJpg==}
-
   event-target-shim@5.0.1:
     resolution: {integrity: sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==}
     engines: {node: '>=6'}
@@ -5032,13 +5026,6 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
 snapshots:
-
-  '@aarkue/tiptap-math-extension@1.3.6(@tiptap/core@2.12.0(@tiptap/pm@2.12.0))(@tiptap/pm@2.12.0)':
-    dependencies:
-      '@tiptap/core': 2.12.0(@tiptap/pm@2.12.0)
-      '@tiptap/pm': 2.12.0
-      evaluatex: 2.2.0
-      katex: 0.16.22
 
   '@alloc/quick-lru@5.2.0': {}
 
@@ -7655,8 +7642,6 @@ snapshots:
   esutils@2.0.3: {}
 
   etag@1.8.1: {}
-
-  evaluatex@2.2.0: {}
 
   event-target-shim@5.0.1: {}
 

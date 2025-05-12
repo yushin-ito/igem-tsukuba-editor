@@ -233,6 +233,13 @@
     "back": "戻る",
     "cancel": "キャンセル",
     "continue": "続ける",
+    "other": "その他",
+    "inline_equation": {
+      "title": "インライン数式",
+      "description": "KaTeXを用いて数式を入力します。",
+      "empty_placeholder": "数式を入力してください...",
+      "done": "完了"
+    },
     "dialog": {
       "title": "内容が保存されていません",
       "description": "保存されていない変更が失われる可能性があります。"
