@@ -33,7 +33,6 @@ interface NotificationFormProps {
     Notification,
     "id" | "created" | "updated" | "deleted"
   > | null;
-  subscribed: boolean;
 }
 
 type FormData = z.infer<typeof notificationSchema>;
