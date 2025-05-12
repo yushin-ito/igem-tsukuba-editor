@@ -34,7 +34,7 @@ import Icons from "@/components/icons";
 import { cn, wait } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 
 declare module "prosemirror-view" {
   interface NodeView {

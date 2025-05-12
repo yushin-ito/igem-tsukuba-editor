@@ -3,7 +3,6 @@
 import "@blocknote/core/fonts/inter.css";
 import "@blocknote/mantine/style.css";
 import "@/styles/editor.css";
-import "katex/dist/katex.min.css";
 
 import { codeBlock } from "@blocknote/code-block";
 import { BlockNoteView } from "@blocknote/mantine";
@@ -47,7 +46,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { InlineEquation } from "./inline-equation";
+import { InlineEquation } from "@/components/inline-equation";
 
 interface EditorProps {
   post: Pick<Post, "id" | "title" | "blocks" | "published">;
