@@ -1,6 +1,21 @@
 {
   "root": {
-    "nav": {
+    "notification": {
+      "created": {
+        "title": "Post Created",
+        "description": "{name} has created a new post."
+      },
+      "updated": {
+        "title": "Post Updated",
+        "description": "{name} has updated an post."
+      },
+      "deleted": {
+        "title": "Post Deleted",
+        "description": "{name} has deleted an post."
+      },
+      "unknown_user": "Unknown User"
+    },
+    "navigation": {
       "unknown_user": "Unknown User",
       "dashboard": "Dashboard",
       "profile": "Profile",
@@ -90,7 +105,7 @@
     "signout": "Sign Out",
     "metadata": {
       "title": "Post",
-      "description": "Manage our articles. You can edit or delete our posts."
+      "description": "Manage our posts. You can edit or delete our posts."
     },
     "new_post": "New Post",
     "status": "Status",
@@ -213,7 +228,47 @@
       "metadata": {
         "title": "Notification",
         "description": "Manage your notification."
-      }
+      },
+      "all": "All notifications",
+      "created": {
+        "title": "Created",
+        "description": "Notifies you when a new post is created."
+      },
+      "updated": {
+        "title": "Updated",
+        "description": "Notifies you when a post is updated."
+      },
+      "deleted": {
+        "title": "Deleted",
+        "description": "Notifies you when a post is deleted."
+      },
+      "dialog": {
+        "title": "Unsaved changes",
+        "description": "You have unsaved changes. If you leave this page, your changes may be lost."
+      },
+      "alert": {
+        "denied": {
+          "title": "Notifications are denied.",
+          "description": "Please allow notifications from your browser settings."
+        },
+        "unsupported": {
+          "title": "Notifications area not supported.",
+          "description": "Please check your browser version."
+        }
+      },
+      "success": {
+        "title": "Your notification settings have been updated.",
+        "description": "Your notification settings have been updated successfully."
+      },
+      "error": {
+        "title": "Something went wrong.",
+        "description": "Your notification settings were not updated. Please try again."
+      },
+      "allow": "Allow",
+      "cancel": "Cancel",
+      "continue": "Continue",
+      "save": "Save",
+      "back": "Back"
     },
     "security": {
       "metadata": {

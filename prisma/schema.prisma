@@ -51,6 +51,8 @@ model User {
   accounts      Account[]
   sessions      Session[]
   posts         PostsOnUsers[]
+  notification  Notification?
+  subscriptions Subscription[]
 
   @@map("users")
 }
@@ -77,6 +79,31 @@ model Post {
   authors     PostsOnUsers[]
 
   @@map("posts")
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  created   Boolean  @default(false)
+  updated   Boolean  @default(false)
+  deleted   Boolean  @default(false)
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("notifications")
+}
+
+model Subscription {
+  id        String   @id @default(cuid())
+  endpoint  String   @unique
+  keys      Json
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("subscriptions")
 }
 
 model PostsOnUsers {

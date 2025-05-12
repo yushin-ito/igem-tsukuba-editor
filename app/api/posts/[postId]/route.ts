@@ -1,9 +1,11 @@
 import { z } from "zod";
 import { NextRequest, NextResponse } from "next/server";
 import { unauthorized } from "next/navigation";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { db } from "@/lib/db";
 import { auth } from "@/auth";
+import { sendNotification } from "@/actions/notification";
 
 const contextSchema = z.object({
   params: z
@@ -26,6 +28,8 @@ export const DELETE = async (
   context: z.infer<typeof contextSchema>
 ) => {
   try {
+    const locale = await getLocale();
+    const t = await getTranslations("root.notification");
     const session = await auth();
 
     if (!session?.user) {
@@ -45,6 +49,16 @@ export const DELETE = async (
       },
     });
 
+    const payload = JSON.stringify({
+      title: t("deleted.title"),
+      body: t("created.description", {
+        name: session.user.name ?? t("unknown_user"),
+      }),
+      icon: "/images/logo.png",
+      lang: locale === "ja" ? "ja-JP" : "en-US",
+    });
+    await sendNotification(payload);
+
     return new NextResponse(null, { status: 204 });
   } catch (error) {
     if (error instanceof z.ZodError) {
@@ -63,6 +77,8 @@ export const PATCH = async (
   context: z.infer<typeof contextSchema>
 ) => {
   try {
+    const locale = await getLocale();
+    const t = await getTranslations("root.notification");
     const session = await auth();
 
     if (!session?.user) {
@@ -105,6 +121,16 @@ export const PATCH = async (
         },
       },
     });
+
+    const payload = JSON.stringify({
+      title: t("updated.title"),
+      body: t("created.description", {
+        name: session.user.name ?? t("unknown_user"),
+      }),
+      icon: "/images/logo.png",
+      lang: locale === "ja" ? "ja-JP" : "en-US",
+    });
+    await sendNotification(payload);
 
     return new NextResponse(null, { status: 204 });
   } catch (error) {

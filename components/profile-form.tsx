@@ -162,7 +162,7 @@ const ProfileForm = ({ user }: ProfileFormProps) => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="space-y-8">
+        <div className="max-w-4xl space-y-8">
           <div className="space-y-4">
             <Label className="text-lg font-medium">{t("avatar")}</Label>
             <div className="flex flex-col space-y-4">
@@ -334,7 +334,7 @@ const ProfileForm = ({ user }: ProfileFormProps) => {
             >
               {t("back")}
             </Link>
-            <Button type="submit" disabled={isPending}>
+            <Button type="submit" disabled={!isDirty || isPending}>
               {isPending ? (
                 <Icons.spinner className="size-4 animate-spin" />
               ) : (

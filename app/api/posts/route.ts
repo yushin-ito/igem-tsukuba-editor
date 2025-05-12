@@ -1,9 +1,11 @@
 import { z } from "zod";
 import { NextRequest, NextResponse } from "next/server";
 import { unauthorized } from "next/navigation";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { db } from "@/lib/db";
 import { auth } from "@/auth";
+import { sendNotification } from "@/actions/notification";
 
 const bodySchema = z.object({
   title: z.string(),
@@ -12,6 +14,8 @@ const bodySchema = z.object({
 
 export const POST = async (req: NextRequest) => {
   try {
+    const locale = await getLocale();
+    const t = await getTranslations("root.notification");
     const session = await auth();
 
     if (!session?.user) {
@@ -37,6 +41,14 @@ export const POST = async (req: NextRequest) => {
       },
       select: { id: true },
     });
+
+    const payload = JSON.stringify({
+      title: t("created.title"),
+      body: t("created.description", { name: session.user.name ?? t("unknown_user") }),
+      icon: "/images/logo.png",
+      lang: locale === "ja" ? "ja-JP" : "en-US",
+    });
+    await sendNotification(payload);
 
     return NextResponse.json(post, { status: 201 });
   } catch (error) {

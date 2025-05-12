@@ -14,3 +14,10 @@ export const profileSchema = z.object({
     .optional(),
   color: z.string().optional(),
 });
+
+export const notificationSchema = z.object({
+  all: z.boolean(),
+  created: z.boolean(),
+  updated: z.boolean(),
+  deleted: z.boolean(),
+});

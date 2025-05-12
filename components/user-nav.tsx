@@ -25,7 +25,7 @@ interface UserNavProps {
 }
 
 const UserNav = ({ user }: UserNavProps) => {
-  const t = useTranslations("root.nav");
+  const t = useTranslations("root.navigation");
   const [isPending, startTransition] = useTransition();
 
   const onSignOut = useCallback(() => {
