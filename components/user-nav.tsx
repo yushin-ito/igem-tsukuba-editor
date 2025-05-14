@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { User } from "@prisma/client";
 import Link from "next/link";
 import { useCallback, useTransition } from "react";
+import Image from "next/image";
 
 import {
   DropdownMenu,
@@ -14,9 +15,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
-import { Skeleton } from "@/components/ui/skeleton";
 import { signOut } from "@/actions/auth";
 import Icons from "@/components/icons";
 
@@ -38,12 +38,14 @@ const UserNav = ({ user }: UserNavProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger className="outline-none">
         <Avatar className="size-7">
-          <AvatarImage
-            src={user.image ?? undefined}
-            alt={user.name ?? t("unknown_user")}
-          />
           {user.image ? (
-            <Skeleton className="rouned-full size-7" />
+            <Image
+              src={user.image}
+              alt={user.name ?? t("unknown_user")}
+              width={28}
+              height={28}
+              className="bg-muted"
+            />
           ) : (
             <AvatarFallback
               className={cn("text-primary-foreground", `bg-${user.color}-600`)}

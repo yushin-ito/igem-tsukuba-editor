@@ -10,10 +10,11 @@ import { z } from "zod";
 import { User } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -30,7 +31,7 @@ import { profileSchema } from "@/schemas/settings";
 import Icons from "@/components/icons";
 import { cn } from "@/lib/utils";
 import { signOut } from "@/actions/auth";
-import { Skeleton } from "@/components/ui/skeleton";
+import { ScrollArea, ScrollBar } from "./ui/scroll-area";
 
 type FormData = z.infer<typeof profileSchema>;
 
@@ -177,25 +178,25 @@ const ProfileForm = ({ user }: ProfileFormProps) => {
                           htmlFor="image"
                           className="cursor-pointer hover:opacity-90"
                         >
-                          <Avatar className="size-20">
-                            <AvatarImage
-                              src={
-                                field.value
-                                  ? URL.createObjectURL(field.value)
-                                  : (user.image ?? undefined)
-                              }
-                              alt={user.name ?? t("unknown_user")}
-                            />
+                          <Avatar key={user.id} className="size-20">
                             {user.image ? (
-                              <Skeleton className="rouned-full size-20" />
+                              <Image
+                                src={user.image}
+                                alt={user.name ?? t("unknown_user")}
+                                width={80}
+                                height={80}
+                                className="bg-muted"
+                              />
                             ) : (
                               <AvatarFallback
                                 className={cn(
-                                  "text-2xl text-primary-foreground",
+                                  "text-primary-foreground",
                                   `bg-${user.color}-600`
                                 )}
                               >
-                                {user.name?.charAt(0).toUpperCase()}
+                                {(user.name ?? t("unknown_user"))
+                                  .charAt(0)
+                                  .toUpperCase()}
                               </AvatarFallback>
                             )}
                           </Avatar>
@@ -240,7 +241,7 @@ const ProfileForm = ({ user }: ProfileFormProps) => {
           <hr className="w-full" />
           <div className="space-y-4">
             <Label className="text-lg font-medium">{t("name")}</Label>
-            <div className="grid w-full max-w-sm items-center gap-1.5">
+            <div className="max-w-sm space-y-2">
               <Input
                 id="name"
                 placeholder={t("name_placeholder")}
@@ -262,24 +263,30 @@ const ProfileForm = ({ user }: ProfileFormProps) => {
               name="color"
               control={control}
               render={({ field }) => (
-                <>
-                  <div className="flex space-x-4">
-                    {colors.map((color, index) => (
-                      <Button
-                        key={index}
-                        type="button"
-                        className={cn(
-                          "relative size-10 rounded-full [&_svg]:size-5",
-                          `bg-${color}-600 hover:bg-${color}-600/90`
-                        )}
-                        onClick={() => field.onChange(color)}
-                      >
-                        {field.value === color && (
-                          <Icons.check className="absolute inset-0 m-auto text-primary-foreground" />
-                        )}
-                      </Button>
-                    ))}
-                  </div>
+                <div className="max-w-sm space-y-2">
+                  <ScrollArea className="w-full">
+                    <div className="flex space-x-4">
+                      {colors.map((color, index) => (
+                        <Button
+                          key={index}
+                          type="button"
+                          className={cn(
+                            "relative size-10 rounded-full [&_svg]:size-5",
+                            `bg-${color}-600 hover:bg-${color}-600/90`
+                          )}
+                          onClick={() => field.onChange(color)}
+                        >
+                          {field.value === color && (
+                            <Icons.check className="absolute inset-0 m-auto text-primary-foreground" />
+                          )}
+                        </Button>
+                      ))}
+                    </div>
+                    <ScrollBar
+                      orientation="horizontal"
+                      className="hidden sm:block"
+                    />
+                  </ScrollArea>
                   <div className="flex items-center space-x-1">
                     <span className="text-muted-foreground">
                       {t("selected_color")}:
@@ -290,7 +297,7 @@ const ProfileForm = ({ user }: ProfileFormProps) => {
                       {t(`colors.${field.value}`)}
                     </span>
                   </div>
-                </>
+                </div>
               )}
             />
           </div>

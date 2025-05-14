@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { useCallback } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 import {
   Select,
@@ -13,8 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Skeleton } from "./ui/skeleton";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -61,13 +61,15 @@ const UserList = ({ users }: UserListProps) => {
         <div key={user.id} className="space-y-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <Avatar className="size-12">
-                <AvatarImage
-                  src={user.image ?? undefined}
-                  alt={user.name ?? t("unknown_user")}
-                />
+              <Avatar key={user.id} className="size-12">
                 {user.image ? (
-                  <Skeleton className="rouned-full size-8" />
+                  <Image
+                    src={user.image}
+                    alt={user.name ?? t("unknown_user")}
+                    width={48}
+                    height={48}
+                    className="bg-muted"
+                  />
                 ) : (
                   <AvatarFallback
                     className={cn(

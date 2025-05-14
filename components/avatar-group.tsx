@@ -3,10 +3,10 @@
 import React from "react";
 import { User } from "@prisma/client";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
-import { Skeleton } from "@/components/ui/skeleton";
 
 export interface GroupAvatarProps {
   users: Pick<User, "id" | "name" | "image" | "color">[];
@@ -22,12 +22,14 @@ const GroupAvatar = ({ users, max = 2 }: GroupAvatarProps) => {
     <div className="flex items-center -space-x-2">
       {users.map((user) => (
         <Avatar key={user.id} className="size-7">
-          <AvatarImage
-            src={user.image ?? undefined}
-            alt={user.name ?? t("unknown_user")}
-          />
           {user.image ? (
-            <Skeleton className="rouned-full size-7" />
+            <Image
+              src={user.image}
+              alt={user.name ?? t("unknown_user")}
+              width={28}
+              height={28}
+              className="bg-muted"
+            />
           ) : (
             <AvatarFallback
               className={cn("text-primary-foreground", `bg-${user.color}-600`)}

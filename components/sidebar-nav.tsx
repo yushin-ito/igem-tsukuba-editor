@@ -30,9 +30,9 @@ const SidebarNav = ({ items }: SidebarNavProps) => {
             className={cn(
               buttonVariants({ variant: "ghost" }),
               pathname === item.href
-                ? "bg-primary hover:bg-primary text-primary-foreground md:bg-muted md:hover:bg-muted md:text-foreground"
+                ? "bg-primary hover:bg-primary text-primary-foreground hover:text-primary-foreground md:bg-muted md:text-foreground md:hover:bg-muted md:hover:text-foreground"
                 : "hover:bg-transparent hover:underline",
-              "relative text-xs rounded-full w-auto px-4 h-7 md:w-full md:h-9 md:text-sm md:rounded-md"
+              "relative text-xs rounded-full w-auto px-4 h-7 border md:w-full md:h-9 md:text-sm md:rounded-md md:border-none"
             )}
           >
             <Icon className="absolute left-4 hidden size-6 md:block" />

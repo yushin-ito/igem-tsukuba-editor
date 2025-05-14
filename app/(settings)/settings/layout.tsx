@@ -41,11 +41,11 @@ const DashboardLayout = async ({ children }: DashboardLayoutProps) => {
   }
 
   return (
-    <div className="relative flex min-h-screen flex-col">
+    <div className="relative flex min-h-screen w-full flex-col">
       <header>
         <Header user={user} />
       </header>
-      <main className="flex-1">
+      <main className="w-full flex-1">
         <section className="container max-w-7xl pb-12 pt-4 md:pb-12 md:pt-6 lg:pb-16 lg:pt-8">
           <div className="flex items-center justify-between">
             <div className="space-y-1">
@@ -57,29 +57,27 @@ const DashboardLayout = async ({ children }: DashboardLayoutProps) => {
               </p>
             </div>
           </div>
-          <hr className="mb-8 mt-4 w-full" />
-          <div className="grid gap-12 md:grid-cols-[180px_1fr] md:gap-24">
-            <div className="flex flex-col space-y-2">
-              <SidebarNav
-                items={[
-                  {
-                    title: t("profile.metadata.title"),
-                    href: "/settings",
-                    icon: "user",
-                  },
-                  {
-                    title: t("notification.metadata.title"),
-                    href: "/settings/notification",
-                    icon: "bell",
-                  },
-                  {
-                    title: t("security.metadata.title"),
-                    href: "/settings/security",
-                    icon: "shield",
-                  },
-                ]}
-              />
-            </div>
+          <hr className="my-4 w-full md:mb-8" />
+          <div className="space-y-8 md:grid md:grid-cols-[180px_1fr] md:space-x-16 md:space-y-0">
+            <SidebarNav
+              items={[
+                {
+                  title: t("profile.metadata.title"),
+                  href: "/settings",
+                  icon: "user",
+                },
+                {
+                  title: t("notification.metadata.title"),
+                  href: "/settings/notification",
+                  icon: "bell",
+                },
+                {
+                  title: t("security.metadata.title"),
+                  href: "/settings/security",
+                  icon: "shield",
+                },
+              ]}
+            />
             {children}
           </div>
         </section>
