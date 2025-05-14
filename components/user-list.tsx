@@ -60,15 +60,15 @@ const UserList = ({ users }: UserListProps) => {
       {users.map((user) => (
         <div key={user.id} className="space-y-6">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <Avatar key={user.id} className="size-12">
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              <Avatar key={user.id} className="size-10 sm:size-12">
                 {user.image ? (
                   <Image
                     src={user.image}
                     alt={user.name ?? t("unknown_user")}
                     width={48}
                     height={48}
-                    className="bg-muted"
+                    className="size-10 bg-muted sm:size-12"
                   />
                 ) : (
                   <AvatarFallback
@@ -82,8 +82,10 @@ const UserList = ({ users }: UserListProps) => {
                 )}
               </Avatar>
               <div>
-                <div className="font-medium">{user.name}</div>
-                <div className="text-sm text-muted-foreground">
+                <div className="text-sm font-medium sm:text-base">
+                  {user.name}
+                </div>
+                <div className="text-xs text-muted-foreground sm:text-sm">
                   {user.email}
                 </div>
               </div>
@@ -92,7 +94,7 @@ const UserList = ({ users }: UserListProps) => {
               defaultValue={user.role}
               onValueChange={(value) => onSelect(user.id, value)}
             >
-              <SelectTrigger className="w-32">
+              <SelectTrigger className="w-24 px-2 text-xs sm:w-32 sm:text-sm">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>

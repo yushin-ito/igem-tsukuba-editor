@@ -282,10 +282,7 @@ const ProfileForm = ({ user }: ProfileFormProps) => {
                         </Button>
                       ))}
                     </div>
-                    <ScrollBar
-                      orientation="horizontal"
-                      className="hidden sm:block"
-                    />
+                    <ScrollBar orientation="horizontal" className="hidden" />
                   </ScrollArea>
                   <div className="flex items-center space-x-1">
                     <span className="text-muted-foreground">
