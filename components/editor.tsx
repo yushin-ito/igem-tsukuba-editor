@@ -132,6 +132,17 @@ const Editor = ({ post }: EditorProps) => {
         emptyDocument: t("content_placeholder"),
       },
     },
+    pasteHandler: ({ event, defaultPasteHandler }) => {
+      try {
+        return defaultPasteHandler();
+      } catch (error) {
+        if (event.clipboardData?.types.includes("text/plain")) {
+          editor.pasteText(event.clipboardData.getData("text/plain"));
+          return true;
+        }
+        throw error;
+      }
+    },
     _tiptapOptions: {
       extensions: [
         LeftArrowConversionExtension,

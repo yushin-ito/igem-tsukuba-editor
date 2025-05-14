@@ -112,5 +112,10 @@
     "typescript-eslint": "^8.25.0",
     "webpack": "^5.98.0",
     "webpack-cli": "^6.0.1"
+  },
+  "pnpm": {
+    "overrides": {
+      "prosemirror-model": "1.25.0"
+    }
   }
 }
