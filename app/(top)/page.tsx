@@ -32,7 +32,12 @@ const RootPage = async () => {
             </p>
           </div>
           <div className="hidden w-full items-center justify-end space-x-2 px-4 md:flex">
-            <Link href="/" className={buttonVariants({ variant: "outline" })}>
+            <Link
+              href={siteConfig.links.organization}
+              target="_blank"
+              rel="noreferrer"
+              className={buttonVariants({ variant: "outline" })}
+            >
               {t("about_us")}
             </Link>
             <Link
@@ -72,7 +77,7 @@ const RootPage = async () => {
             {t("get_started")}
           </Link>
           <Link
-            href={siteConfig.organization}
+            href={siteConfig.links.organization}
             target="_blank"
             rel="noreferrer"
             className={cn(
