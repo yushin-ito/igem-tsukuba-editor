@@ -54,13 +54,12 @@ const Translator = ({ post, source }: TranslatorProps) => {
     register,
     watch,
     reset,
-    setValue,
     handleSubmit,
     formState: { isDirty },
   } = useForm<FormData>({
     resolver: zodResolver(translatorSchema),
     defaultValues: {
-      translation: post.translation ?? "",
+      translation: post.translation ?? undefined,
     },
   });
   const [isPending, startTransition] = useTransition();
@@ -97,12 +96,6 @@ const Translator = ({ post, source }: TranslatorProps) => {
     },
     [post.id, reset, router, t]
   );
-
-  useEffect(() => {
-    setValue("translation", post.translation ?? undefined, {
-      shouldDirty: true,
-    });
-  }, [post.translation, setValue]);
 
   useEffect(() => {
     window.history.pushState(null, "", window.location.pathname);
@@ -163,7 +156,7 @@ const Translator = ({ post, source }: TranslatorProps) => {
             </Button>
           </div>
         </div>
-        <div className="container grid max-w-7xl grid-cols-2 gap-10 p-10">
+        <div className="container mt-10 max-w-7xl space-y-10 md:grid md:grid-cols-2 md:space-x-10 md:space-y-0">
           <div className="flex flex-col space-y-2">
             <Tabs defaultValue="markdown" className="space-y-4">
               <TabsList>

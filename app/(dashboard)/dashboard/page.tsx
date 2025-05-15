@@ -61,18 +61,7 @@ const DashboardPage = async () => {
   });
 
   return (
-    <section className="container max-w-7xl space-y-10 py-4 md:py-6 lg:py-8">
-      <div className="flex items-center justify-between space-x-4">
-        <div className="space-y-1">
-          <h1 className="text-lg font-bold md:text-xl">
-            {t("metadata.title")}
-          </h1>
-          <p className="text-sm text-muted-foreground">
-            {t("metadata.description")}
-          </p>
-        </div>
-        <CreatePostButton>{t("new_post")}</CreatePostButton>
-      </div>
+    <>
       {posts.length ? (
         <DataTable data={posts} columns={columns} />
       ) : (
@@ -89,7 +78,7 @@ const DashboardPage = async () => {
           </CreatePostButton>
         </EmptyPlaceholder>
       )}
-    </section>
+    </>
   );
 };
 
