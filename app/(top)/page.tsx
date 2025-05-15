@@ -73,6 +73,8 @@ const RootPage = async () => {
           </Link>
           <Link
             href={siteConfig.organization}
+            target="_blank"
+            rel="noreferrer"
             className={cn(
               buttonVariants({ variant: "ghost" }),
               "w-full max-w-64"

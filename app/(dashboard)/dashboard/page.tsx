@@ -62,7 +62,7 @@ const DashboardPage = async () => {
 
   return (
     <section className="container max-w-7xl space-y-10 py-4 md:py-6 lg:py-8">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between space-x-4">
         <div className="space-y-1">
           <h1 className="text-lg font-bold md:text-xl">
             {t("metadata.title")}

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { siteConfig } from "@/config/site";
 
 const Footer = () => {
@@ -5,14 +7,14 @@ const Footer = () => {
     <div className="h-6">
       <p className="text-center text-xs text-muted-foreground md:text-sm">
         &copy; {new Date().getFullYear()}{" "}
-        <a
+        <Link
           href={siteConfig.links.github}
           target="_blank"
           rel="noreferrer"
           className="underline underline-offset-2"
         >
           {siteConfig.organization}
-        </a>{" "}
+        </Link>{" "}
         {/* All rights reserved. */}
       </p>
     </div>
