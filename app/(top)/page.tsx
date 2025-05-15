@@ -72,7 +72,7 @@ const RootPage = async () => {
             {t("get_started")}
           </Link>
           <Link
-            href="/"
+            href={siteConfig.organization}
             className={cn(
               buttonVariants({ variant: "ghost" }),
               "w-full max-w-64"

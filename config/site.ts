@@ -8,6 +8,7 @@ export const siteConfig = {
   domain: env.NEXT_PUBLIC_APP_DOMAIN,
   url: env.NEXT_PUBLIC_APP_URL,
   links: {
-    github: "https://github.com/yushin-ito",
+    github: "https://github.com/yushin-ito/igem-tsukuba-editor",
+    organization: "https://igem-tsukuba.pages.dev",
   },
 };
