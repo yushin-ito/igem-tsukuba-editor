@@ -259,7 +259,7 @@ const Editor = ({ post }: EditorProps) => {
             </Button>
           </div>
         </div>
-        <div className="container mx-auto max-w-3xl space-y-4 py-10">
+        <div className="container mx-auto max-w-3xl space-y-4 pb-[320px] pt-10">
           <TextareaAutosize
             id="title"
             defaultValue={post.title}
