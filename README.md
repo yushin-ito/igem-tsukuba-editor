@@ -2,10 +2,14 @@
 
 iGEM TSUKUBA Editorは、筑波大学の一般学生団体であるiGEM TSUKUBAが作成した記事を管理するツールです。
 
+<br/>
+
 ## 📦 Overview
 
 このプロジェクトは、Wikiに使用する記事の編集および提出をするために作成されました。
 リッチテキストエディターによる記事の編集とOpen AI APIを用いた記事の翻訳を実装しています。
+
+<br/>
 
 ## ✨ Features
 
@@ -18,6 +22,8 @@ iGEM TSUKUBA Editorは、筑波大学の一般学生団体であるiGEM TSUKUBA�
   <img src="./assets/editor-light.png">
 </picture>
 
+<br/>
+
 ### 翻訳
 
 [Open AI API](https://openai.com/)を用いた記事の翻訳が利用できます。また、マークダウンのプレビューを用意しています。
@@ -26,6 +32,8 @@ iGEM TSUKUBA Editorは、筑波大学の一般学生団体であるiGEM TSUKUBA�
   <source media="(prefers-color-scheme: dark)" srcset="./assets/translator-dark.png">
   <img src="./assets/translator-light.png">
 </picture>
+
+<br/>
 
 ### ダッシュボード
 
@@ -36,6 +44,8 @@ iGEM TSUKUBA Editorは、筑波大学の一般学生団体であるiGEM TSUKUBA�
   <img src="./assets/dashboard-light.png">
 </picture>
 
+<br/>
+
 ### プロフィール
 
 プロフィールの設定です。 ユーザー名やアイコンを変更できます。
@@ -45,6 +55,8 @@ iGEM TSUKUBA Editorは、筑波大学の一般学生団体であるiGEM TSUKUBA�
   <img src="./assets/profile-setting-light.png">
 </picture>
 
+<br/>
+
 ### プッシュ通知
 
 プッシュ通知の設定です。アクションごとに通知することができます。
@@ -53,6 +65,9 @@ iGEM TSUKUBA Editorは、筑波大学の一般学生団体であるiGEM TSUKUBA�
   <source media="(prefers-color-scheme: dark)" srcset="./assets/notification-setting-dark.png">
   <img src="./assets/notification-setting-light.png">
 </picture>
+
+<br/>
+<br/>
 
 ## ⚡️ Structure
 
@@ -81,6 +96,8 @@ igem-tsukuba-editor/
 ├── styles/             # スタイル
 └── types/              # 型定義
 ```
+
+<br/>
 
 ## 🚀　Install
 
@@ -115,9 +132,15 @@ igem-tsukuba-editor/
 
 6. ブラウザで [http://localhost:3000](http://localhost:3000) にアクセス
 
+<br/>
+
 ## 🤝　Contribute
 
-<a href="https://github.com/yushin-ito"><img  src="https://avatars.githubusercontent.com/u/75526539?s=48&v=4" width="64px"></a>
+<a href="https://github.com/yushin-ito">
+  <img  src="https://avatars.githubusercontent.com/u/75526539?s=48&v=4" width="64px">
+</a>
+
+<br/>
 
 ## 📜 LICENSE
 
