@@ -156,7 +156,7 @@ const Translator = ({ post, source }: TranslatorProps) => {
             </Button>
           </div>
         </div>
-        <div className="container mt-10 max-w-7xl space-y-10 md:grid md:grid-cols-2 md:space-x-10 md:space-y-0">
+        <div className="container mt-10 max-w-7xl space-y-10 px-5 md:grid md:grid-cols-2 md:space-x-10 md:space-y-0">
           <div className="flex flex-col space-y-2">
             <Tabs defaultValue="markdown" className="space-y-4">
               <TabsList>
