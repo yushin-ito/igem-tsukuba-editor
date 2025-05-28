@@ -1,0 +1,15 @@
+{
+  "name": "igem-tsukuba-editor-party",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "partykit dev --live",
+    "deploy": "partykit deploy"
+  },
+  "devDependencies": {
+    "partykit": "^0.0.110",
+    "partysocket": "^1.1.4",
+    "typescript": "^5.5.4",
+    "y-partykit": "^0.0.32"
+  }
+}

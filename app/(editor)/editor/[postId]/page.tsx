@@ -20,6 +20,21 @@ const EditorPage = async ({ params }: EditorPageProps) => {
     forbidden();
   }
 
+  const user = await db.user.findUnique({
+    where: {
+      id: session.user.id,
+    },
+    select: {
+      id: true,
+      name: true,
+      color: true,
+    },
+  });
+
+  if (!user) {
+    unauthorized();
+  }
+
   const post = await db.post.findFirst({
     where: {
       id: postId,
@@ -36,7 +51,7 @@ const EditorPage = async ({ params }: EditorPageProps) => {
     notFound();
   }
 
-  return <DynamicEditor post={post} />;
+  return <DynamicEditor user={user} post={post} />;
 };
 
 export default EditorPage;

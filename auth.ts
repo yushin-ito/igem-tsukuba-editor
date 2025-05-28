@@ -13,6 +13,7 @@ import VerifyEmail from "@/components/verify-email";
 export const { auth, handlers, signIn, signOut } = NextAuth({
   ...authConfig,
   adapter: PrismaAdapter(db),
+  trustHost: true,
   session: { strategy: "jwt" },
   pages: {
     signIn: "/login",

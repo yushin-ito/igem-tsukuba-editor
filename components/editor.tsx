@@ -21,10 +21,12 @@ import { useTheme } from "next-themes";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Post } from "@prisma/client";
+import { Post, User } from "@prisma/client";
 import { toast } from "sonner";
 import { CharacterCount } from "@tiptap/extension-character-count";
 import { useRouter } from "next/navigation";
+import YPartyKitProvider from "y-partykit/provider";
+import * as Y from "yjs";
 import {
   BlockNoteSchema,
   defaultInlineContentSpecs,
@@ -48,8 +50,10 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { InlineEquation } from "@/components/inline-equation";
+import env from "@/env";
 
 interface EditorProps {
+  user: Pick<User, "id" | "name" | "color">;
   post: Pick<Post, "id" | "title" | "blocks" | "published">;
 }
 
@@ -62,7 +66,17 @@ const schema = BlockNoteSchema.create({
   },
 });
 
-const Editor = ({ post }: EditorProps) => {
+const colors = {
+  red: "#dc2626",
+  rose: "#e11d48",
+  orange: "#ea580c",
+  green: "#16a34a",
+  blue: "#2563eb",
+  yellow: "#ca8a04",
+  violet: "#7c3aed",
+};
+
+const Editor = ({ user, post }: EditorProps) => {
   const t = useTranslations("editor");
   const router = useRouter();
   const locale = useLocale();
@@ -73,6 +87,13 @@ const Editor = ({ post }: EditorProps) => {
   const [isPending, startTransition] = useTransition();
   const [open, setOpen] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
+
+  const doc = new Y.Doc();
+  const provider = new YPartyKitProvider(
+    env.NEXT_PUBLIC_PARTYKIT_HOST,
+    post.id,
+    doc
+  );
 
   const dictionary = locale === "ja" ? ja : en;
 
@@ -131,6 +152,15 @@ const Editor = ({ post }: EditorProps) => {
       placeholders: {
         emptyDocument: t("content_placeholder"),
       },
+    },
+    collaboration: {
+      provider,
+      fragment: doc.getXmlFragment("document-store"),
+      user: {
+        name: user.name || t("unknown_user"),
+        color: colors[user.color as keyof typeof colors] || "#ffffff"
+      },
+      showCursorLabels: "always"
     },
     pasteHandler: ({ event, defaultPasteHandler }) => {
       try {
