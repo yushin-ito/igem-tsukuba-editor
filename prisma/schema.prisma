@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model Account {
@@ -76,6 +77,7 @@ model Post {
   published   Boolean        @default(false)
   createdAt   DateTime       @default(now()) @map("created_at")
   updatedAt   DateTime       @default(now()) @map("updated_at")
+  room        Room?
   authors     PostsOnUsers[]
 
   @@map("posts")
@@ -89,7 +91,7 @@ model Notification {
   userId    String   @unique
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
 
   @@map("notifications")
 }
@@ -101,7 +103,7 @@ model Subscription {
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
 
   @@map("subscriptions")
 }
@@ -122,7 +124,11 @@ enum Role {
 
 model Room {
   id        Int      @id @default(autoincrement())
-  room      String   @unique
   content   Bytes
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  postId    String   @unique
+  post      Post     @relation(fields: [postId], references: [id])
+
+  @@map("rooms")
 }

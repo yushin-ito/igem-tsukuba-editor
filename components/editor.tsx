@@ -160,7 +160,6 @@ const Editor = ({ user, post }: EditorProps) => {
         name: user.name || t("unknown_user"),
         color: colors[user.color as keyof typeof colors] || "#ffffff"
       },
-      showCursorLabels: "always"
     },
     pasteHandler: ({ event, defaultPasteHandler }) => {
       try {
