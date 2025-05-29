@@ -119,3 +119,10 @@ enum Role {
   USER
   ADMIN
 }
+
+model Room {
+  id        Int      @id @default(autoincrement())
+  room      String   @unique
+  content   Bytes
+  updatedAt DateTime @updatedAt
+}

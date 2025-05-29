@@ -22,6 +22,7 @@ const env = createEnv({
     NEXT_PUBLIC_APP_DOMAIN: z.string().min(1),
     NEXT_PUBLIC_APP_URL: z.string().min(1),
     NEXT_PUBLIC_VAPID_PUBLIC_KEY: z.string().min(1),
+    NEXT_PUBLIC_PARTYKIT_HOST: z.string().min(1),
   },
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
@@ -41,6 +42,7 @@ const env = createEnv({
     NEXT_PUBLIC_APP_DOMAIN: process.env.NEXT_PUBLIC_APP_DOMAIN,
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
     NEXT_PUBLIC_VAPID_PUBLIC_KEY: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
+    NEXT_PUBLIC_PARTYKIT_HOST: process.env.NEXT_PUBLIC_PARTYKIT_HOST,
   },
 });
 

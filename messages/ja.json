@@ -302,6 +302,7 @@
     "cancel": "キャンセル",
     "continue": "続ける",
     "other": "その他",
+    "unknown_user": "不明なユーザー",
     "inline_equation": {
       "title": "インライン数式",
       "description": "KaTeXを用いて数式を入力します。",
