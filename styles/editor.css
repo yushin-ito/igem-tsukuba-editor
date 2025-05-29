@@ -93,3 +93,9 @@
   width: 0.2rem;
   height: 1em;
 }
+
+.bn-collaboration-cursor__base[data-active] .bn-collaboration-cursor__label {
+  color: white !important;
+  max-width: unset !important;
+  max-height: unset !important;
+}

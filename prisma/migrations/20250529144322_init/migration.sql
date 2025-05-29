@@ -76,7 +76,7 @@ CREATE TABLE "notifications" (
     "deleted" BOOLEAN NOT NULL DEFAULT false,
     "userId" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMP(3) NOT NULL,
+    "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "notifications_pkey" PRIMARY KEY ("id")
 );
@@ -88,7 +88,7 @@ CREATE TABLE "subscriptions" (
     "keys" JSONB NOT NULL,
     "userId" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMP(3) NOT NULL,
+    "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "subscriptions_pkey" PRIMARY KEY ("id")
 );
@@ -99,6 +99,17 @@ CREATE TABLE "PostsOnUsers" (
     "postId" TEXT NOT NULL,
 
     CONSTRAINT "PostsOnUsers_pkey" PRIMARY KEY ("userId","postId")
+);
+
+-- CreateTable
+CREATE TABLE "rooms" (
+    "id" SERIAL NOT NULL,
+    "content" BYTEA NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "postId" TEXT NOT NULL,
+
+    CONSTRAINT "rooms_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -122,6 +133,9 @@ CREATE UNIQUE INDEX "notifications_userId_key" ON "notifications"("userId");
 -- CreateIndex
 CREATE UNIQUE INDEX "subscriptions_endpoint_key" ON "subscriptions"("endpoint");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "rooms_postId_key" ON "rooms"("postId");
+
 -- AddForeignKey
 ALTER TABLE "accounts" ADD CONSTRAINT "accounts_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -139,3 +153,6 @@ ALTER TABLE "PostsOnUsers" ADD CONSTRAINT "PostsOnUsers_userId_fkey" FOREIGN KEY
 
 -- AddForeignKey
 ALTER TABLE "PostsOnUsers" ADD CONSTRAINT "PostsOnUsers_postId_fkey" FOREIGN KEY ("postId") REFERENCES "posts"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "rooms" ADD CONSTRAINT "rooms_postId_fkey" FOREIGN KEY ("postId") REFERENCES "posts"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
