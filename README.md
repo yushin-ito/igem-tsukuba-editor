@@ -1,12 +1,15 @@
 # iGEM TSUKUBA Editor
 
-iGEM TSUKUBA Editorは、筑波大学の一般学生団体であるiGEM TSUKUBAが作成した記事を管理するツールです。
+![version](https://img.shields.io/badge/version-1.0.0-red.svg)
+![stars](https://img.shields.io/github/stars/yushin-ito/igem-tsukuba-editor?color=yellow)
+![commit-activity](https://img.shields.io/github/commit-activity/t/yushin-ito/igem-tsukuba-editor)
+![license](https://img.shields.io/badge/license-MIT-green)
 
 <br/>
 
-## 📦 Overview
+## 📝 Overview
 
-このプロジェクトは、Wikiに使用する記事の編集および提出をするために作成されました。
+iGEM TSUKUBA Editorは、筑波大学の一般学生団体であるiGEM TSUKUBAが作成したWikiに使用する記事の編集および提出をするツールです。
 リッチテキストエディターによる記事の編集とOpen AI APIを用いた記事の翻訳を実装しています。
 
 <br/>
