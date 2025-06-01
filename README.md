@@ -90,6 +90,7 @@ igem-tsukuba-editor/
 ├── i18n/               # 国際化
 ├── lib/                # ユーティリティ
 ├── messages/           # 言語ファイル
+├── partykit/           # PartyKit
 ├── prisma/             # データベーススキーマ
 ├── public/             # アセット
 ├── schemas/            # フォームスキーマ
@@ -134,7 +135,7 @@ igem-tsukuba-editor/
 
 <br/>
 
-## 🤝　Contribute
+## 🤝 Contributer
 
 <a href="https://github.com/yushin-ito">
   <img  src="https://avatars.githubusercontent.com/u/75526539?s=48&v=4" width="64px">
