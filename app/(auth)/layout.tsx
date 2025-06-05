@@ -7,7 +7,7 @@ interface TopLayoutProps {
   children: ReactNode;
 }
 
-const TopLayout = async ({ children }: TopLayoutProps) => {
+const AuthLayout = async ({ children }: TopLayoutProps) => {
   return (
     <div className="relative flex h-screen flex-col">
       <header>
@@ -21,4 +21,4 @@ const TopLayout = async ({ children }: TopLayoutProps) => {
   );
 };
 
-export default TopLayout;
+export default AuthLayout;
