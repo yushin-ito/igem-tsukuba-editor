@@ -213,8 +213,11 @@ const Translator = ({ post, source }: TranslatorProps) => {
                     <div className="h-[440px] overflow-y-scroll p-6">
                       <Mdx source={source.ja} />
                     </div>
-                    <div className="absolute inset-x-0 bottom-0 flex h-10 items-center px-4">
+                    <div className="absolute inset-x-0 bottom-0 flex h-10 items-center justify-between px-4">
                       <Label>{t("japanese")}</Label>
+                      <span className="text-xs text-muted-foreground">
+                        {t("char", { count: post.content?.length ?? 0 })}
+                      </span>
                     </div>
                   </CardContent>
                 </Card>
@@ -256,8 +259,13 @@ const Translator = ({ post, source }: TranslatorProps) => {
                     <div className="h-[440px] overflow-y-scroll p-6">
                       <Mdx source={source.en} />
                     </div>
-                    <div className="absolute inset-x-0 bottom-0 flex h-10 items-center px-4">
+                    <div className="absolute inset-x-0 bottom-0 flex h-10 items-center justify-between px-4">
                       <Label>{t("english")}</Label>
+                      <span className="text-xs text-muted-foreground">
+                        {t("char", {
+                          count: watch("translation")?.length ?? 0,
+                        })}
+                      </span>
                     </div>
                   </CardContent>
                 </Card>
