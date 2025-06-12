@@ -132,7 +132,6 @@ export const PATCH = async (
 
     return new NextResponse(null, { status: 204 });
   } catch (error) {
-    console.error("Error in translation:", error);
     if (error instanceof z.ZodError) {
       return NextResponse.json({ errors: error.errors }, { status: 422 });
     }
