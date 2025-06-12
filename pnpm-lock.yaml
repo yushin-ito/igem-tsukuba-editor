@@ -209,6 +209,12 @@ importers:
       remark-math:
         specifier: ^6.0.0
         version: 6.0.0
+      remark-parse:
+        specifier: ^11.0.0
+        version: 11.0.0
+      remark-stringify:
+        specifier: ^11.0.0
+        version: 11.0.0
       shiki:
         specifier: ^3.4.1
         version: 3.4.2
@@ -221,6 +227,12 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.17)
+      unified:
+        specifier: ^11.0.5
+        version: 11.0.5
+      unist-util-visit:
+        specifier: ^5.0.0
+        version: 5.0.0
       web-push:
         specifier: ^3.6.7
         version: 3.6.7
@@ -255,6 +267,9 @@ importers:
       '@types/jsdom':
         specifier: ^21.1.7
         version: 21.1.7
+      '@types/mdast':
+        specifier: ^4.0.4
+        version: 4.0.4
       '@types/node':
         specifier: ^20
         version: 20.17.52
