@@ -16,7 +16,7 @@ export const generateMetadata = async () => {
   };
 };
 
-const RootPage = async () => {
+const TopPage = async () => {
   const t = await getTranslations("top");
 
   return (
@@ -93,4 +93,4 @@ const RootPage = async () => {
   );
 };
 
-export default RootPage;
+export default TopPage;

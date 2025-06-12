@@ -16,7 +16,13 @@ import { en, ja } from "@blocknote/core/locales";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import TextareaAutosize from "react-textarea-autosize";
-import { useCallback, useEffect, useState, useTransition } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  useTransition,
+} from "react";
 import { useTheme } from "next-themes";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -88,13 +94,11 @@ const Editor = ({ user, post }: EditorProps) => {
   const [open, setOpen] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
 
-  const doc = new Y.Doc();
-  const provider = new YPartyKitProvider(
-    env.NEXT_PUBLIC_PARTYKIT_HOST,
-    post.id,
-    doc
+  const doc = useMemo(() => new Y.Doc(), []);
+  const provider = useMemo(
+    () => new YPartyKitProvider(env.NEXT_PUBLIC_PARTYKIT_HOST, post.id, doc),
+    [post.id, doc]
   );
-
   const dictionary = locale === "ja" ? ja : en;
 
   const insertLaTex = (editor: typeof schema.BlockNoteEditor) => ({
@@ -158,7 +162,7 @@ const Editor = ({ user, post }: EditorProps) => {
       fragment: doc.getXmlFragment("document-store"),
       user: {
         name: user.name || t("unknown_user"),
-        color: colors[user.color as keyof typeof colors] || "#ffffff"
+        color: colors[user.color as keyof typeof colors] || "#ffffff",
       },
     },
     pasteHandler: ({ event, defaultPasteHandler }) => {
