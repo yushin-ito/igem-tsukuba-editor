@@ -31,7 +31,6 @@ export default class YjsServer implements Party.Server {
 
         return null;
       },
-
       callback: {
         async handler(yDoc) {
           const update = Y.encodeStateAsUpdate(yDoc);
@@ -40,6 +39,7 @@ export default class YjsServer implements Party.Server {
             where: { postId },
             update: {
               content: Buffer.from(update),
+              updatedAt: new Date(),
             },
             create: {
               content: Buffer.from(update),

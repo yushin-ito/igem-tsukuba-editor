@@ -97,9 +97,9 @@ const Editor = ({ user, post }: EditorProps) => {
   const doc = useMemo(() => new Y.Doc(), []);
   const provider = useMemo(
     () => new YPartyKitProvider(env.NEXT_PUBLIC_PARTYKIT_HOST, post.id, doc),
-    [post.id, doc]
+    [doc, post.id]
   );
-  const dictionary = locale === "ja" ? ja : en;
+  const dictionary = useMemo(() => (locale === "ja" ? ja : en), [locale]);
 
   const insertLaTex = (editor: typeof schema.BlockNoteEditor) => ({
     icon: <Icons.formula className="size-[18px]" />,
@@ -148,7 +148,7 @@ const Editor = ({ user, post }: EditorProps) => {
 
   const editor = useCreateBlockNote({
     schema,
-    initialContent: JSON.parse(post.blocks as string),
+    // initialContent: JSON.parse(post.blocks as string),
     codeBlock,
     uploadFile,
     dictionary: {

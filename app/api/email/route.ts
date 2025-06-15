@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { render } from "@react-email/render";
 import { unauthorized } from "next/navigation";
+import { Role } from "@prisma/client";
 
 import { auth } from "@/auth";
 import { siteConfig } from "@/config/site";
@@ -19,7 +20,7 @@ export const GET = async (req: Request) => {
       unauthorized();
     }
 
-    if (session.user.role !== "ADMIN") {
+    if (session.user.role === Role.user) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 

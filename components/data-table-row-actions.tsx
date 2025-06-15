@@ -109,10 +109,12 @@ const DataTableRowActions = <TData,>({
             <Icons.globe className="ml-1 mr-2" />
             <span>{post.published ? t("unpublish") : t("publish")}</span>
           </DropdownMenuItem>
+          {/* 
           <DropdownMenuItem>
             <Icons.copy className="ml-1 mr-2" />
             <span>{t("duplicate")}</span>
-          </DropdownMenuItem>
+          </DropdownMenuItem> 
+          */}
           <DropdownMenuSeparator />
           <AlertDialogTrigger asChild>
             <DropdownMenuItem className="text-destructive focus:text-destructive">

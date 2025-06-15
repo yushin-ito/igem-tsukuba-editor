@@ -13,6 +13,7 @@ export const tableSchema = z.object({
   id: z.string(),
   title: z.string(),
   published: z.boolean(),
+  slug: z.string().nullable(),
   createdAt: z.date(),
   updatedAt: z.date(),
   authors: z

@@ -2,6 +2,7 @@ import { z } from "zod";
 import { NextRequest, NextResponse } from "next/server";
 import { unauthorized } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
+import { Role } from "@prisma/client";
 
 import { db } from "@/lib/db";
 import { auth } from "@/auth";
@@ -36,7 +37,7 @@ export const DELETE = async (
       unauthorized();
     }
 
-    if (session.user.role !== "ADMIN") {
+    if (session.user.role === Role.user) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
@@ -85,7 +86,7 @@ export const PATCH = async (
       unauthorized();
     }
 
-    if (session.user.role !== "ADMIN") {
+    if (session.user.role === Role.user) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 

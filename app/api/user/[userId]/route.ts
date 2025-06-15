@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { NextRequest, NextResponse } from "next/server";
 import { unauthorized } from "next/navigation";
+import { Role } from "@prisma/client";
 
 import { db } from "@/lib/db";
 import { auth } from "@/auth";
@@ -17,7 +18,7 @@ const bodySchema = z.object({
   image: z.string().optional(),
   name: z.string().optional(),
   color: z.string().optional(),
-  role: z.enum(["USER", "ADMIN"]).optional(),
+  role: z.nativeEnum(Role).optional(),
 });
 
 export const DELETE = async (

@@ -43,7 +43,7 @@ model User {
   id            String         @id @default(cuid())
   name          String?
   color         String?
-  role          Role           @default(USER)
+  role          Role           @default(user)
   email         String?        @unique
   emailVerified DateTime?      @map("email_verified")
   image         String?
@@ -74,6 +74,7 @@ model Post {
   content     String?
   translation String?
   blocks      Json?
+  slug        String?
   published   Boolean        @default(false)
   createdAt   DateTime       @default(now()) @map("created_at")
   updatedAt   DateTime       @default(now()) @map("updated_at")
@@ -117,11 +118,6 @@ model PostsOnUsers {
   @@id([userId, postId])
 }
 
-enum Role {
-  USER
-  ADMIN
-}
-
 model Room {
   id        Int      @id @default(autoincrement())
   content   Bytes
@@ -131,4 +127,10 @@ model Room {
   post      Post     @relation(fields: [postId], references: [id])
 
   @@map("rooms")
+}
+
+enum Role {
+  user
+  admin
+  owner
 }

@@ -6,6 +6,7 @@ import remarkParse from "remark-parse";
 import remarkStringify from "remark-stringify";
 import { visit } from "unist-util-visit";
 import type { Text } from "mdast";
+import { Role } from "@prisma/client";
 
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
@@ -34,7 +35,8 @@ export const PATCH = async (
     if (!session?.user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-    if (session.user.role !== "ADMIN") {
+    
+    if (session.user.role === Role.user) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 

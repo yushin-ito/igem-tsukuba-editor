@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { unauthorized, forbidden } from "next/navigation";
+import { Role } from "@prisma/client";
 
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
@@ -21,7 +22,7 @@ const SecurityPage = async () => {
     unauthorized();
   }
 
-  if (session.user.role !== "ADMIN") {
+  if (session.user.role === Role.user) {
     forbidden();
   }
 
