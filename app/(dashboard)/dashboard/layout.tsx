@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { forbidden, unauthorized } from "next/navigation";
 import { getTranslations } from "next-intl/server";
+import { Role } from "@prisma/client";
 
 import { auth } from "@/auth";
 import Footer from "@/components/footer";
@@ -20,7 +21,7 @@ const DashboardLayout = async ({ children }: DashboardLayoutProps) => {
     unauthorized();
   }
 
-  if (session.user.role !== "ADMIN") {
+  if (session.user.role === Role.user) {
     forbidden();
   }
 

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { unauthorized } from "next/navigation";
 import { v2 as cloudinary } from "cloudinary";
+import { Role } from "@prisma/client";
 
 import { auth } from "@/auth";
 import env from "@/env";
@@ -19,7 +20,7 @@ export const POST = async (req: NextRequest) => {
       unauthorized();
     }
 
-    if (session.user.role !== "ADMIN") {
+    if (session.user.role === Role.user) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 

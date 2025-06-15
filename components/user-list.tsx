@@ -1,6 +1,6 @@
 "use client";
 
-import { User } from "@prisma/client";
+import { Role, User } from "@prisma/client";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { useCallback } from "react";
@@ -98,8 +98,9 @@ const UserList = ({ users }: UserListProps) => {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="ADMIN">{t("admin")}</SelectItem>
-                <SelectItem value="USER">{t("user")}</SelectItem>
+                <SelectItem value={Role.owner}>{t("owner")}</SelectItem>
+                <SelectItem value={Role.admin}>{t("admin")}</SelectItem>
+                <SelectItem value={Role.user}>{t("user")}</SelectItem>
               </SelectContent>
             </Select>
           </div>

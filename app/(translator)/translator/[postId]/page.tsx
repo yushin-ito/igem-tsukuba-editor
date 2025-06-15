@@ -3,6 +3,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import { rehypePrettyCode } from "rehype-pretty-code";
+import { Role } from "@prisma/client";
 
 import { db } from "@/lib/db";
 import { auth } from "@/auth";
@@ -20,7 +21,7 @@ const TranslatorPage = async ({ params }: TranslatorPageProps) => {
     unauthorized();
   }
 
-  if (session.user.role !== "ADMIN") {
+  if (session.user.role === Role.user) {
     forbidden();
   }
 

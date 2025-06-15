@@ -1,4 +1,5 @@
 import { forbidden, notFound, unauthorized } from "next/navigation";
+import { Role } from "@prisma/client";
 
 import { db } from "@/lib/db";
 import { auth } from "@/auth";
@@ -16,7 +17,7 @@ const EditorPage = async ({ params }: EditorPageProps) => {
     unauthorized();
   }
 
-  if (session.user.role !== "ADMIN") {
+  if (session.user.role === Role.user) {
     forbidden();
   }
 
