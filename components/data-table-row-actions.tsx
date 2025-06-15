@@ -6,6 +6,7 @@ import Link from "next/link";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
+import { useSession } from "next-auth/react";
 
 import {
   DropdownMenu,
@@ -28,7 +29,6 @@ import {
 } from "@/components/ui/alert-dialog";
 import Icons from "@/components/icons";
 import { tableSchema } from "@/schemas/post";
-
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
 }
@@ -37,6 +37,7 @@ const DataTableRowActions = <TData,>({
   row,
 }: DataTableRowActionsProps<TData>) => {
   const t = useTranslations("dashboard");
+  const { data: session } = useSession();
 
   const router = useRouter();
 
@@ -54,8 +55,8 @@ const DataTableRowActions = <TData,>({
     });
 
     if (!response.ok) {
-      toast.error(t("error.title"), {
-        description: t("error.description"),
+      toast.error(t("error.update.title"), {
+        description: t("error.update.description"),
       });
 
       return;
@@ -65,20 +66,27 @@ const DataTableRowActions = <TData,>({
   }, [post.id, post.published, router, t]);
 
   const onDelete = useCallback(async () => {
+    if (session?.user.role !== "owner") {
+      toast.error(t("error.forbidden.title"), {
+        description: t("error.forbidden.description"),
+      });
+      return;
+    }
+
     const response = await fetch(`/api/posts/${post.id}`, {
       method: "DELETE",
     });
 
     if (!response.ok) {
-      toast.error(t("error.title"), {
-        description: t("error.description"),
+      toast.error(t("error.delete.title"), {
+        description: t("error.delete.description"),
       });
 
       return;
     }
 
     router.refresh();
-  }, [post.id, router, t]);
+  }, [post.id, router, session, t]);
 
   return (
     <AlertDialog>
