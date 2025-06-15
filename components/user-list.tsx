@@ -58,7 +58,7 @@ const UserList = ({ users }: UserListProps) => {
   return (
     <ScrollArea className="h-[420px] max-w-4xl">
       {users.map((user) => (
-        <div key={user.id} className="space-y-6">
+        <div key={user.id} className="space-y-6 px-1">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2 sm:space-x-4">
               <Avatar key={user.id} className="size-10 sm:size-12">

@@ -20,6 +20,7 @@
       "dashboard": "ダッシュボード",
       "profile": "プロフィール",
       "notification": "プッシュ通知",
+      "security": "セキュリティ",
       "signout": "サインアウト"
     },
     "error": {

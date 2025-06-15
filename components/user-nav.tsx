@@ -84,6 +84,12 @@ const UserNav = ({ user }: UserNavProps) => {
               <span>{t("notification")}</span>
             </Link>
           </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link href={"/settings/security"}>
+              <Icons.shield className="mr-1" />
+              <span>{t("security")}</span>
+            </Link>
+          </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={onSignOut} disabled={isPending}>
