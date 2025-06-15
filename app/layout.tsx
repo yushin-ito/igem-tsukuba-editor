@@ -8,6 +8,7 @@ import { getLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import { SessionProvider } from "next-auth/react";
 
 import { siteConfig } from "@/config/site";
 import { Toaster } from "@/components/ui/sonner";
@@ -86,9 +87,11 @@ const RootLayout = async ({ children }: RootLayoutProps) => {
           `${inter.variable} ${noto_sans_jp.variable} antialiased`
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <NextIntlClientProvider>{children}</NextIntlClientProvider>
-        </ThemeProvider>
+        <SessionProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          </ThemeProvider>
+        </SessionProvider>
         <Toaster
           icons={{
             success: <Icons.checkCircle className="size-5 text-primary" />,

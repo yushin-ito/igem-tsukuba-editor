@@ -134,8 +134,18 @@
     "publish": "公開",
     "unpublish": "非公開",
     "error": {
-      "title": "エラーが発生しました。",
-      "description": "記事の更新に失敗しました。もう一度お試しください。"
+      "update": {
+        "title": "エラーが発生しました。",
+        "description": "記事の更新に失敗しました。もう一度お試しください。"
+      },
+      "delete": {
+        "title": "エラーが発生しました。",
+        "description": "記事の削除に失敗しました。もう一度お試しください。"
+      },
+      "forbidden": {
+        "title": "管理者権限がありません。",
+        "description": "この操作を行うには、所有者権限が必要です。"
+      }
     },
     "duplicate": "複製",
     "delete": "削除",
@@ -283,8 +293,14 @@
       "user": "ユーザー",
       "unknown_user": "不明なユーザー",
       "error": {
-        "title": "エラーが発生しました。",
-        "description": "権限の変更に失敗しました。もう一度お試しください。"
+        "update": {
+          "title": "エラーが発生しました。",
+          "description": "権限の変更に失敗しました。もう一度お試しください。"
+        },
+        "forbidden": {
+          "title": "管理者権限がありません。",
+          "description": "この操作を行うには、所有者権限が必要です。"
+        }
       },
       "success": {
         "title": "権限を変更しました。",

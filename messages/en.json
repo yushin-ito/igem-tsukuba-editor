@@ -40,7 +40,7 @@
     "unauthorized": {
       "metadata": {
         "title": "401 Unauthorized",
-        "description": "You are not logged in  to access this page."
+        "description": "You are not logged in to access this page."
       },
       "back_to_login": "Back to Login"
     },
@@ -135,8 +135,18 @@
     "unpublish": "Unpublish",
     "duplicate": "Duplicate",
     "error": {
-      "title": "Something went wrong.",
-      "description": "Your post was not updated. Please try again."
+      "update": {
+        "title": "Something went wrong.",
+        "description": "Your post was not updated. Please try again."
+      },
+      "delete": {
+        "title": "Something went wrong.",
+        "description": "Your post was not deleted. Please try again."
+      },
+      "forbidden": {
+        "title": "You do not have permission.",
+        "description": "You are not authorized to perform this action."
+      }
     },
     "delete": "Delete",
     "cancel": "Cancel",
@@ -283,8 +293,14 @@
       "user": "User",
       "unknown_user": "Unknown User",
       "error": {
-        "title": "Something went wrong.",
-        "description": "Your role changes was not updated. Please try again."
+        "update": {
+          "title": "Something went wrong.",
+          "description": "Your role changes was not updated. Please try again."
+        },
+        "forbidden": {
+          "title": "You do not have permission.",
+          "description": "You are not authorized to perform this action."
+        }
       },
       "success": {
         "title": "Your role changes has been updated.",

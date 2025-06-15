@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 import {
   Select,
@@ -24,10 +25,19 @@ interface UserListProps {
 
 const UserList = ({ users }: UserListProps) => {
   const t = useTranslations("settings.security");
+  const { data: session } = useSession();
+
   const router = useRouter();
 
   const onSelect = useCallback(
     async (userId: string, value: string) => {
+      if (session?.user.role !== "owner") {
+        toast.error(t("error.forbidden.title"), {
+          description: t("error.forbidden.description"),
+        });
+        return;
+      }
+
       const response = await fetch(`/api/user/${userId}`, {
         method: "PATCH",
         headers: {
@@ -39,8 +49,8 @@ const UserList = ({ users }: UserListProps) => {
       });
 
       if (!response.ok) {
-        toast.error(t("error.title"), {
-          description: t("error.description"),
+        toast.error(t("error.update.title"), {
+          description: t("error.update.description"),
         });
 
         return;
@@ -52,7 +62,7 @@ const UserList = ({ users }: UserListProps) => {
 
       router.refresh();
     },
-    [router, t]
+    [router, session, t]
   );
 
   return (
@@ -92,6 +102,7 @@ const UserList = ({ users }: UserListProps) => {
             </div>
             <Select
               defaultValue={user.role}
+              value={user.role}
               onValueChange={(value) => onSelect(user.id, value)}
             >
               <SelectTrigger className="w-24 px-2 text-xs sm:w-32 sm:text-sm">
