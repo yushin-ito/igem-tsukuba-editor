@@ -114,6 +114,8 @@
     "title": "title",
     "content": "Content",
     "empty_content": "No content.",
+    "slug": "Slug",
+    "empty_slug": "None",
     "created_at": "Created",
     "updated_at": "Updated",
     "editor": "Editor",

@@ -38,6 +38,7 @@ const DashboardPage = async () => {
     select: {
       id: true,
       title: true,
+      slug: true,
       description: true,
       published: true,
       createdAt: true,

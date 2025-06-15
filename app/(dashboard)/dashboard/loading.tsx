@@ -38,7 +38,7 @@ const DashboardLoading = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {Array.from({ length: 6 }).map((_, index) => (
+            {Array.from({ length: 3 }).map((_, index) => (
               <TableRow key={index} className="hover:bg-transparent">
                 <TableCell className="px-4">
                   <Skeleton className="h-5 w-60" />

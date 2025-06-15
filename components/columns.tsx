@@ -93,6 +93,25 @@ export const columns: ColumnDef<z.infer<typeof tableSchema>>[] = [
     enableSorting: false,
   },
   {
+    accessorKey: "slug",
+    meta: { label: "slug" },
+    header: function Header({ column }) {
+      const t = useTranslations("dashboard");
+
+      return <DataTableColumnHeader column={column} title={t("slug")} className="text-center"/>;
+    },
+    cell: function Cell({ row }) {
+      const t = useTranslations("dashboard");
+
+      return (
+        <div className="w-24 whitespace-nowrap text-center">
+          {row.getValue("slug") ?? t("empty_slug")}
+        </div>
+      );
+    },
+    enableSorting: false,
+  },
+  {
     accessorKey: "createdAt",
     meta: { label: "created_at" },
     header: function Header({ column }) {

@@ -61,6 +61,7 @@ CREATE TABLE "posts" (
     "content" TEXT,
     "translation" TEXT,
     "blocks" JSONB,
+    "slug" TEXT,
     "published" BOOLEAN NOT NULL DEFAULT false,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,

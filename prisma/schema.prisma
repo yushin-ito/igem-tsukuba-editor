@@ -74,6 +74,7 @@ model Post {
   content     String?
   translation String?
   blocks      Json?
+  slug        String?
   published   Boolean        @default(false)
   createdAt   DateTime       @default(now()) @map("created_at")
   updatedAt   DateTime       @default(now()) @map("updated_at")
