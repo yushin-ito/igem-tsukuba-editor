@@ -98,13 +98,13 @@ export const columns: ColumnDef<z.infer<typeof tableSchema>>[] = [
     header: function Header({ column }) {
       const t = useTranslations("dashboard");
 
-      return <DataTableColumnHeader column={column} title={t("slug")} className="text-center"/>;
+      return <DataTableColumnHeader column={column} title={t("slug")} />;
     },
     cell: function Cell({ row }) {
       const t = useTranslations("dashboard");
 
       return (
-        <div className="w-24 whitespace-nowrap text-center">
+        <div className="whitespace-nowrap">
           {row.getValue("slug") ?? t("empty_slug")}
         </div>
       );

@@ -20,6 +20,7 @@
       "dashboard": "Dashboard",
       "profile": "Profile",
       "notification": "Notification",
+      "security": "Security",
       "signout": "Sign Out"
     },
     "error": {
