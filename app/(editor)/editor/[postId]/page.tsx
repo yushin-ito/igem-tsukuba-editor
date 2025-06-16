@@ -43,7 +43,6 @@ const EditorPage = async ({ params }: EditorPageProps) => {
     select: {
       id: true,
       title: true,
-      blocks: true,
       published: true,
     },
   });

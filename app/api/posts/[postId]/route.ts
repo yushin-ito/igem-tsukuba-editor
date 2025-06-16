@@ -21,7 +21,6 @@ const bodySchema = z.object({
   description: z.string().optional(),
   content: z.string().optional(),
   translation: z.string().optional(),
-  blocks: z.any().optional(),
   published: z.boolean().optional(),
 });
 
@@ -106,7 +105,6 @@ export const PATCH = async (
         description: body.description,
         content: body.content,
         translation: body.translation,
-        blocks: body.blocks,
         published: body.published,
         updatedAt: new Date(),
         authors: {
