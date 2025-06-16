@@ -149,6 +149,10 @@
       }
     },
     "error": {
+      "create": {
+        "title": "Something went wrong.",
+        "description": "Your post was not created. Please try again."
+      },
       "update": {
         "title": "Something went wrong.",
         "description": "Your post was not updated. Please try again."
