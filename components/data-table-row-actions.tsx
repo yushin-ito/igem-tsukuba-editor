@@ -44,14 +44,8 @@ const DataTableRowActions = <TData,>({
   const post = tableSchema.parse(row.original);
 
   const onPublish = useCallback(async () => {
-    const response = await fetch(`/api/posts/${post.id}`, {
+    const response = await fetch(`/api/publish/${post.id}`, {
       method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        published: !post.published,
-      }),
     });
 
     if (!response.ok) {
@@ -62,18 +56,12 @@ const DataTableRowActions = <TData,>({
       return;
     }
 
-    if (post.published) {
-      toast.success(t("success.unpublish.title"), {
-        description: t("success.unpublish.description"),
-      });
-    } else {
-      toast.success(t("success.publish.title"), {
-        description: t("success.publish.description"),
-      });
-    }
+    toast.success(t("success.publish.title"), {
+      description: t("success.publish.description"),
+    });
 
     router.refresh();
-  }, [post.id, post.published, router, t]);
+  }, [post.id, router, t]);
 
   const onDelete = useCallback(async () => {
     if (session?.user.role !== "owner") {
@@ -129,7 +117,7 @@ const DataTableRowActions = <TData,>({
           </DropdownMenuItem>
           <DropdownMenuItem onClick={onPublish}>
             <Icons.globe className="ml-1 mr-2" />
-            <span>{post.published ? t("unpublish") : t("publish")}</span>
+            <span>{t("publish")}</span>
           </DropdownMenuItem>
           {/* 
           <DropdownMenuItem>
