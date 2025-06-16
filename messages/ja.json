@@ -133,6 +133,20 @@
     "translate": "翻訳",
     "publish": "公開",
     "unpublish": "非公開",
+    "success": {
+      "delete": {
+        "title": "記事を削除しました。",
+        "description": "記事が正常に削除されました。"
+      },
+      "publish": {
+        "title": "記事を公開しました。",
+        "description": "記事が正常に公開されました。"
+      },
+      "unpublish": {
+        "title": "記事を非公開にしました。",
+        "description": "記事が正常に非公開になりました。"
+      }
+    },
     "error": {
       "update": {
         "title": "エラーが発生しました。",

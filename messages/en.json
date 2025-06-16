@@ -134,6 +134,20 @@
     "publish": "Publish",
     "unpublish": "Unpublish",
     "duplicate": "Duplicate",
+    "success": {
+      "delete": {
+        "title": "Your post has been deleted.",
+        "description": "Your post has been deleted successfully."
+      },
+      "publish": {
+        "title": "Your post has been published.",
+        "description": "Your post has been published successfully."
+      },
+      "unpublish": {
+        "title": "Your post has been unpublished.",
+        "description": "Your post has been unpublished successfully."
+      }
+    },
     "error": {
       "update": {
         "title": "Something went wrong.",
