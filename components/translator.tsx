@@ -74,7 +74,7 @@ const Translator = ({ post, source }: TranslatorProps) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            contet: data,
+            translation: data.translation,
           }),
         });
 
@@ -166,7 +166,7 @@ const Translator = ({ post, source }: TranslatorProps) => {
                 </TabsTrigger>
               </TabsList>
               <TabsContent value="markdown">
-                <Card className="relative h-[480px] overflow-hidden">
+                <Card className="relative h-[480px] overflow-hidden shadow-none">
                   <CardContent className="p-0">
                     {post.content ? (
                       <>
@@ -208,7 +208,7 @@ const Translator = ({ post, source }: TranslatorProps) => {
                 </Card>
               </TabsContent>
               <TabsContent value="preview">
-                <Card className="relative h-[480px] overflow-hidden">
+                <Card className="relative h-[480px] overflow-hidden shadow-none">
                   <CardContent className="p-0">
                     <div className="h-[440px] overflow-y-scroll p-6">
                       <Mdx source={source.ja} />
@@ -233,7 +233,7 @@ const Translator = ({ post, source }: TranslatorProps) => {
                 </TabsTrigger>
               </TabsList>
               <TabsContent value="markdown">
-                <Card className="relative min-h-[480px] overflow-hidden">
+                <Card className="relative min-h-[480px] overflow-hidden shadow-none">
                   <CardContent className="p-0">
                     <Textarea
                       id="translation"
@@ -254,7 +254,7 @@ const Translator = ({ post, source }: TranslatorProps) => {
                 </Card>
               </TabsContent>
               <TabsContent value="preview">
-                <Card className="relative h-[480px] overflow-hidden">
+                <Card className="relative h-[480px] overflow-hidden shadow-none">
                   <CardContent className="p-0">
                     <div className="h-[440px] overflow-y-scroll p-6">
                       <Mdx source={source.en} />

@@ -7,7 +7,7 @@ const TranslatorLoading = () => {
       <div className="flex flex-col space-y-2">
         <div className="space-y-4">
           <Skeleton className="h-6 w-[160px]" />
-          <Card className="relative min-h-[480px] overflow-hidden">
+          <Card className="relative min-h-[480px] overflow-hidden shadow-none">
             <CardContent className="p-0">
               <div className="min-h-[440px] space-y-4 p-6">
                 <Skeleton className="h-5 w-full" />
@@ -27,7 +27,7 @@ const TranslatorLoading = () => {
       <div className="flex flex-col space-y-2">
         <div className="space-y-4">
           <Skeleton className="h-6 w-[160px]" />
-          <Card className="relative min-h-[480px] overflow-hidden">
+          <Card className="relative min-h-[480px] overflow-hidden shadow-none">
             <CardContent className="p-0">
               <div className="min-h-[440px] space-y-4 p-6">
                 <Skeleton className="h-5 w-full" />

@@ -27,8 +27,8 @@ const CreatePostButton = ({ className, children, ...props }: ButtonProps) => {
       });
 
       if (!response.ok) {
-        toast.error(t("error.title"), {
-          description: t("error.description"),
+        toast.error(t("error.create.title"), {
+          description: t("error.create.description"),
         });
 
         return;

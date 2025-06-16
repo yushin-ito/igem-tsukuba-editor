@@ -62,6 +62,16 @@ const DataTableRowActions = <TData,>({
       return;
     }
 
+    if (post.published) {
+      toast.success(t("success.unpublish.title"), {
+        description: t("success.unpublish.description"),
+      });
+    } else {
+      toast.success(t("success.publish.title"), {
+        description: t("success.publish.description"),
+      });
+    }
+
     router.refresh();
   }, [post.id, post.published, router, t]);
 
@@ -84,6 +94,10 @@ const DataTableRowActions = <TData,>({
 
       return;
     }
+
+    toast.success(t("success.delete.title"), {
+      description: t("success.delete.description"),
+    });
 
     router.refresh();
   }, [post.id, router, session, t]);
