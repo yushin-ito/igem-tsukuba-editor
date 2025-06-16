@@ -1,8 +1,4 @@
 import { forbidden, notFound, unauthorized } from "next/navigation";
-import { serialize } from "next-mdx-remote/serialize";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-import { rehypePrettyCode } from "rehype-pretty-code";
 import { Role } from "@prisma/client";
 
 import { db } from "@/lib/db";
@@ -41,24 +37,7 @@ const TranslatorPage = async ({ params }: TranslatorPageProps) => {
     notFound();
   }
 
-  const source = {
-    ja: await serialize(post.content || "", {
-      mdxOptions: {
-        remarkPlugins: [remarkMath],
-        rehypePlugins: [rehypeKatex, rehypePrettyCode],
-        format: "mdx",
-      },
-    }),
-    en: await serialize(post.translation || "", {
-      mdxOptions: {
-        remarkPlugins: [remarkMath],
-        rehypePlugins: [rehypeKatex, rehypePrettyCode],
-        format: "mdx",
-      },
-    }),
-  };
-
-  return <Translator post={post} source={source} />;
+  return <Translator post={post} />;
 };
 
 export default TranslatorPage;

@@ -60,7 +60,7 @@ import env from "@/env";
 
 interface EditorProps {
   user: Pick<User, "id" | "name" | "color">;
-  post: Pick<Post, "id" | "title" | "blocks" | "published">;
+  post: Pick<Post, "id" | "title" | "published">;
 }
 
 type FormData = z.infer<typeof editorSchema>;
@@ -148,7 +148,6 @@ const Editor = ({ user, post }: EditorProps) => {
 
   const editor = useCreateBlockNote({
     schema,
-    // initialContent: JSON.parse(post.blocks as string),
     codeBlock,
     uploadFile,
     dictionary: {
@@ -196,7 +195,6 @@ const Editor = ({ user, post }: EditorProps) => {
       startTransition(async () => {
         const text = editor._tiptapEditor.getText();
         const markdown = await editor.blocksToMarkdownLossy(editor.document);
-        const blocks = JSON.stringify(editor.document);
 
         const response = await fetch(`/api/posts/${post.id}`, {
           method: "PATCH",
@@ -207,7 +205,6 @@ const Editor = ({ user, post }: EditorProps) => {
             title: data.title,
             description: text.slice(0, 100),
             content: markdown,
-            blocks,
           }),
         });
 
