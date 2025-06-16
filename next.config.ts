@@ -8,7 +8,6 @@ const withNextIntl = createNextIntlPlugin();
 const nextConfig: NextConfig = {
   reactStrictMode: false,
   devIndicators: false,
-  transpilePackages: ["next-mdx-remote"],
   images: {
     remotePatterns: [
       {

@@ -9,7 +9,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import { cn } from "@/lib/utils";
 import Icons from "@/components/icons";
@@ -30,24 +29,20 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import TranslateButton from "@/components/translate-button";
-import Mdx from "@/components/mdx";
 import {
   EmptyPlaceholder,
   EmptyPlaceholderTitle,
   EmptyPlaceholderDescription,
 } from "@/components/empty-placeholder";
+import Markdown from "@/components/markdown";
 
 interface TranslatorProps {
   post: Pick<Post, "id" | "title" | "content" | "translation">;
-  source: {
-    en: MDXRemoteSerializeResult;
-    ja: MDXRemoteSerializeResult;
-  };
 }
 
 type FormData = z.infer<typeof translatorSchema>;
 
-const Translator = ({ post, source }: TranslatorProps) => {
+const Translator = ({ post }: TranslatorProps) => {
   const t = useTranslations("translator");
   const router = useRouter();
   const {
@@ -211,7 +206,7 @@ const Translator = ({ post, source }: TranslatorProps) => {
                 <Card className="relative h-[480px] overflow-hidden shadow-none">
                   <CardContent className="p-0">
                     <div className="h-[440px] overflow-y-scroll p-6">
-                      <Mdx source={source.ja} />
+                      <Markdown>{post.content}</Markdown>
                     </div>
                     <div className="absolute inset-x-0 bottom-0 flex h-10 items-center justify-between px-4">
                       <Label>{t("japanese")}</Label>
@@ -257,7 +252,7 @@ const Translator = ({ post, source }: TranslatorProps) => {
                 <Card className="relative h-[480px] overflow-hidden shadow-none">
                   <CardContent className="p-0">
                     <div className="h-[440px] overflow-y-scroll p-6">
-                      <Mdx source={source.en} />
+                      <Markdown>{post.translation}</Markdown>
                     </div>
                     <div className="absolute inset-x-0 bottom-0 flex h-10 items-center justify-between px-4">
                       <Label>{t("english")}</Label>
