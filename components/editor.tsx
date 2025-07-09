@@ -180,7 +180,7 @@ const Editor = ({ user, post }: EditorProps) => {
         LeftArrowConversionExtension,
         RightArrowConversionExtension,
         CharacterCount.configure({
-          limit: 10000,
+          limit: 1000000,
         }),
       ],
     },
