@@ -20,7 +20,7 @@ const GroupAvatar = ({ users, max = 2 }: GroupAvatarProps) => {
 
   return (
     <div className="flex items-center -space-x-2">
-      {users.map((user) => (
+      {users.slice(0, max).map((user) => (
         <Avatar key={user.id} className="size-7">
           {user.image ? (
             <Image
