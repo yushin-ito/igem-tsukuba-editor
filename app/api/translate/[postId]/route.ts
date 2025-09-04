@@ -4,13 +4,13 @@ import OpenAI from "openai";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkStringify from "remark-stringify";
-import { visit } from "unist-util-visit";
-import type { Text } from "mdast";
+import { SKIP, visit } from "unist-util-visit";
 import { Role } from "@prisma/client";
 
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import env from "@/env";
+import { wait } from "@/lib/utils";
 
 const contextSchema = z.object({
   params: z
@@ -35,7 +35,7 @@ export const PATCH = async (
     if (!session?.user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-    
+
     if (session.user.role === Role.user) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
@@ -58,25 +58,26 @@ export const PATCH = async (
 
     const inputs: string[] = [];
 
-    visit(tree, "text", (node: Text) => {
-      if (node.value.trim()) {
+    visit(tree, (node) => {
+      if (node.type === "heading") {
+        return SKIP;
+      }
+
+      if (node.type === "text" && node.value.trim()) {
         inputs.push(node.value);
       }
     });
 
     if (inputs.length === 0) {
-      return NextResponse.json(
-        { message: "No text to translate" },
-        { status: 200 }
-      );
+      return new NextResponse(null, { status: 204 });
     }
 
     const outputs = await Promise.all(
       inputs.map(async (text) => {
-        const response = await client.chat.completions.create({
+        const result = await client.responses.create({
           model: "gpt-3.5-turbo",
           temperature: 0,
-          messages: [
+          input: [
             {
               role: "system",
               content: [
@@ -93,13 +94,20 @@ export const PATCH = async (
             },
           ],
         });
-        return response.choices[0].message.content || text;
+        await wait(0.2)
+        
+        return result.output_text;
       })
     );
 
     let position = 0;
-    visit(tree, "text", (node: Text) => {
-      if (node.value.trim()) {
+
+    visit(tree, (node) => {
+      if (node.type === "heading") {
+        return SKIP;
+      }
+
+      if (node.type === "text" && node.value.trim()) {
         if (position < outputs.length) {
           node.value = outputs[position];
           position++;
@@ -108,9 +116,13 @@ export const PATCH = async (
     });
 
     position = 0;
-    visit(tree, "text", (node, index = 0, parent) => {
-      if (parent && node.value.trim()) {
-        if (index > 0 && parent.children[index - 1]?.type === "strong") {
+    visit(tree, (node, index = 0, parent) => {
+      if (node.type === "heading") {
+        return SKIP;
+      }
+
+      if (node.type === "text" && node.value.trim()) {
+        if (index > 0 && parent?.children[index - 1]?.type === "strong") {
           node.value = " " + outputs[position++];
         } else {
           node.value = outputs[position++];
@@ -134,6 +146,7 @@ export const PATCH = async (
 
     return new NextResponse(null, { status: 204 });
   } catch (error) {
+    console.error(error);
     if (error instanceof z.ZodError) {
       return NextResponse.json({ errors: error.errors }, { status: 422 });
     }
